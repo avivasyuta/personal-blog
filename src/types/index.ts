@@ -13,10 +13,14 @@ export type Post = {
 
 export type WorkExperience = {
   company: string;
+  companyLogoPath: string;
+  companyLink: string;
   position: string;
   startDate: string;
   endDate: string;
-  description: string;
+  description?: string;
+  bullets?: Array<string>;
+  skills?: Array<string>;
 };
 
 export type Project = {

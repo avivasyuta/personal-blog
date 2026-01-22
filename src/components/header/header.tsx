@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { Download } from 'lucide-react';
 import { DesktopNavigation } from '@/src/components/navigation';
 
 export function Header() {
@@ -32,7 +33,10 @@ export function Header() {
 
           <div className="h-6 w-0.5 bg-neutral-100 dark:bg-gray-900"></div>
 
-          <button className="btn btn-sm">Download my CV</button>
+          <button className="btn btn-sm">
+            <Download size={14} />
+            Download my CV
+          </button>
         </div>
       </div>
     </header>

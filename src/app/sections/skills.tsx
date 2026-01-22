@@ -9,56 +9,52 @@ type Skill = {
 const skills: Skill[] = [
   {
     name: 'JavaScript',
-    imagePath: '/icons/javascript.svg',
+    imagePath: '/logo/javascript.svg',
   },
   {
     name: 'TypeScript',
-    imagePath: '/icons/typescript.svg',
+    imagePath: '/logo/typescript.svg',
   },
   {
     name: 'React',
-    imagePath: '/icons/react.svg',
+    imagePath: '/logo/react.svg',
   },
   {
     name: 'Next.js',
-    imagePath: '/icons/next-js.svg',
+    imagePath: '/logo/next-js.svg',
   },
   {
     name: 'Node.js',
-    imagePath: '/icons/node-js.svg',
+    imagePath: '/logo/node-js.svg',
   },
   {
     name: 'PostgreSQL',
-    imagePath: '/icons/postgres.svg',
+    imagePath: '/logo/postgres.svg',
   },
   {
     name: 'Sass',
-    imagePath: '/icons/sass.svg',
+    imagePath: '/logo/sass.svg',
   },
   {
     name: 'Tailwind Css',
-    imagePath: '/icons/tailwind.svg',
+    imagePath: '/logo/tailwind.svg',
   },
   {
     name: 'Figma',
-    imagePath: '/icons/figma.svg',
+    imagePath: '/logo/figma.svg',
     width: 44,
   },
   {
     name: 'Git',
-    imagePath: '/icons/git.svg',
+    imagePath: '/logo/git.svg',
   },
 ];
 
 export function SkillsSection() {
   return (
     <section className="w-full bg-gray py-16 md:py-20 2xl:py-24">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 md:gap-12 md:px-8">
-        <div className="flex flex-col items-center gap-4">
-          <p className="text-normal text-lg md:text-xl max-w-xl text-center">
-            The skills, tools and technologies I am really good at:
-          </p>
-        </div>
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 md:gap-20 md:px-8">
+        <p className="text-normal text-lg md:text-3xl text-center uppercase">Skills and technologies I excel at</p>
 
         <div className="grid grid-cols-3 gap-y-4 md:grid-cols-5 md:gap-y-12">
           {skills.map((skill) => (
