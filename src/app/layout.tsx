@@ -5,6 +5,7 @@ import { Header } from '@/src/components/header';
 import { Footer } from '@/src/components/footer';
 import { currentLocation } from '@/src/lib/constant';
 import './globals.css';
+import { MobileNavigation } from '@/src/components/navigation';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -32,6 +33,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <div className="flex-1">{children}</div>
 
         <Footer />
+
+        <MobileNavigation />
       </body>
     </html>
   );

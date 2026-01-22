@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Menu } from './menu';
-import { Sun } from 'lucide-react';
+import { DesktopNavigation } from '@/src/components/navigation';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,23 +16,23 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrolledClasses = isScrolled ? 'border-neutral-100 dark:border-gray-900' : 'border-transparent';
+
   return (
     <header
-      className={`sticky top-0 z-30 flex h-[68] items-center justify-center bg-gray/50 backdrop-blur-lg transition-colors border-b ${isScrolled ? 'border-neutral-100 dark:border-gray-900' : 'border-transparent'}`}
+      className={`relative md:sticky md:top-0 md:z-30 flex h-[68] items-center justify-center bg-gray/50 backdrop-blur-lg transition-colors border-b ${scrolledClasses}`}
     >
-      <div className="flex justify-between items-center w-full max-w-7xl px-4 md:px-8">
+      <div className="flex justify-center md:justify-between items-center w-full max-w-7xl px-4 md:px-8">
         <Link href="/" className="font-mono font-bold text-2xl">
           {'<AI/>'}
         </Link>
 
-        <div className="flex items-center gap-6">
-          <Menu />
+        <div className="hidden md:flex md:items-center md:gap-6">
+          <DesktopNavigation />
 
           <div className="h-6 w-0.5 bg-neutral-100 dark:bg-gray-900"></div>
 
-          <button className="btn btn-sm btn-ghost btn-square">
-            <Sun size={16} />
-          </button>
+          <button className="btn btn-sm">Download my CV</button>
         </div>
       </div>
     </header>
