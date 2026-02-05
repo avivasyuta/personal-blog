@@ -14,6 +14,7 @@ export type Post = {
 export type WorkExperience = {
   company: string;
   companyLogoPath: string;
+  companyLogoPathDark?: string;
   companyLink: string;
   position: string;
   startDate: string;

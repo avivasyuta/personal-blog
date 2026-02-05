@@ -37,7 +37,21 @@ export function WorkExperienceCard({ workExperience }: WorkExperienceCardProps) 
           rel="noopener noreferrer"
           className="inline-flex justify-end relative overflow-hidden w-[100] h-[40]"
         >
-          <Image src={workExperience.companyLogoPath} alt={workExperience.company} fill />
+          <Image
+            src={workExperience.companyLogoPath}
+            alt={workExperience.company}
+            fill
+            className={workExperience.companyLogoPathDark ? 'dark:hidden' : ''}
+          />
+
+          {workExperience.companyLogoPathDark && (
+            <Image
+              src={workExperience.companyLogoPathDark}
+              alt={workExperience.company}
+              fill
+              className="hidden dark:block"
+            />
+          )}
         </Link>
       </div>
 

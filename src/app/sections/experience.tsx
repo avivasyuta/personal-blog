@@ -33,6 +33,7 @@ const workPlaces: WorkExperience[] = [
   {
     company: 'Avito',
     companyLogoPath: '/logo/avito.svg',
+    companyLogoPathDark: '/logo/avito-white.svg',
     companyLink: 'https://avito.ru',
     position: 'Engineering Manager',
     startDate: '2022/09',
@@ -61,6 +62,7 @@ const workPlaces: WorkExperience[] = [
   {
     company: 'Avito',
     companyLogoPath: '/logo/avito.svg',
+    companyLogoPathDark: '/logo/avito-white.svg',
     companyLink: 'https://avito.ru',
     position: 'Senior Software Engineer',
     startDate: '2020/06',
