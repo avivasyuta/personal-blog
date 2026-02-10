@@ -13,10 +13,10 @@ const formatDate = (dateString: string) => {
 
 export function WorkExperienceCard({ workExperience }: WorkExperienceCardProps) {
   return (
-    <div className="flex flex-col gap-4 relative w-full max-w-4xl shadow-md rounded-xl bg-white dark:bg-zinc-900 p-8">
+    <div className="flex flex-col gap-4 relative w-full max-w-4xl shadow-md rounded-xl bg-[#1e1e20] p-8">
       <div className="flex justify-between items-center gap-4">
         <div className="flex flex-col gap-1">
-          <p className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white">{workExperience.position}</p>
+          <p className="text-lg md:text-xl font-semibold text-white">{workExperience.position}</p>
 
           <div className="inline-flex gap-3 items-center">
             <Link href={workExperience.companyLink} target="_blank">
@@ -41,17 +41,8 @@ export function WorkExperienceCard({ workExperience }: WorkExperienceCardProps) 
             src={workExperience.companyLogoPath}
             alt={workExperience.company}
             fill
-            className={workExperience.companyLogoPathDark ? 'dark:hidden' : ''}
+            className="object-right object-contain"
           />
-
-          {workExperience.companyLogoPathDark && (
-            <Image
-              src={workExperience.companyLogoPathDark}
-              alt={workExperience.company}
-              fill
-              className="hidden dark:block"
-            />
-          )}
         </Link>
       </div>
 

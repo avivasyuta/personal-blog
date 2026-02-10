@@ -4,7 +4,7 @@ type GlassPanelProps = React.PropsWithChildren & {
 
 export function GlassPanel({ children, className }: GlassPanelProps) {
   return (
-    <div className={`bg-gray/50 backdrop-blur-lg${className ? ` ${className}` : ''}`}>
+    <div className={`backdrop-blur-md border border-white/30${className ? ` ${className}` : ''}`}>
       {children}
     </div>
   );

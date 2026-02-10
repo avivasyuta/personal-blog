@@ -16,7 +16,7 @@ export function GreetingSection() {
 
           <div className="flex max-w-3xl grow flex-col justify-center gap-8 md:order-first md:items-start md:justify-center 2xl:gap-12">
             <div className="flex flex-col gap-2">
-              <h1 className="text-4xl font-semibold md:font-bold md:text-5xl lg:text-6xl dark:text-gray-100">
+              <h1 className="text-4xl font-semibold md:font-bold md:text-5xl lg:text-6xl">
                 Hi, I&apos;m Aleksei <span className="inline-block animate-waving">👋</span>
               </h1>
 
@@ -33,7 +33,7 @@ export function GreetingSection() {
 
             <div className="flex flex-col gap-2">
               <div className="flex gap-2">
-                <MapPin className="text-gray-600 dark:text-gray-300" />
+                <MapPin className="text-primary" />
 
                 <p className="text-normal text-base">
                   {currentLocation.city}, &nbsp;

@@ -1,5 +1,6 @@
 import type { Project } from '@/src/types';
 import Link from 'next/link';
+import Image from 'next/image';
 
 type ProjectCardProps = {
   project: Project;
@@ -7,47 +8,22 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <div className="rounded-xl bg-gray shadow-md dark:bg-gray-100 dark:shadow-2xl mx-auto flex w-full max-w-6xl flex-col md:flex-row">
-      <div className="flex flex-col gap-6 p-8 md:w-1/2 lg:p-12">
-        <p className="text-lg md:text-xl font-semibold text-gray-900">{project.name}</p>
+    <div className="w-full flex flex-col gap-4 relative max-w-4xl rounded-xl p-8">
+      <div className={`flex justify-between items-center gap-4 ${project.logoPlacement === 'left' ? 'flex-row-reverse' : ''}`}>
+        <div className="flex flex-col gap-3">
+          <p className="text-lg md:text-2xl font-semibold text-white">{project.name}</p>
 
-        <p className="text-normal text-base">{project.description}</p>
+          <p className="whitespace-pre-line">{project.description}</p>
 
-        <div className="flex flex-wrap gap-2">
-          <div className="flex items-center justify-center rounded-xl bg-gray-200 px-5 py-1">
-            <p className="text-normal text-sm font-medium">React</p>
-          </div>
-
-          <div className="flex items-center justify-center rounded-xl bg-gray-200 px-5 py-1">
-            <p className="text-normal text-sm font-medium">Typescript</p>
-          </div>
-
-          <div className="flex items-center justify-center rounded-xl bg-gray-200 px-5 py-1">
-            <p className="text-normal text-sm font-medium">React Bootstrap</p>
-          </div>
-
-          <div className="flex items-center justify-center rounded-xl bg-gray-200 px-5 py-1">
-            <p className="text-normal text-sm font-medium">Firebase</p>
-          </div>
-
-          <div className="flex items-center justify-center rounded-xl bg-gray-200 px-5 py-1">
-            <p className="text-normal text-sm font-medium">Express.js</p>
-          </div>
-
-          <div className="flex items-center justify-center rounded-xl bg-gray-200 px-5 py-1">
-            <p className="text-normal text-sm font-medium">PostgreSQL</p>
-          </div>
-
-          <div className="flex items-center justify-center rounded-xl bg-gray-200 px-5 py-1">
-            <p className="text-normal text-sm font-medium">Styled Components</p>
-          </div>
-
-          <div className="flex items-center justify-center rounded-xl bg-gray-200 px-5 py-1">
-            <p className="text-normal text-sm font-medium">Redux</p>
-          </div>
-
-          <Link href={project.link}>Learn more</Link>
+          <Link href={project.link} className="btn btn-lg self-start mt-4">Learn more</Link>
         </div>
+
+        <Image
+          src={project.logoPath}
+          alt={project.name}
+          width={300}
+          height={50}
+        />
       </div>
     </div>
   );

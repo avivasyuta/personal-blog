@@ -1,10 +1,13 @@
 @import 'tailwindcss';
 @plugin "@tailwindcss/typography";
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes: dark --default;
+}
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #070709;
+  --foreground: #ededed;
+  --primary: #ea580c;
   --corner-shape: squircle;
   --radius-field: 0.5rem;
 }
@@ -14,13 +17,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary: var(--primary);
 }
 
 body {

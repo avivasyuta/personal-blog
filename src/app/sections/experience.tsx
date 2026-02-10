@@ -32,8 +32,7 @@ const workPlaces: WorkExperience[] = [
   },
   {
     company: 'Avito',
-    companyLogoPath: '/logo/avito.svg',
-    companyLogoPathDark: '/logo/avito-white.svg',
+    companyLogoPath: '/logo/avito-white.svg',
     companyLink: 'https://avito.ru',
     position: 'Engineering Manager',
     startDate: '2022/09',
@@ -61,8 +60,7 @@ const workPlaces: WorkExperience[] = [
   },
   {
     company: 'Avito',
-    companyLogoPath: '/logo/avito.svg',
-    companyLogoPathDark: '/logo/avito-white.svg',
+    companyLogoPath: '/logo/avito-white.svg',
     companyLink: 'https://avito.ru',
     position: 'Senior Software Engineer',
     startDate: '2020/06',
@@ -144,7 +142,7 @@ const workPlaces: WorkExperience[] = [
 
 export function ExperienceSection() {
   return (
-    <section className="w-full py-16 md:py-20 2xl:py-24 bg-gray-50 dark:bg-neutral-950">
+    <section className="w-full py-16 md:py-20 2xl:py-24">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 md:gap-20 md:px-8">
         <p className="text-normal text-lg md:text-3xl text-center uppercase">My recent work experience</p>
 
