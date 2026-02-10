@@ -52,9 +52,9 @@ const skills: Skill[] = [
 
 export function SkillsSection() {
   return (
-    <section className="w-full bg-gray py-16 md:py-20 2xl:py-24">
+    <section className="w-full bg-primary py-16 md:py-20 2xl:py-24">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 md:gap-20 md:px-8">
-        <p className="text-normal text-lg md:text-3xl text-center uppercase">Skills and technologies I excel at</p>
+        <p className="text-normal text-black text-lg md:text-3xl text-center uppercase">Skills and technologies I excel at</p>
 
         <div className="grid grid-cols-3 gap-y-4 md:grid-cols-5 md:gap-y-12">
           {skills.map((skill) => (
@@ -69,7 +69,7 @@ export function SkillsSection() {
                 style={{ width: 'auto' }}
               />
 
-              <p className="text-normal text-base md:text-lg">{skill.name}</p>
+              <p className="text-black text-base md:text-lg">{skill.name}</p>
             </div>
           ))}
         </div>

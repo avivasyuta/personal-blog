@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getPostBySlug, getAllPostSlugs } from '@/src/lib/posts';
+import { MDXContent } from '@/src/components/mdx-content';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -52,7 +53,11 @@ export default async function BlogPostPage({ params }: Props) {
           </time>
         </header>
 
-        <div className="prose prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: post.content }} />
+        {post.isMdx ? (
+          <MDXContent source={post.content} />
+        ) : (
+          <div className="prose prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: post.content }} />
+        )}
       </article>
     </main>
   );
