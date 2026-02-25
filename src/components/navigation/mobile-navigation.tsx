@@ -1,22 +1,21 @@
 import Link from 'next/link';
-import { GlassPanel } from '@/src/components/glass-panel';
 import { menuItems } from './menu-items';
 
 export function MobileNavigation() {
   return (
-    <GlassPanel className="fixed bottom-4 inset-x-4 p-5 md:hidden rounded-full flex justify-center">
-      <ul className="flex gap-4">
+    <div className="fixed bottom-4 inset-x-4 p-4 md:hidden rounded-2xl flex justify-center bg-surface/80 backdrop-blur-xl border border-border">
+      <ul className="flex gap-6">
         {menuItems.map((item) => (
           <li key={item.link}>
             <Link
               href={item.link}
-              className="text-base font-medium transition-all text-gray-300  hover:text-white active:text-white"
+              className="text-sm font-medium transition-colors text-text-secondary hover:text-foreground"
             >
               {item.name}
             </Link>
           </li>
         ))}
       </ul>
-    </GlassPanel>
-  )
+    </div>
+  );
 }

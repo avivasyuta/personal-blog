@@ -1,6 +1,7 @@
 import type { Project } from '@/src/types';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ArrowRight } from 'lucide-react';
 
 type ProjectCardProps = {
   project: Project;
@@ -8,22 +9,31 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <div className="w-full flex flex-col gap-4 relative max-w-4xl rounded-xl p-8">
-      <div className={`flex justify-between items-center gap-4 ${project.logoPlacement === 'left' ? 'flex-row-reverse' : ''}`}>
-        <div className="flex flex-col gap-3">
-          <p className="text-lg md:text-2xl font-semibold text-white">{project.name}</p>
+    <div className="card-surface w-full max-w-4xl p-6 md:p-8">
+      <div className={`flex flex-col md:flex-row justify-between items-center gap-6 ${project.logoPlacement === 'left' ? 'md:flex-row-reverse' : ''}`}>
+        <div className="flex flex-col gap-4 flex-1">
+          <h3 className="text-xl md:text-2xl font-semibold text-foreground">{project.name}</h3>
 
-          <p className="whitespace-pre-line">{project.description}</p>
+          <p className="text-text-secondary text-sm leading-relaxed whitespace-pre-line">{project.description}</p>
 
-          <Link href={project.link} className="btn btn-lg self-start mt-4">Learn more</Link>
+          <Link
+            href={project.link}
+            className="inline-flex items-center gap-2 text-sm font-medium text-white bg-primary hover:bg-primary-hover px-5 py-2.5 rounded-lg transition-colors mt-2 group w-fit"
+          >
+            Learn more
+            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
 
-        <Image
-          src={project.logoPath}
-          alt={project.name}
-          width={300}
-          height={50}
-        />
+        <div className="shrink-0">
+          <Image
+            src={project.logoPath}
+            alt={project.name}
+            width={200}
+            height={200}
+            className="rounded-xl"
+          />
+        </div>
       </div>
     </div>
   );

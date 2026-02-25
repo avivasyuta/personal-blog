@@ -66,7 +66,7 @@ const workPlaces: WorkExperience[] = [
     startDate: '2020/06',
     endDate: '2022/09',
     description:
-      'I developed an advanced ad submission builder for sellers that enables customization of the ad posting process based on the ad’s category, A/B testing, and various other parameters.',
+      'I developed an advanced ad submission builder for sellers that enables customization of the ad posting process based on the ad\'s category, A/B testing, and various other parameters.',
     bullets: [
       'Increased the number of active listings by 20,000 and reduced customer support inquiries regarding ad formatting by 34%.',
       'Improved the application build process, cutting build times by 30%.',
@@ -142,11 +142,15 @@ const workPlaces: WorkExperience[] = [
 
 export function ExperienceSection() {
   return (
-    <section className="w-full py-16 md:py-20 2xl:py-24">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 md:gap-20 md:px-8">
-        <p className="text-normal text-lg md:text-3xl text-center uppercase">My recent work experience</p>
+    <section className="w-full py-20 md:py-28 2xl:py-36 border-t border-border">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 md:gap-16 md:px-8">
+        <div className="flex flex-col items-center gap-3">
+          <p className="section-label">Career</p>
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-center">Work Experience</h2>
+        </div>
 
-        <div className="flex flex-col items-center gap-6">
+        <div className="relative flex flex-col items-center gap-6">
+          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-border hidden md:block -translate-x-1/2"></div>
           {workPlaces.map((workExperience) => (
             <WorkExperienceCard
               key={`${workExperience.company}_${workExperience.position}`}

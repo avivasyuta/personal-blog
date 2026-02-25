@@ -8,7 +8,7 @@ export function DesktopNavigation() {
         <li key={item.link}>
           <Link
             href={item.link}
-            className="text-base font-medium transition-all text-gray-300 hover:text-white active:text-white"
+            className="nav-link text-sm font-medium transition-colors text-text-secondary hover:text-foreground"
           >
             {item.name}
           </Link>

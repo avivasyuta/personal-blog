@@ -13,17 +13,17 @@ const formatDate = (dateString: string) => {
 
 export function WorkExperienceCard({ workExperience }: WorkExperienceCardProps) {
   return (
-    <div className="flex flex-col gap-4 relative w-full max-w-4xl shadow-md rounded-xl bg-[#1e1e20] p-8">
+    <div className="card-surface relative w-full max-w-4xl p-6 md:p-8 flex flex-col gap-4">
       <div className="flex justify-between items-center gap-4">
         <div className="flex flex-col gap-1">
-          <p className="text-lg md:text-xl font-semibold text-white">{workExperience.position}</p>
+          <p className="text-lg md:text-xl font-semibold text-foreground">{workExperience.position}</p>
 
-          <div className="inline-flex gap-3 items-center">
-            <Link href={workExperience.companyLink} target="_blank">
+          <div className="inline-flex gap-3 items-center text-sm text-text-secondary">
+            <Link href={workExperience.companyLink} target="_blank" className="text-primary hover:text-primary-hover transition-colors">
               {workExperience.company}
             </Link>
 
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-gray-200"></span>
+            <span className="relative inline-flex h-1 w-1 rounded-full bg-text-tertiary"></span>
 
             <div>
               <span>{formatDate(workExperience.startDate)}</span> — <span>{formatDate(workExperience.endDate)}</span>
@@ -35,7 +35,7 @@ export function WorkExperienceCard({ workExperience }: WorkExperienceCardProps) 
           href={workExperience.companyLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex justify-end relative overflow-hidden w-[100] h-[40]"
+          className="hidden sm:inline-flex justify-end relative overflow-hidden w-25 h-10 opacity-50 hover:opacity-80 transition-opacity"
         >
           <Image
             src={workExperience.companyLogoPath}
@@ -46,11 +46,13 @@ export function WorkExperienceCard({ workExperience }: WorkExperienceCardProps) 
         </Link>
       </div>
 
-      <div className="flex flex-col gap-3 text-gray-500">
-        {workExperience.description && <p>{workExperience.description}</p>}
+      <div className="flex flex-col gap-3">
+        {workExperience.description && (
+          <p className="text-text-secondary text-sm leading-relaxed">{workExperience.description}</p>
+        )}
 
         {workExperience.bullets && (
-          <ul className="list-inside list-disc">
+          <ul className="list-inside list-disc text-text-secondary text-sm leading-relaxed space-y-1">
             {workExperience.bullets.map((bullet) => (
               <li key={bullet}>{bullet}</li>
             ))}
@@ -58,11 +60,14 @@ export function WorkExperienceCard({ workExperience }: WorkExperienceCardProps) 
         )}
 
         {workExperience.skills && (
-          <div className="flex flex-wrap gap-2 mt-4">
+          <div className="flex flex-wrap gap-2 mt-3">
             {workExperience.skills.map((skill) => (
-              <div key={skill} className="badge badge-soft badge-info whitespace-nowrap">
+              <span
+                key={skill}
+                className="px-2.5 py-1 text-xs font-medium rounded-md bg-primary/10 text-primary border border-primary/20"
+              >
                 {skill}
-              </div>
+              </span>
             ))}
           </div>
         )}

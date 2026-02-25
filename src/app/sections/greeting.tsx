@@ -5,52 +5,54 @@ import Image from 'next/image';
 
 export function GreetingSection() {
   return (
-    <section id="greeting" className="relative w-full bg-gray py-16 md:py-20 2xl:py-24">
+    <section id="greeting" className="relative w-full py-20 md:py-28 2xl:py-36">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 md:gap-12 md:px-8">
         <div className="flex flex-col gap-12 md:flex-row">
           <div className="flex items-center justify-center md:order-last md:grow md:justify-end">
-            <div className="relative h-75 w-70 md:h-90 md:w-[320px]">
-              <Image src="/avatar.png" width={280} height={320} alt="Aleksei Ivasiuta" />
+            <div className="relative h-75 w-70 md:h-90 md:w-80">
+              <div className="absolute -inset-4 rounded-3xl bg-primary/5 blur-2xl"></div>
+              <Image src="/avatar.png" width={280} height={320} alt="Aleksei Ivasiuta" className="relative" />
             </div>
           </div>
 
           <div className="flex max-w-3xl grow flex-col justify-center gap-8 md:order-first md:items-start md:justify-center 2xl:gap-12">
-            <div className="flex flex-col gap-2">
-              <h1 className="text-4xl font-semibold md:font-bold md:text-5xl lg:text-6xl">
-                Hi, I&apos;m Aleksei <span className="inline-block animate-waving">👋</span>
+            <div className="flex flex-col gap-4">
+              <p className="section-label">Software Engineer</p>
+
+              <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl tracking-tight">
+                Hi, I&apos;m <span className="text-gradient-accent">Aleksei</span>{' '}
+                <span className="inline-block animate-waving">👋</span>
               </h1>
 
-              <p className="text-normal text-base">
+              <p className="text-text-secondary text-base leading-relaxed md:text-lg">
                 I&apos;m a full stack developer (React.js, Node.js & Go) with a focus on creating and designing
                 exceptional digital experiences that are fast, accessible, visually appealing, and responsive.
               </p>
 
-              <p className="text-normal text-base">
+              <p className="text-text-secondary text-base leading-relaxed md:text-lg">
                 Even though I have been creating web applications for over 10 years, I still love it as if it was
                 something new.
               </p>
             </div>
 
-            <div className="flex flex-col gap-2">
-              <div className="flex gap-2">
-                <MapPin className="text-primary" />
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-2 text-text-secondary">
+                <MapPin size={18} className="text-primary" />
 
-                <p className="text-normal text-base">
-                  {currentLocation.city}, &nbsp;
-                  {currentLocation.country}
+                <p className="text-sm">
+                  {currentLocation.city}, {currentLocation.country}
                 </p>
               </div>
 
               <div className="flex items-center gap-2">
-                <div className="flex h-6 w-6 items-center justify-center">
-                  <span className="relative flex h-3 w-3">
+                <div className="flex h-5 w-5 items-center justify-center">
+                  <span className="relative flex h-2.5 w-2.5">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-
-                    <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-500"></span>
+                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
                   </span>
                 </div>
 
-                <p className="text-normal text-base">Available for new opportunities</p>
+                <p className="text-sm text-text-secondary">Available for new opportunities</p>
               </div>
             </div>
 
@@ -58,19 +60,19 @@ export function GreetingSection() {
               <Link
                 href="https://www.linkedin.com/in/avivasyuta"
                 target="_blank"
-                className="btn btn-sm btn-square"
+                className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
                 title="Aleksei's Linkedin profile"
               >
-                <Linkedin size={16} />
+                <Linkedin size={18} />
               </Link>
 
               <Link
                 href="https://github.com/avivasyuta"
                 target="_blank"
-                className="btn btn-sm btn-square"
+                className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
                 title="Aleksei's Github profile"
               >
-                <Github size={16} />
+                <Github size={18} />
               </Link>
             </div>
           </div>

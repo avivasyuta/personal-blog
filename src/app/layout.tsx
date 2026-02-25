@@ -27,7 +27,7 @@ type RootLayoutProps = PropsWithChildren;
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-dot-pattern`}>
         <Header />
 
         <main className="flex-1">{children}</main>
