@@ -5,7 +5,7 @@ export default function BlogPage() {
   const posts = getAllPosts();
 
   return (
-    <main className="mx-auto max-w-4xl px-4 py-12">
+    <div className="mx-auto max-w-4xl px-4 py-12">
       <h1 className="mb-8 text-4xl font-bold">Blog</h1>
 
       <div className="flex flex-col gap-6">
@@ -30,6 +30,6 @@ export default function BlogPage() {
           </article>
         ))}
       </div>
-    </main>
+    </div>
   );
 }
