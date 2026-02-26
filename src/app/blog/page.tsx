@@ -6,10 +6,7 @@ export default function BlogPage() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-16 md:py-24">
-      <div className="mb-12">
-        <p className="section-label mb-3">Writing</p>
-        <h1 className="text-4xl font-bold tracking-tight">Blog</h1>
-      </div>
+      <h1 className="text-4xl font-bold tracking-tight mb-12">Blog</h1>
 
       <PostsFilter posts={posts} />
     </div>

@@ -1,24 +1,7 @@
-import { Project } from '@/src/types';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 import { ProjectCard } from '@/src/components/project-card';
-
-const projects: Project[] = [
-  {
-    name: 'Mockiato',
-    description: 'An open source Chrome extension for intercepting requests, creating real-time mocks, and auto-inserting headers for web development and API testing.',
-    link: '/projects/mockiato',
-    logoPath: '/logo/mockiato.png',
-    logoPlacement: 'left',
-    openSource: true,
-  },
-  {
-    name: 'IMDB Random Movie',
-    description: 'An open source Chrome extension that helps you discover new films by randomly selecting movies from IMDB watch list. Picks a random movie based on your preferences, making it easy to find your next watch. Perfect for movie nights when you can\'t decide what to watch.',
-    link: '/projects/imdb-random-movie',
-    logoPath: '/logo/imdb-random.png',
-    logoPlacement: 'right',
-    openSource: true,
-  },
-];
+import { projects } from '@/src/consts/projects';
 
 export function ProjectsSection() {
   return (
@@ -33,6 +16,16 @@ export function ProjectsSection() {
           {projects.map((project) => (
             <ProjectCard key={project.name} project={project} />
           ))}
+        </div>
+
+        <div className="flex justify-center">
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-surface text-text-secondary text-sm font-medium hover:border-border-hover hover:text-foreground transition-all"
+          >
+            See all projects
+            <ArrowRight size={16} />
+          </Link>
         </div>
       </div>
     </section>
