@@ -1,65 +1,99 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, Zap, Globe, FileJson, Shield } from 'lucide-react';
 
 export default function MockiatoProjectPage() {
-  return (
-    <div className="mx-auto flex flex-col gap-8 md:gap-16 w-full max-w-7xl px-4 md:px-8 py-16 md:py-24">
-      <Link
-        href="/"
-        className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-primary transition-colors group"
-      >
-        <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
-        Back to Home
-      </Link>
+    return (
+        <div className="mx-auto flex flex-col gap-16 md:gap-16 w-full max-w-7xl px-4 md:px-8 py-8 md:py-24">
+            <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-12 items-center">
+                <div className="flex flex-col gap-6 flex-1 items-center md:items-start">
+                    <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Mockiato</h1>
 
-      <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
-        <div className="flex flex-col gap-6 flex-1">
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Mockiato</h1>
+                    <Image src="/logo/mockiato.png" width={250} height={250} alt="Mockiato extension logo" className="rounded-2xl md:hidden" />
 
-          <p className="text-text-secondary leading-relaxed">
-            An open source Chrome extension for intercepting requests, creating real-time mocks, and auto-inserting headers for web development and API testing.
-          </p>
+                    <p className="text-center md:text-start text-text-secondary leading-relaxed">
+                        An open source Chrome extension built for frontend developers who need full control over network requests.
+                        It lets you intercept outgoing API calls in real time and replace them with custom mock responses, no backend required.
+                    </p>
 
-          <div className="flex gap-3 mt-2">
-            <Link
-              href="https://chromewebstore.google.com/detail/mockiato-%E2%80%94-free-api-testi/ilbkkhmnmnehcicempfpekgcpneeekao"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary-hover transition-colors"
-              target="_blank"
-            >
-              <ExternalLink size={14} />
-              Try it!
-            </Link>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-medium w-fit">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                        Open source
+                    </span>
 
-            <Link
-              href="https://github.com/avivasyuta/mockiato"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-surface text-text-secondary text-sm font-medium hover:border-border-hover hover:text-foreground transition-all"
-              target="_blank"
-            >
-              <Github size={14} />
-              Source code
-            </Link>
-          </div>
+                    <div className="flex justify-center md:justify-start gap-3 mt-2">
+                        <Link
+                            href="https://chromewebstore.google.com/detail/mockiato-%E2%80%94-free-api-testi/ilbkkhmnmnehcicempfpekgcpneeekao"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary-hover transition-colors"
+                            target="_blank"
+                        >
+                            <ExternalLink size={14} />
+                            Install extension
+                        </Link>
+
+                        <Link
+                            href="https://github.com/avivasyuta/mockiato"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-surface text-text-secondary text-sm font-medium hover:border-border-hover hover:text-foreground transition-all"
+                            target="_blank"
+                        >
+                            <Github size={14} />
+                            Source code
+                        </Link>
+                    </div>
+                </div>
+
+                <Image src="/logo/mockiato.png" width={400} height={400} alt="Mockiato extension logo" className="rounded-2xl hidden md:block" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex flex-col gap-3 p-5 rounded-xl border border-border bg-surface/50">
+                    <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10">
+                            <FileJson size={18} className="text-primary" />
+                        </div>
+                        <h3 className="font-semibold text-foreground">Response Mocking</h3>
+                    </div>
+                    <p className="text-sm text-text-secondary leading-relaxed">
+                        Create mocks by specifying URL patterns (regex supported), HTTP method, response body, status code, delay, and headers. Simulate any server behavior without touching the backend.
+                    </p>
+                </div>
+
+                <div className="flex flex-col gap-3 p-5 rounded-xl border border-border bg-surface/50">
+                    <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10">
+                            <Shield size={18} className="text-primary" />
+                        </div>
+                        <h3 className="font-semibold text-foreground">Header Injection</h3>
+                    </div>
+                    <p className="text-sm text-text-secondary leading-relaxed">
+                        Add or modify headers on outgoing requests on the fly. Perfect for testing authentication flows, CORS policies, and other header-dependent scenarios.
+                    </p>
+                </div>
+
+                <div className="flex flex-col gap-3 p-5 rounded-xl border border-border bg-surface/50">
+                    <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10">
+                            <Zap size={18} className="text-primary" />
+                        </div>
+                        <h3 className="font-semibold text-foreground">Zero Setup</h3>
+                    </div>
+                    <p className="text-sm text-text-secondary leading-relaxed">
+                        Works instantly in the browser: no proxy servers, no config files, no CLI tools. Install and start mocking in seconds.
+                    </p>
+                </div>
+
+                <div className="flex flex-col gap-3 p-5 rounded-xl border border-border bg-surface/50">
+                    <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10">
+                            <Globe size={18} className="text-primary" />
+                        </div>
+                        <h3 className="font-semibold text-foreground">Open Source</h3>
+                    </div>
+                    <p className="text-sm text-text-secondary leading-relaxed">
+                        Fully open source and free to use. Inspect the code, contribute features, or fork it to fit your workflow.
+                    </p>
+                </div>
+            </div>
         </div>
-
-        <div className="shrink-0">
-          <Image src="/logo/mockiato.png" width={300} height={300} alt="Mockiato extension logo" className="rounded-2xl" />
-        </div>
-      </div>
-
-      <div className="card-surface p-6 md:p-8">
-        <div className="flex flex-col gap-4 text-text-secondary leading-relaxed">
-          <p>
-            Chrome extension to intercept requests, create real-time mocks, and auto-insert headers for web development & testing API.
-          </p>
-          <p>
-            Mockiato is an extension for Google Chrome, designed to optimize web application development and testing. It allows you to intercept outgoing requests in real-time and create mocks for them, ensuring quick emulation of server responses.
-          </p>
-          <p>
-            In addition, Mockiato enables the addition or modification of headers in requests. This feature significantly simplifies request configuration and saves developers&apos; time. Combined, these tools provide flexibility and convenience, making the development and testing process more efficient and reliable.
-          </p>
-        </div>
-      </div>
-    </div>
-  );
+    );
 }

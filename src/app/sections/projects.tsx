@@ -8,6 +8,7 @@ const projects: Project[] = [
     link: '/projects/mockiato',
     logoPath: '/logo/mockiato.png',
     logoPlacement: 'left',
+    openSource: true,
   },
   {
     name: 'IMDB Random Movie',
@@ -15,6 +16,7 @@ const projects: Project[] = [
     link: '/projects/imdb-random-movie',
     logoPath: '/logo/imdb-random.png',
     logoPlacement: 'right',
+    openSource: true,
   },
 ];
 

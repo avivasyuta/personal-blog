@@ -34,4 +34,5 @@ export type Project = {
   link: string;
   logoPath: string;
   logoPlacement: 'left' | 'right';
+  openSource?: boolean;
 };
