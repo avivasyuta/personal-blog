@@ -1,6 +1,5 @@
-import Link from 'next/link';
 import { getAllPosts } from '@/src/lib/posts';
-import { ArrowRight } from 'lucide-react';
+import PostsFilter from '@/src/components/posts-filter';
 
 export default function BlogPage() {
   const posts = getAllPosts();
@@ -12,31 +11,7 @@ export default function BlogPage() {
         <h1 className="text-4xl font-bold tracking-tight">Blog</h1>
       </div>
 
-      <div className="flex flex-col gap-4">
-        {posts.map((post) => (
-          <article
-            key={post.slug}
-            className="card-surface p-6 group"
-          >
-            <Link href={`/blog/${post.slug}`} className="flex flex-col gap-2">
-              <div className="flex items-center justify-between">
-                <h2 className="text-xl font-semibold group-hover:text-primary transition-colors">{post.title}</h2>
-                <ArrowRight size={16} className="text-text-tertiary group-hover:text-primary transition-all group-hover:translate-x-1" />
-              </div>
-
-              <time className="text-xs text-text-tertiary font-mono">
-                {new Date(post.date).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </time>
-
-              <p className="text-text-secondary text-sm leading-relaxed">{post.excerpt}</p>
-            </Link>
-          </article>
-        ))}
-      </div>
+      <PostsFilter posts={posts} />
     </div>
   );
 }

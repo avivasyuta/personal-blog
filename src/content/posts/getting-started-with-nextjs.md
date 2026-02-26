@@ -2,6 +2,10 @@
 title: 'Getting Started with Next.js'
 date: '2024-01-20'
 excerpt: "A beginner's guide to building web applications with Next.js."
+complexity: easy
+tags:
+  - nextjs
+  - tutorial
 ---
 
 Next.js is a powerful React framework that makes building web applications a breeze. In this post, we'll explore the basics.

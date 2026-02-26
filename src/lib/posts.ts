@@ -24,6 +24,8 @@ export function getAllPosts(): Omit<Post, 'content'>[] {
         date: data.date,
         excerpt: data.excerpt,
         isMdx: fileName.endsWith('.mdx'),
+        complexity: data.complexity,
+        tags: data.tags,
       };
     });
 

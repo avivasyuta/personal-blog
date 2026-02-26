@@ -21,7 +21,7 @@ export function MobileNavigation() {
               <li key={item.link}>
                 <Link
                   href={item.link}
-                  className={`relative flex flex-col items-center gap-1 px-4 py-2 rounded-xl text-xs font-medium transition-colors ${
+                  className={`relative flex flex-col items-center gap-1 px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
                     isActive
                       ? 'text-primary bg-primary/10'
                       : 'text-text-secondary hover:text-foreground'

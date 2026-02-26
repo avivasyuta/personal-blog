@@ -12,9 +12,9 @@ export default function Home() {
 
       <AboutSection />
 
-      <SkillsSection />
-
       <ExperienceSection />
+
+      <SkillsSection />
 
       <ProjectsSection />
 

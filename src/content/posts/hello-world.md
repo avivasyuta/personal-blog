@@ -2,6 +2,9 @@
 title: 'Hello World'
 date: '2024-01-15'
 excerpt: 'Welcome to my blog! This is my first post.'
+complexity: hard
+tags:
+  - intro
 ---
 
 # Hello World

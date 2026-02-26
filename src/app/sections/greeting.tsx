@@ -1,5 +1,5 @@
 import { currentLocation } from '@/src/lib/constant';
-import { Github, Linkedin, MapPin } from 'lucide-react';
+import { Download, Github, Instagram, Linkedin, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -8,10 +8,10 @@ export function GreetingSection() {
     <section id="greeting" className="relative w-full py-20 md:py-28 2xl:py-36">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 md:gap-12 md:px-8">
         <div className="flex flex-col gap-12 md:flex-row">
-          <div className="flex items-center justify-center md:order-last md:grow md:justify-end">
+          <div className="flex items-center justify-center md:order-last md:grow md:justify-end mb-8 md:mb-0">
             <div className="relative h-75 w-70 md:h-90 md:w-80">
               <div className="absolute -inset-4 rounded-3xl bg-primary/5 blur-2xl"></div>
-              <Image src="/avatar.png" width={280} height={320} alt="Aleksei Ivasiuta" className="relative" />
+              <Image src="/portrait.png" width={280} height={320} alt="Aleksei Ivasiuta" className="relative" />
             </div>
           </div>
 
@@ -56,7 +56,16 @@ export function GreetingSection() {
               </div>
             </div>
 
-            <div className="flex gap-3">
+            <div className="flex items-center gap-3">
+              <Link
+                href="/resume.pdf"
+                target="_blank"
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-primary-hover hover:shadow-[0_0_20px_var(--color-primary-glow)]"
+              >
+                <Download size={16} />
+                Download my CV
+              </Link>
+
               <Link
                 href="https://www.linkedin.com/in/avivasyuta"
                 target="_blank"
@@ -73,6 +82,15 @@ export function GreetingSection() {
                 title="Aleksei's Github profile"
               >
                 <Github size={18} />
+              </Link>
+
+              <Link
+                href="https://www.instagram.com/avivasyuta/"
+                target="_blank"
+                className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
+                title="Aleksei's Instagram profile"
+              >
+                <Instagram size={18} />
               </Link>
             </div>
           </div>

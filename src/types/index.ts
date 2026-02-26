@@ -3,6 +3,8 @@ export type Location = {
   country: string;
 };
 
+export type Complexity = 'hard' | 'medium' | 'easy';
+
 export type Post = {
   slug: string;
   title: string;
@@ -10,6 +12,8 @@ export type Post = {
   excerpt: string;
   content: string;
   isMdx?: boolean;
+  complexity?: Complexity;
+  tags?: string[];
 };
 
 export type WorkExperience = {

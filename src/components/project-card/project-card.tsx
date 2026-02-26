@@ -10,7 +10,7 @@ type ProjectCardProps = {
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <div className="card-surface w-full max-w-4xl p-6 md:p-8">
-      <div className={`flex flex-col md:flex-row justify-between items-center gap-6 ${project.logoPlacement === 'left' ? 'md:flex-row-reverse' : ''}`}>
+      <div className={`flex flex-col-reverse md:flex-row justify-between items-center gap-6 ${project.logoPlacement === 'left' ? 'md:flex-row-reverse' : ''}`}>
         <div className="flex flex-col gap-4 flex-1">
           <h3 className="text-xl md:text-2xl font-semibold text-foreground">{project.name}</h3>
 
@@ -18,7 +18,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
           <Link
             href={project.link}
-            className="inline-flex items-center gap-2 text-sm font-medium text-white bg-primary hover:bg-primary-hover px-5 py-2.5 rounded-lg transition-colors mt-2 group w-fit"
+            className="inline-flex items-center justify-between gap-2 text-sm font-medium text-white bg-primary hover:bg-primary-hover px-5 py-2.5 rounded-lg transition-colors mt-2 group w-full md:w-fit"
           >
             Learn more
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
@@ -29,8 +29,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
           <Image
             src={project.logoPath}
             alt={project.name}
-            width={200}
-            height={200}
+            width={250}
+            height={250}
             className="rounded-xl"
           />
         </div>
