@@ -25,8 +25,9 @@ export function AboutSection() {
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 md:gap-12 md:px-8">
         <div className="flex w-full flex-col justify-between gap-12 md:flex-row">
           <div className="flex justify-center md:order-first md:justify-end">
-            <div className="relative h-[380px] w-[320px] md:h-[460px] md:w-[380px] lg:h-[520px] lg:w-[440px]">
+            <div className="relative h-95 w-[320px] md:h-115 md:w-95 lg:h-130 lg:w-110">
               <div className="absolute -inset-2 rounded-2xl bg-primary/5 blur-xl"></div>
+
               <Image
                 src="/avatar.jpg"
                 alt="Fullpose of Aleksei Ivasiuta"
@@ -67,7 +68,9 @@ export function AboutSection() {
               {stats.map((stat) => (
                 <div key={stat.label} className="card-surface flex flex-col items-center gap-2 p-4">
                   <stat.icon size={20} className="text-primary" />
+
                   <p className="text-2xl font-bold tracking-tight">{stat.value}</p>
+
                   <p className="text-text-secondary text-xs text-center">{stat.label}</p>
                 </div>
               ))}

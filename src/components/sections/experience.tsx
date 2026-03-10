@@ -1,5 +1,5 @@
 import type { WorkExperience } from '@/src/types';
-import { WorkExperienceCard } from '@/src/components/work-experience-card';
+import { WorkExperienceSnippet } from '@/src/components/work-experience-snippet';
 
 const workPlaces: WorkExperience[] = [
   {
@@ -146,13 +146,15 @@ export function ExperienceSection() {
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 md:gap-16 md:px-8">
         <div className="flex flex-col items-center gap-3">
           <p className="section-label">Career</p>
+
           <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-center">Work Experience</h2>
         </div>
 
         <div className="relative flex flex-col items-center gap-6">
           <div className="absolute left-1/2 top-0 bottom-0 w-px bg-border hidden md:block -translate-x-1/2"></div>
+
           {workPlaces.map((workExperience) => (
-            <WorkExperienceCard
+            <WorkExperienceSnippet
               key={`${workExperience.company}_${workExperience.position}`}
               workExperience={workExperience}
             />

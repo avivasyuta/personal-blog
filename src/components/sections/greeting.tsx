@@ -11,6 +11,7 @@ export function GreetingSection() {
           <div className="flex items-center justify-center md:order-last md:grow md:justify-end mb-8 md:mb-0">
             <div className="relative h-75 w-70 md:h-90 md:w-80">
               <div className="absolute -inset-4 rounded-3xl bg-primary/5 blur-2xl"></div>
+
               <Image src="/portrait.png" width={280} height={320} alt="Aleksei Ivasiuta" className="relative" />
             </div>
           </div>
@@ -21,6 +22,7 @@ export function GreetingSection() {
 
               <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl tracking-tight">
                 Hi, I&apos;m <span className="text-gradient-accent">Aleksei</span>{' '}
+
                 <span className="inline-block animate-waving">👋</span>
               </h1>
 
@@ -39,15 +41,14 @@ export function GreetingSection() {
               <div className="flex items-center gap-2 text-text-secondary">
                 <MapPin size={18} className="text-primary" />
 
-                <p className="text-sm">
-                  {currentLocation.city}, {currentLocation.country}
-                </p>
+                <p className="text-sm">{`${currentLocation.city}, ${currentLocation.country}`}</p>
               </div>
 
               <div className="flex items-center gap-2">
                 <div className="flex h-5 w-5 items-center justify-center">
                   <span className="relative flex h-2.5 w-2.5">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+
                     <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
                   </span>
                 </div>
@@ -69,6 +70,7 @@ export function GreetingSection() {
               <Link
                 href="https://www.linkedin.com/in/avivasyuta"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
                 title="Aleksei's Linkedin profile"
               >
@@ -78,6 +80,7 @@ export function GreetingSection() {
               <Link
                 href="https://github.com/avivasyuta"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
                 title="Aleksei's Github profile"
               >
@@ -87,6 +90,7 @@ export function GreetingSection() {
               <Link
                 href="https://www.instagram.com/avivasyuta/"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
                 title="Aleksei's Instagram profile"
               >

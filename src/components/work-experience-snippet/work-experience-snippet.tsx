@@ -2,7 +2,7 @@ import type { WorkExperience } from '@/src/types';
 import Image from 'next/image';
 import Link from 'next/link';
 
-type WorkExperienceCardProps = {
+type WorkExperienceSnippetProps = {
   workExperience: WorkExperience;
 };
 
@@ -11,7 +11,7 @@ const formatDate = (dateString: string) => {
   return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
 };
 
-export function WorkExperienceCard({ workExperience }: WorkExperienceCardProps) {
+export function WorkExperienceSnippet({ workExperience }: WorkExperienceSnippetProps) {
   return (
     <div className="card-surface relative w-full max-w-4xl p-6 md:p-8 flex flex-col gap-4">
       <div className="flex justify-between items-center gap-4">
@@ -19,14 +19,19 @@ export function WorkExperienceCard({ workExperience }: WorkExperienceCardProps) 
           <p className="text-lg md:text-xl font-semibold text-foreground">{workExperience.position}</p>
 
           <div className="inline-flex gap-3 items-center text-sm text-text-secondary">
-            <Link href={workExperience.companyLink} target="_blank" className="text-primary hover:text-primary-hover transition-colors">
+            <Link
+              href={workExperience.companyLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-primary-hover transition-colors"
+            >
               {workExperience.company}
             </Link>
 
             <span className="relative inline-flex h-1 w-1 rounded-full bg-text-tertiary"></span>
 
             <div>
-              <span>{formatDate(workExperience.startDate)}</span> — <span>{formatDate(workExperience.endDate)}</span>
+              <span>{`${formatDate(workExperience.startDate)} — ${formatDate(workExperience.endDate)}`}</span>
             </div>
           </div>
         </div>

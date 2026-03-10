@@ -28,6 +28,7 @@ export function MobileNavigation() {
                   }`}
                 >
                   {item.name}
+
                   {isActive && (
                     <span className="absolute -bottom-1 h-0.5 w-4 rounded-full bg-primary" />
                   )}

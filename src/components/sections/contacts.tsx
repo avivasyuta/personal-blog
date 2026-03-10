@@ -16,6 +16,7 @@ export function ContactsSection() {
 
           <div className="flex items-center gap-3 card-surface px-6 py-4">
             <Mail size={20} className="text-primary" />
+
             <a href="mailto:avivasyuta@gmail.com" className="text-lg md:text-xl font-mono font-medium text-foreground hover:text-primary transition-colors">
               avivasyuta@gmail.com
             </a>
@@ -28,6 +29,7 @@ export function ContactsSection() {
               <Link
                 href="https://www.linkedin.com/in/avivasyuta"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
                 title="Aleksei's Linkedin profile"
               >
@@ -37,6 +39,7 @@ export function ContactsSection() {
               <Link
                 href="https://github.com/avivasyuta"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
                 title="Aleksei's Github profile"
               >
@@ -46,6 +49,7 @@ export function ContactsSection() {
               <Link
                 href="https://www.instagram.com/avivasyuta/"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
                 title="Aleksei's Instagram profile"
               >
