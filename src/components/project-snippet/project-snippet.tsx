@@ -3,11 +3,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
-type ProjectCardProps = {
+type ProjectSnippetProps = {
   project: Project;
 };
 
-export function ProjectCard({ project }: ProjectCardProps) {
+export function ProjectSnippet({ project }: ProjectSnippetProps) {
   return (
     <div className="card-surface w-full max-w-4xl p-6 md:p-8">
       <div className={`flex flex-col-reverse md:flex-row justify-between items-center gap-6 ${project.logoPlacement === 'left' ? 'md:flex-row-reverse' : ''}`}>

@@ -1,11 +1,11 @@
-import React, { PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { Header } from '@/src/components/header';
 import { Footer } from '@/src/components/footer';
 import { currentLocation } from '@/src/lib/constant';
-import './globals.css';
 import { MobileNavigation } from '@/src/components/navigation';
+import './globals.css';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',

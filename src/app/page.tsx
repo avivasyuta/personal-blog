@@ -1,9 +1,9 @@
-import { GreetingSection } from './sections/greeting';
-import { AboutSection } from '@/src/app/sections/about';
-import { SkillsSection } from '@/src/app/sections/skills';
-import { ExperienceSection } from '@/src/app/sections/experience';
-import { ProjectsSection } from '@/src/app/sections/projects';
-import { ContactsSection } from '@/src/app/sections/contacts';
+import { GreetingSection } from '../components/sections/greeting';
+import { AboutSection } from '@/src/components/sections/about';
+import { SkillsSection } from '@/src/components/sections/skills';
+import { ExperienceSection } from '@/src/components/sections/experience';
+import { ProjectsSection } from '@/src/components/sections/projects';
+import { ContactsSection } from '@/src/components/sections/contacts';
 
 export default function Home() {
   return (

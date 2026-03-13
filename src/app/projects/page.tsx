@@ -1,4 +1,4 @@
-import { ProjectCard } from "@/src/components/project-card";
+import { ProjectSnippet } from "@/src/components/project-snippet";
 import { projects } from "@/src/consts/projects";
 
 export default function ProjectsPage() {
@@ -8,7 +8,7 @@ export default function ProjectsPage() {
 
             <div className="flex flex-col items-center gap-8">
                 {projects.map((project) => (
-                    <ProjectCard key={project.name} project={project} />
+                    <ProjectSnippet key={project.name} project={project} />
                 ))}
             </div>
         </div>

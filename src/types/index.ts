@@ -16,6 +16,8 @@ export type Post = {
   tags?: string[];
 };
 
+export type SimplePost = Omit<Post, 'content'>;
+
 export type WorkExperience = {
   company: string;
   companyLogoPath: string;
@@ -35,4 +37,10 @@ export type Project = {
   logoPath: string;
   logoPlacement: 'left' | 'right';
   openSource?: boolean;
+};
+
+export type PostsFilter = {
+  query?: string;
+  complexity?: Complexity;
+  tags?: string[];
 };
