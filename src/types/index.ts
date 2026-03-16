@@ -18,16 +18,21 @@ export type Post = {
 
 export type SimplePost = Omit<Post, 'content'>;
 
-export type WorkExperience = {
-  company: string;
-  companyLogoPath: string;
-  companyLink: string;
+export type Position = {
   position: string;
   startDate: string;
   endDate: string;
   description?: string;
   bullets?: Array<string>;
   skills?: Array<string>;
+};
+
+export type CompanyGroup = {
+  company: string;
+  companyDescription?: string;
+  companyLogoPath: string;
+  companyLink: string;
+  positions: Position[];
 };
 
 export type Project = {
