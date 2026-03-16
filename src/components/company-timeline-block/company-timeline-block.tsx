@@ -91,7 +91,7 @@ export function CompanyTimelineBlock({
           {positions.map((position, i) => (
             <Fragment key={`${position.position}_${position.startDate}`}>
               {i > 0 && <hr className="border-border" />}
-              <PositionEntry position={position} />
+              <PositionEntry position={position} isDateVisible={positions.length > 1} />
             </Fragment>
           ))}
         </div>

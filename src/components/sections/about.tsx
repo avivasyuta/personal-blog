@@ -3,17 +3,14 @@ import { Coffee, Code, Clock } from 'lucide-react';
 
 const stats = [
   {
-    icon: Clock,
     value: '10+',
     label: 'Years of experience',
   },
   {
-    icon: Code,
     value: '11+',
     label: 'Technologies',
   },
   {
-    icon: Coffee,
     value: '∞',
     label: 'Cups of coffee',
   },
@@ -26,13 +23,11 @@ export function AboutSection() {
         <div className="flex w-full flex-col justify-between gap-12 md:flex-row">
           <div className="flex justify-center md:order-first md:justify-end">
             <div className="relative h-95 w-[320px] md:h-115 md:w-95 lg:h-130 lg:w-110">
-              <div className="absolute -inset-2 rounded-2xl bg-primary/5 blur-xl"></div>
-
               <Image
                 src="/avatar.jpg"
                 alt="Fullpose of Aleksei Ivasiuta"
                 fill
-                className="relative rounded-xl object-cover"
+                className="shadow-[0_0_40px_var(--color-primary-glow)] rounded-2xl object-cover"
               />
             </div>
           </div>
@@ -67,8 +62,6 @@ export function AboutSection() {
             <div className="grid grid-cols-3 gap-4 pt-2">
               {stats.map((stat) => (
                 <div key={stat.label} className="card-surface flex flex-col items-center gap-2 p-4">
-                  <stat.icon size={20} className="text-primary" />
-
                   <p className="text-2xl font-bold tracking-tight">{stat.value}</p>
 
                   <p className="text-text-secondary text-xs text-center">{stat.label}</p>

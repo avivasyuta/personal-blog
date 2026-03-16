@@ -9,12 +9,4 @@ export const projects: Project[] = [
     logoPlacement: 'left',
     openSource: true,
   },
-  {
-    name: 'IMDB Random Movie',
-    description: 'An open source Chrome extension that helps you discover new films by randomly selecting movies from IMDB watch list. Picks a random movie based on your preferences, making it easy to find your next watch. Perfect for movie nights when you can\'t decide what to watch.',
-    link: '/projects/imdb-random-movie',
-    logoPath: '/logo/imdb-random.png',
-    logoPlacement: 'right',
-    openSource: true,
-  },
 ];

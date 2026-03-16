@@ -1,18 +1,25 @@
 import type { Position } from '@/src/types';
 import { formatDate } from '@/src/lib/format-date';
 
+interface PositionEntryProps {
+  position: Position;
+  isDateVisible?: boolean;
+}
+
 export function PositionEntry({
   position,
-}: {
-  position: Position;
-}) {
+  isDateVisible = false,
+}: PositionEntryProps) {
   return (
     <div className="flex flex-col gap-3">
       <div className="flex flex-col gap-0.5">
         <p className="text-base md:text-lg font-semibold text-foreground">{position.position}</p>
-        <p className="text-xs text-text-tertiary font-medium tracking-wide uppercase">
-          {formatDate(position.startDate)} — {formatDate(position.endDate)}
-        </p>
+
+        {isDateVisible && (
+          <p className="text-xs text-text-tertiary font-medium tracking-wide uppercase">
+            {formatDate(position.startDate)} — {formatDate(position.endDate)}
+          </p>
+        )}
       </div>
 
       {position.description && (
