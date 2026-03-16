@@ -1,0 +1,261 @@
+---
+title: "Disjoint Set: The one trick that makes Union-Find faster"
+date: 2025-02-19
+excerpt: Напишите функцию, которая будет рассчитывать результаты столкновения астероидов.
+complexity: medium
+tags:
+  - data structures
+  - disjoint set
+  - union find
+---
+
+Graph-based problems often require efficient ways to determine whether two nodes are connected and to merge separate components. One of the most effective data structures for this is the Disjoint Set, also known as Union-Find. It is widely used in network connectivity, clustering, and Kruskal’s algorithm for Minimum Spanning Trees. In this article, we will break down the fundamentals of the Disjoint Set, explore its basic operations, and analyze its efficiency.
+
+## Understanding the Problem
+
+Imagine a map with eight cities represented as nodes in a graph.
+
+![Graph with eight cities](/posts/disjoint-set/graph.webp)
+
+The connections between these cities represent roads:
+
+- Cities `0`, `1`, `2`, and `3` are connected.
+- Cities `4`, `5`, and `6` form another connected group.
+- City `7` is isolated with no connections.
+
+Cities can have a direct connection, such as `4` and `6`, or a transitive connection, such as `0` and `3`.
+
+This results in three disjoint sets:
+
+- `[0, 1, 2, 3]`
+- `[4, 5, 6]`
+- `[7]`
+
+Our goal is to design an efficient data structure that allows us to quickly determine whether two cities are connected and to merge two disjoint sets into one.
+
+For such problems, we can use the `Disjoint Set` data structure.
+
+## Basic Implementation
+
+A Disjoint Set should support three key operations:
+
+- `find(x int) int` — finds the root node of the set containing `x`.
+- `union(x int, y int)` — merges the sets containing `x` and `y`.
+- `connected(x int, y int)` — checks whether `x` and `y` belong to the same set.
+
+<div className="rounded-2xl border border-primary/30 bg-primary/10 shadow-[0_0_12px_var(--primary-glow)] text-primary px-6">
+  I will demonstrate the implementation of the algorithm in the TypeScript programming language, however, it can easily be adapted to any other language.
+</div>
+ 
+ First, let’s implement the skeleton of our data structure. Internally, it will store connections between graph vertices as an array, where the array index represents the city number, and the value at that index corresponds to the root node index in the graph.
+
+```typescript
+class DisjointSet {
+    nodes: number[];
+}
+```
+
+The next step is to define the constructor for our structure. When initializing the nodes slice, we will populate it with values ranging from 0 to n, where n represents the number of cities. We do this because, by default, we assume that all cities are initially disconnected from each other.
+This approach ensures that each city starts as its own root node, forming the basis for further connectivity operations in the graph.
+
+```typescript
+class DisjointSet {
+    nodes: number[];
+
+    constructor(n: number) {
+      // Create an array of a given size based on the number of elements
+      this.nodes = new Array(n);
+      
+      for (let i = 0; i < n; i++) {
+        // When initializing, we assume that each element is isolated and not connected to others.
+        // In this case, each element is root for itself.
+        this.nodes[i] = i;
+      }
+    }
+}
+```
+
+Each index in the nodes slice corresponds to a city, and the value at that index points to the root node of the connected component to which the city belongs.
+
+- In the first set, we decide that city `0` is the root.
+- In the second set, city `4` is the root.
+- City `7` remains isolated as its own root.
+
+This should results in the following array representation.
+
+## Find Operation
+
+![Initialized array](/posts/disjoint-set/initialized-array.webp)
+
+
+Now, it’s easy to see that to implement the search functionality, we simply need to retrieve the root node index for a specific city using its corresponding index in the array.
+
+```typescript
+find(x: number): number {
+  return this.nodes[x];
+}
+```
+
+## Connectivity Check
+
+Checking connectivity is also extremely straightforward to implement. We simply need to retrieve the root elements for city x and city y using the find method and compare them. If the two cities share the same root node in the graph, they are connected—either directly or transitively.
+
+```typescript
+connected(x: number, y: number): boolean {
+  return this.find(x) === this.find(y);
+}
+```
+
+## Merging Sets
+
+Now, we need to address the main challenge: how to merge two sets into one.
+
+Suppose we need to connect cities with numbers 3 and 4, thereby merging the first and second sets.
+
+![Connecting cities](/posts/disjoint-set/connected-graphs.webp)
+
+We decide that the parent element of the merged set will remain 0. This means that cities with numbers `3`, `4`, and `5` must establish a connection to it by updating their root node value to `0`.
+
+```typescript
+union(x: number, y: number): void {
+  const rootX = this.find(x);
+  const rootY = this.find(y);
+
+  // We perform the merge only if the two elements are not in the same set
+  // and do not have the same root node.
+  if (rootY != rootX) {
+      for (let i = 0; i < this.nodes.length; i++) {
+          // Update the value of the root element to a new one 
+          // for all elements of the second set
+          if (this.nodes[i] === rootY) {
+              this.nodes[i] = rootX
+          }
+      }
+  }
+}
+```
+
+## Implementation
+
+Here is the complete implementation of the data structure.
+
+```typescript
+class DisjointSet {
+  nodes: number[];
+
+  constructor(n: number) {
+    // Create an array of a given size based on the number of elements
+    this.nodes = new Array(n);
+    
+    for (let i = 0; i < n; i++) {
+      // When initializing, we assume that each element is isolated and not connected to others.
+      // In this case, each element is root for itself.
+      this.nodes[i] = i;
+    }
+  }
+
+  find(x: number): number {
+    return this.nodes[x];
+  }
+
+  connected(x: number, y: number): boolean {
+    return this.find(x) === this.find(y);
+  }
+
+  union(x: number, y: number): void {
+    const rootX = this.find(x);
+    const rootY = this.find(y);
+
+    // We perform the merge only if the two elements are not in the same set
+    // and do not have the same root node.
+    if (rootY != rootX) {
+        for (let i = 0; i < this.nodes.length; i++) {
+            // Update the value of the root element to a new one 
+            // for all elements of the second set
+            if (this.nodes[i] === rootY) {
+                this.nodes[i] = rootX
+            }
+        }
+    }
+  }
+}
+```
+
+Now let’s write some simple tests to check the operation of the data structure.
+
+```typescript
+import { describe, it, expect } from 'vitest';
+
+describe('DisjointSet', () => {
+  const set = new DisjointSet(8);
+
+  it('should create disjoint set', () => {
+    set.union(0, 2);
+    set.union(0, 1);
+    set.union(2, 3);
+    set.union(1, 3);
+
+    set.union(4, 5);
+    set.union(4, 6);
+    set.union(5, 6);
+
+    expect(set.nodes).toEqual([0, 0, 0, 0, 4, 4, 4, 7]);
+  });
+
+  it('should find direct connection', () => {
+    expect(set.find(3)).toBe(0);
+  });
+
+  it('should find transitive connection', () => {
+    expect(set.find(5)).toBe(4);
+  });
+
+  it('should find in set with one element', () => {
+    expect(set.find(7)).toBe(7);
+  });
+
+  it('should check direct connection', () => {
+    expect(set.connected(4, 5)).toBe(true);
+  });
+
+  it('should check transitive connection', () => {
+    expect(set.connected(0, 3)).toBe(true);
+  });
+
+  it('should check root connection', () => {
+    expect(set.connected(7, 7)).toBe(true);
+  });
+
+  it('should check not connected elements', () => {
+    expect(set.connected(0, 7)).toBe(false);
+  });
+
+  it('should union two sets', () => {
+    set.union(3, 4);
+    expect(set.nodes).toEqual([0, 0, 0, 0, 0, 0, 0, 7]);
+    expect(set.connected(0, 6)).toBe(true);
+  });
+});
+```
+
+## Complexity Analysis
+
+Let’s evaluate the time and space complexity of each method in the data structure we’ve created.
+
+### Time Complexity
+
+1. The find operation has a constant time complexity because it directly retrieves the root node value by accessing the array at the given index. This is a simple array lookup, which is an `O(1)` operation.
+2. The connected method involves two find operations (each `O(1)`) and a single comparison to check if the roots are the same. Since both operations are constant time, the overall complexity remains `O(1)`.
+3. The union operation requires iterating through the entire nodes array to update the parent indices for all elements that belong to the sets being merged. In the worst case, this involves traversing all n elements, resulting in a linear time complexity of `O(n)`.
+
+### Space Complexity
+
+The space complexity is `O(n)` for all methods because we store the nodes array, which has a size proportional to the number of elements (n).
+No additional space is used that grows with input size, so the space complexity remains linear.
+
+## Conclusion
+
+This implementation serves as a foundational approach to solving connectivity problems in graphs, and with further optimizations, it can be adapted to handle even more complex scenarios.
+Whether applied to city networks, social networks, or other relational systems, this data structure provides a clear and efficient way to manage and query connections.
+
+This method can be further improved using path compression and union by rank.
