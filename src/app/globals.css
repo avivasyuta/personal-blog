@@ -152,3 +152,56 @@ body {
 .animate-waving {
   animation: waving 2s infinite;
 }
+
+/* Code block syntax highlighting (rehype-pretty-code) */
+[data-rehype-pretty-code-figure] pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+[data-rehype-pretty-code-figure] code {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+[data-rehype-pretty-code-figure] code [data-line] {
+  padding: 0 1rem;
+  margin: 0 -1.25rem;
+  border-left: 2px solid transparent;
+}
+
+[data-rehype-pretty-code-figure] code [data-highlighted-line] {
+  background: rgba(249, 115, 22, 0.08);
+  border-left-color: var(--primary);
+}
+
+[data-rehype-pretty-code-title] {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  border-radius: 0.75rem 0.75rem 0 0;
+  padding: 0.6rem 1.25rem;
+  margin-top: 1.5rem;
+}
+
+[data-rehype-pretty-code-title] + pre {
+  margin-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* Override prose defaults for code blocks */
+.prose :where(pre):not(:where([class~="not-prose"] *)) {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  margin: 0;
+}
