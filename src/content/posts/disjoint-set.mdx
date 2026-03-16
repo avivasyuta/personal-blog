@@ -51,7 +51,7 @@ A Disjoint Set should support three key operations:
 
 ```typescript
 class DisjointSet {
-    nodes: number[];
+  nodes: number[];
 }
 ```
 
@@ -60,18 +60,18 @@ This approach ensures that each city starts as its own root node, forming the ba
 
 ```typescript
 class DisjointSet {
-    nodes: number[];
+  nodes: number[];
 
-    constructor(n: number) {
-      // Create an array of a given size based on the number of elements
-      this.nodes = new Array(n);
-      
-      for (let i = 0; i < n; i++) {
-        // When initializing, we assume that each element is isolated and not connected to others.
-        // In this case, each element is root for itself.
-        this.nodes[i] = i;
-      }
+  constructor(n: number) {
+    // Create an array of a given size based on the number of elements
+    this.nodes = new Array(n);
+    
+    for (let i = 0; i < n; i++) {
+      // When initializing, we assume that each element is isolated and not connected to others.
+      // In this case, each element is root for itself.
+      this.nodes[i] = i;
     }
+  }
 }
 ```
 
@@ -124,13 +124,13 @@ union(x: number, y: number): void {
   // We perform the merge only if the two elements are not in the same set
   // and do not have the same root node.
   if (rootY != rootX) {
-      for (let i = 0; i < this.nodes.length; i++) {
-          // Update the value of the root element to a new one 
-          // for all elements of the second set
-          if (this.nodes[i] === rootY) {
-              this.nodes[i] = rootX
-          }
+    for (let i = 0; i < this.nodes.length; i++) {
+      // Update the value of the root element to a new one 
+      // for all elements of the second set
+      if (this.nodes[i] === rootY) {
+          this.nodes[i] = rootX
       }
+    }
   }
 }
 ```
@@ -169,13 +169,13 @@ class DisjointSet {
     // We perform the merge only if the two elements are not in the same set
     // and do not have the same root node.
     if (rootY != rootX) {
-        for (let i = 0; i < this.nodes.length; i++) {
-            // Update the value of the root element to a new one 
-            // for all elements of the second set
-            if (this.nodes[i] === rootY) {
-                this.nodes[i] = rootX
-            }
+      for (let i = 0; i < this.nodes.length; i++) {
+        // Update the value of the root element to a new one 
+        // for all elements of the second set
+        if (this.nodes[i] === rootY) {
+            this.nodes[i] = rootX
         }
+      }
     }
   }
 }
