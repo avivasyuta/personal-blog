@@ -14,13 +14,13 @@ export function ContactsSection() {
             Looking for a developer or want to connect? Reach out!
           </p>
 
-          <div className="flex items-center gap-3 card-surface px-6 py-4">
+          <a href="mailto:avivasyuta@gmail.com" className="group flex items-center gap-3 card-surface px-6 py-4">
             <Mail size={20} className="text-primary" />
 
-            <a href="mailto:avivasyuta@gmail.com" className="text-lg md:text-xl font-mono font-medium text-foreground hover:text-primary transition-colors">
+            <span className="text-lg md:text-xl font-mono font-medium text-foreground transition-colors group-hover:text-primary">
               avivasyuta@gmail.com
-            </a>
-          </div>
+            </span>
+          </a>
 
           <div className="flex flex-col items-center gap-4">
             <p className="text-text-tertiary text-sm">You may also find me on these platforms</p>
