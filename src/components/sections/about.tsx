@@ -24,7 +24,7 @@ export function AboutSection() {
           <div className="flex justify-center md:order-first md:justify-end">
             <div className="relative h-95 w-[320px] md:h-115 md:w-95 lg:h-130 lg:w-110">
               <Image
-                src="/avatar.jpg"
+                src="/photos/avatar.jpg"
                 alt="Fullpose of Aleksei Ivasiuta"
                 fill
                 className="shadow-[0_0_40px_var(--color-primary-glow)] rounded-2xl object-cover"

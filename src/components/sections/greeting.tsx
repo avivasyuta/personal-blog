@@ -9,7 +9,7 @@ export function GreetingSection() {
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 md:gap-12 md:px-8">
         <div className="flex flex-col gap-12 md:flex-row">
           <div className="flex items-center justify-center md:order-last md:grow md:justify-end">
-            <Image src="/portrait.png" width={280} height={320} alt="Aleksei Ivasiuta" className="shadow-[0_0_40px_var(--color-primary-glow)] rounded-2xl" />
+            <Image src="/photos/portrait.png" width={280} height={320} alt="Aleksei Ivasiuta" className="shadow-[0_0_40px_var(--color-primary-glow)] rounded-2xl" />
           </div>
 
           <div className="flex max-w-3xl grow flex-col justify-center gap-8 md:order-first md:items-start md:justify-center 2xl:gap-12">
