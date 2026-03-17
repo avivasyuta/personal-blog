@@ -6,7 +6,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   
   const query = searchParams.get('query') || '';
-  const tags = searchParams.get('tags') ?? [] as string[];
+  const tags = (searchParams.get('tags') ?? []) as string[];
   const complexity = searchParams.get('complexity') as Complexity | undefined;
   
   const resp = getPostsByFilter({
