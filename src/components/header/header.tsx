@@ -35,10 +35,14 @@ export function Header() {
 
           <div className="h-6 w-px bg-border"></div>
 
-          <button className="btn btn-sm border border-primary/30 bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300">
+          <Link
+            href="/Ivasiuta Aleksei CV. Senior Software Engineer.pdf"
+            download
+            className="btn btn-sm border border-primary/30 bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300"
+          >
             <Download size={14} />
             Download CV
-          </button>
+          </Link>
         </div>
       </div>
     </header>
