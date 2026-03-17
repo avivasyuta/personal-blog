@@ -55,7 +55,7 @@ class DisjointSet {
 }
 ```
 
-The next step is to define the constructor for our structure. When initializing the nodes slice, we will populate it with values ranging from 0 to n, where n represents the number of cities. We do this because, by default, we assume that all cities are initially disconnected from each other.
+The next step is to define the constructor for our structure. When initializing the nodes slice, we will populate it with values ranging from `0` to `n`, where `n` represents the number of cities. We do this because, by default, we assume that all cities are initially disconnected from each other.
 This approach ensures that each city starts as its own root node, forming the basis for further connectivity operations in the graph.
 
 ```typescript
@@ -97,7 +97,7 @@ find(x: number): number {
 
 ## Connectivity Check
 
-Checking connectivity is also extremely straightforward to implement. We simply need to retrieve the root elements for city x and city y using the find method and compare them. If the two cities share the same root node in the graph, they are connected—either directly or transitively.
+Checking connectivity is also extremely straightforward to implement. We simply need to retrieve the root elements for city `x` and city `y` using the `find` method and compare them. If the two cities share the same root node in the graph, they are connected, either directly or transitively.
 
 ```typescript
 connected(x: number, y: number): boolean {
