@@ -36,7 +36,7 @@ export default async function BlogPostPage({ params }: Props) {
   }
 
   return (
-    <main className="mx-auto max-w-4xl px-4 py-16 md:py-24">
+    <main className="mx-auto max-w-4xl px-4 py-10 md:py-24">
       <Link
         href="/blog"
         className="mb-10 inline-flex items-center gap-2 text-sm text-text-secondary hover:text-primary transition-colors group"

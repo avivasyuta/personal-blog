@@ -15,7 +15,7 @@ Graph-based problems often require efficient ways to determine whether two nodes
 
 Imagine a map with eight cities represented as nodes in a graph.
 
-![Graph with eight cities](/posts/disjoint-set/graph.webp)
+![Graph with eight cities](/posts/disjoint-set/graph.svg)
 
 The connections between these cities represent roads:
 
@@ -43,7 +43,7 @@ A Disjoint Set should support three key operations:
 - `union(x int, y int)` — merges the sets containing `x` and `y`.
 - `connected(x int, y int)` — checks whether `x` and `y` belong to the same set.
 
-<div className="rounded-2xl border border-primary/30 bg-primary/10 shadow-[0_0_12px_var(--primary-glow)] text-primary px-6">
+<div className="rounded-2xl border border-primary/30 bg-primary/10 shadow-[0_0_12px_var(--primary-glow)] text-primary px-6 my-10">
   I will demonstrate the implementation of the algorithm in the TypeScript programming language, however, it can easily be adapted to any other language.
 </div>
  
@@ -83,10 +83,9 @@ Each index in the nodes slice corresponds to a city, and the value at that index
 
 This should results in the following array representation.
 
+![Initialized array](/posts/disjoint-set/initialized-array.svg)
+
 ## Find Operation
-
-![Initialized array](/posts/disjoint-set/initialized-array.webp)
-
 
 Now, it’s easy to see that to implement the search functionality, we simply need to retrieve the root node index for a specific city using its corresponding index in the array.
 
@@ -112,7 +111,7 @@ Now, we need to address the main challenge: how to merge two sets into one.
 
 Suppose we need to connect cities with numbers 3 and 4, thereby merging the first and second sets.
 
-![Connecting cities](/posts/disjoint-set/connected-graphs.webp)
+![Connecting cities](/posts/disjoint-set/connected-graphs.svg)
 
 We decide that the parent element of the merged set will remain 0. This means that cities with numbers `3`, `4`, and `5` must establish a connection to it by updating their root node value to `0`.
 
