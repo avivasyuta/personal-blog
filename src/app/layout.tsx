@@ -5,6 +5,7 @@ import { Header } from '@/src/components/header';
 import { Footer } from '@/src/components/footer';
 import { currentLocation } from '@/src/lib/constant';
 import { MobileNavigation } from '@/src/components/navigation';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 
 const geistSans = Geist({
@@ -43,6 +44,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <Footer />
 
         <MobileNavigation />
+        <Analytics />
       </body>
     </html>
   );
