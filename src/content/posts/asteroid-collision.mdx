@@ -9,110 +9,193 @@ tags:
   - stack
 ---
 
-## Описание задачи
+## Problem Description
 
-Напишите функцию, которая будет рассчитывать результаты столкновения астероидов.
+Write a function that calculates the outcome of asteroid collisions.
 
-**Входные данные**
+**Input**
 
-Массив целых ненулевых чисел. Каждое число обозначает массу астероида, знак — направление движения.
+An array of non-zero integers. Each number represents the mass of an asteroid, and its sign indicates the direction of movement.
 
-**Выходные данные**
+**Output**
 
-Массив целых ненулевых чисел. Массив будет описывать множество астероидов, их массу и направление, после того как все астероиды, которые могут столкнуться, столкнутся.
+An array of non-zero integers. The array describes the set of asteroids, their mass and direction, after all asteroids that can collide have collided.
 
-Все астероиды движутся с одинаковой скоростью. Таким образом, астероиды, летящие в одном направлении никогда не столкнутся друг с другом.
+All asteroids move at the same speed. Therefore, asteroids moving in the same direction will never collide with each other.
 
-В отличие от реальной жизни, при столкновении масса и направление движения астероидов после никак не изменяется. Меньший из двух полностью уничтожается, больший продолжает лететь в прежнем направлении, не меняя массу.
-
-
-## Ограничения
-
-- Количество астероидов (длина входного массива) находится в диапазоне от 2 до 10000
-- Масса астероида лежит в диапазоне от 1 до 1000 (знак влияет только на направление движения)
-- Астероидов с нулевой массой не существует
+Unlike real life, the mass and direction of an asteroid do not change after a collision. The smaller of the two is completely destroyed, and the larger one continues moving in the same direction without changing mass.
 
 
-## Примеры
+## Constraints
+
+- The number of asteroids (length of the input array) is in the range from `2` to `10000`
+- The mass of an asteroid is in the range from `1` to `1000` (the sign only affects the direction of movement)
+- Asteroids with zero mass do not exist
+
+
+## Examples
 
 <Tabs>
-  <Tab label="Пример №1">
-    **Входные данные**: `[5,10,-5]`
+  <Tab label="Example #1">
+    **Input**: `[5,10,-5]`
 
-    **Ответ**: `[5,10]`
+    **Answer**: `[5,10]`
 
-    **Пояснение**: Первые два астероида движутся вправо, последний - влево. В результате, второй и третий астероид должны столкнуться. Второй астероид имеет большую массу, поэтому он полностью уничтожит третий.
+    **Explanation**: The first two asteroids move to the right, the last one moves to the left. As a result, the second and third asteroids collide. The second asteroid has a greater mass, so it completely destroys the third.
   </Tab>
-  <Tab label="Пример №2">
-    **Входные данные**: `[8,-8]`
+  <Tab label="Example #2">
+    **Input**: `[8,-8]`
 
-    **Ответ**: `[]`
+    **Answer**: `[]`
 
-    **Пояснение**: Астероиды движутся навстречу друг другу и имеют одинаковую массу. В результате оба астероида будут уничтожены.
+    **Explanation**: The asteroids move towards each other and have equal mass. As a result, both asteroids are destroyed.
   </Tab>
-  <Tab label="Пример №3">
-    **Входные данные**: `[10,2,-5]`
+  <Tab label="Example #3">
+    **Input**: `[10,2,-5]`
 
-    **Ответ**: `[10]`
+    **Answer**: `[10]`
 
-    **Пояснение**: Первые два астероида движутся вправо, последний - влево. В результате, третий астероид уничтожит второй. и продолжит движение влево. После этого столкнуться первый и третий астероиды, а так как первый имеет большую массу, он уничтожит третий.
+    **Explanation**: The first two asteroids move to the right, the last one moves to the left. As a result, the third asteroid destroys the second and continues moving to the left. Then the first and third asteroids collide, and since the first has a greater mass, it destroys the third.
   </Tab>
 </Tabs>
 
 
-## Решение через два указателя
+## Two Pointers approach
 
-Одно из возможных решений - использовать два указателя. В качестве первых точек выбираем первые два астероида. Действуем по следующему принципу:
-- Если левый астероид имеет отрицательный знак (то есть астероид летит влево), перемещаем оба указателя на единицу вперед.
-- Если оба астероида имеют положительный знак (то есть оба летят вправо), перемещаем оба указателя на единицу вперед, так как летят в одном направлении и никогда не столкнуться друг с другом.
-- Если левый астероид имеет положительный знак, а правый отрицательный:
-  - Если левый астероид по модулю больше правого - вырезаем элемент, на который указывает правый индекс, индексы не смещаем, так как после смещения правый индекс указывает на астероид, стоявший за вырезанным элементом.
-  - Если правый астероид по модулю меньше - вырезаем элемент, на который указывает левый индекс, оба индекса уменьшаем на единицу, так как в результате смещения правый элемент сместился на один влево, а левый мы вырезали.
-  - Если астероиды по модулю равны - вырезаем оба элемента. Оба индекса уменьшаем на единицу, так как в данном случае нам нужно сдвинуть левый на единицу назад, правый на единицу вперед, но в результате смещения на два элемента влево, правый индекс также нужно будет уменьшить на две единицы.
-- Не забываем проверить корнер кейсы: в результате наших манипуляций, индексы могут выйти за диапазон `[0, len(asteroids)]`.
+One possible solution is to use two pointers. We choose the first two asteroids as the initial points. We follow these rules:
+- If the left asteroid has a negative sign (i.e., it moves to the left), we move both pointers one position forward.
+- If both asteroids have a positive sign (i.e., both move to the right), we move both pointers one position forward, since they move in the same direction and will never collide.
+- If the left asteroid has a positive sign and the right one has a negative sign:
+  - If the left asteroid is greater in absolute value than the right one, we remove the element at the right index. We do not shift the indices, since after removal the right index now points to the asteroid that was behind the removed element.
+  - If the right asteroid is greater in absolute value, we remove the element at the left index and decrement both indices by one, since the right element shifted one position to the left, and the left one was removed.
+  - If the asteroids are equal in absolute value, we remove both elements. We decrement both indices by one, since we need to move the left one back by one and the right one forward by one, but due to the shift by two elements to the left, the right index also needs to be decremented by two.
+- Don't forget to check edge cases: as a result of our operations, the indices may go outside the range `[0, len(asteroids)]`.
 
-{/* TODO: Include solution code for asteroid_collision/solution_two_idx */}
+### Solution
 
-### Оценка сложности
+```typescript
+export const asteroidCollisionTwoIdx = (asteroids: number[]): number[] => {
+  let i = 0;
+  let j = 1;
 
-**По времени**
+  while (i >= 0 && j < asteroids.length) {
+    const first = asteroids[i];
+    const second = asteroids[j];
 
-Сложность O(n²), где `n` — длина строки.
+    if (first * second > 0 || first < 0) {
+      i++;
+      j++;
+      continue;
+    }
 
-Несмотря на то, что мы работали с двумя указателями и не запускали внутренних циклов, стоит вспомнить, что операция вырезания элемента из середины массива оценивается как `O(n)` (так как весь «хвост» массива нужно сдвинуть на один элемент влево).
+    if (first > -1 * second) {
+      asteroids = [...asteroids.slice(0, i + 1), ...asteroids.slice(j + 1)];
+      continue;
+    }
 
-**По памяти**
+    if (first < -1 * second) {
+      asteroids = [...asteroids.slice(0, i), ...asteroids.slice(j)];
+      j--;
+      i--;
 
-Сложность `O(1)`, так как все изменения мы делали in-place, без выделения доп памяти.
+      if (i < 0) {
+          i = 0;
+          j = 1;
+      }
+
+      continue;
+    }
+
+    if (first == -1 * second) {
+      asteroids = [...asteroids.slice(0, i), ...asteroids.slice(j + 1)];
+      j--;
+      i--;
+
+      if (i < 0) {
+          i = 0;
+          j = 1;
+      }
+    }
+  }
+
+  return asteroids
+}
+```
+
+### Complexity Analysis
+
+**Time Complexity**
+
+The complexity is `O(n²)`, where `n` is the length of the array.
+
+Even though we used two pointers and did not run any inner loops, it is worth remembering that removing an element from the middle of an array is an `O(n)` operation (since the entire "tail" of the array needs to be shifted one element to the left).
+
+**Space Complexity**
+
+The complexity is `O(1)`, since all modifications were done in-place, without allocating additional memory.
 
 
-## Решение через стек
+## Stack approach
 
-Задачу можно решить за линейное время с использованием структуры данных стек.
+To solve the problem, we need to create a stack (which can be implemented using an array) and iterate through the elements of the input array:
+- If the stack is empty, push the element onto the stack.
+- If the stack is not empty, peek at the top element. If it has a negative sign (i.e., the asteroid moves to the left), keep it in the stack and also push the current element onto the stack.
+- If the stack is not empty, peek at the top element. If it is positive and the current element is negative, then:
+  - If the current element has a smaller mass, keep the top element in the stack and move on to the next element.
+  - If the elements have equal mass, move on to the next element without returning the top element to the stack.
+  - If the current element has a greater mass, pop the next element from the stack without returning the top element, and repeat the checks with the new pair.
+- After we have fully iterated through all elements of the input array, the stack will contain the expected set of asteroids. If the stack is implemented using an array, the function can return it as the answer.
 
-Основная идея решения мало чем отличается от задачи по валидации скобочной последовательности, которую мы [разбирали ранее](/blog/valid_parentheses).
+For simplicity, we implemented this approach using a recursive function `appendAsteroidToStack`, but it can be done without recursion as well.
 
-Для решения задачи, нам необходимо завести стек (можно реализовать стек через массив) и в цикле перебрать элементы исходного массива:
-- Если стек пустой, добавляем элемент в стек.
-- Если стек не пустой, извлекаем верхний элемент. Если он имеет отрицательный знак (то есть астероид летит влево), возвращаем в стек, а также добавляем в стек текущий элемент.
-- Если стек не пустой, извлекаем верхний элемент. Если он положительный, а текущий элемент отрицательный, то:
-  - Если текущий элемент имеет меньшую массу, возвращаем верхний элемент обратно в стек и переходим к следующему элементу.
-  - Если элементы имеют одинаковую массу, переходим к следующему элементу, не возвращая верхний элемент в стек.
-  - Если текущий элемент имеет меньшую массу, извлекаем следующий элемент из стека, не возвращая верхний элемент в стек и повторяем проверки с новой парой.
-- После того как мы полностью проитерируемся по всем элементам исходного массива, в стеке будет находиться ожидаемый набор астероидов. Если стек реализован через массив, функция может вернуть его в качестве ответа.
+### Solution
 
-Для простоты мы реализовали этот подход через рекурсивную функцию `appendAsteroidToStack`, но, можно обойтись и без рекурсии.
+```typescript
+export function asteroidCollision(asteroids: number[]): number[] {
+  let stack: number[] = []
 
-{/* TODO: Include solution code for asteroid_collision */}
+  const appendAsteroidToStack = (asteroid: number): void => {
+    if (stack.length == 0) {
+      stack.push(asteroid)
+      return;
+    }
 
-### Оценка сложности
+    const current = stack[stack.length - 1]
 
-**По времени**
+    if (current * asteroid > 0 || current < 0) {
+      stack.push(asteroid)
+      return;
+    }
 
-Сложность `O(n)`, где `n` — длина строки.
+    if (current > -1 * asteroid) {
+      return;
+    }
 
-В худшем случае нам придется положить `n-1` элементов в стек, а после извлечь все элементы. То есть, максимальная сложность равна `2n`, что с точки зрения оценки алгоритма эквивалентно `O(n)`.
+    if (current < -1 * asteroid) {
+      stack.pop()
+      appendAsteroidToStack(asteroid)
+      return;
+    }
 
-**По памяти**
+    stack.pop()
+  }
 
-Сложность `O(n)`, так как нам пришлось создать стек для хранения данных.
+  asteroids.forEach((asteroid) => {
+    appendAsteroidToStack(asteroid)
+  })
+
+  return stack
+}
+```
+
+### Complexity Analysis
+
+**Time Complexity**
+
+The complexity is `O(n)`, where `n` is the length of the array.
+
+In the worst case, we will have to push `n-1` elements onto the stack and then pop all of them. That is, the maximum complexity is `2n`, which in terms of algorithm analysis is equivalent to `O(n)`.
+
+**Space Complexity**
+
+The complexity is `O(n)`, since we had to create a stack to store the data.
