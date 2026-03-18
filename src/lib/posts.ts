@@ -26,6 +26,7 @@ export function getPostsByFilter(filter: PostsFilter): SimplePost[] {
         isMdx: fileName.endsWith('.mdx'),
         complexity: data.complexity,
         tags: data.tags,
+        original_url: data.original_url,
       };
     });
 
@@ -57,6 +58,9 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
       excerpt: data.excerpt,
       content,
       isMdx: true,
+      original_url: data.original_url,
+      tags: data.tags,
+      complexity: data.complexity,
     };
   }
 
@@ -70,6 +74,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     excerpt: data.excerpt,
     content: contentHtml,
     isMdx: false,
+    original_url: data.original_url,
   };
 }
 

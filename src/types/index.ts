@@ -14,6 +14,7 @@ export type Post = {
   isMdx?: boolean;
   complexity?: Complexity;
   tags?: string[];
+  original_url?: string;
 };
 
 export type SimplePost = Omit<Post, 'content'>;
