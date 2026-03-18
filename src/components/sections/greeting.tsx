@@ -57,7 +57,7 @@ export function GreetingSection() {
               <Link
                 href="/Ivasiuta Aleksei CV. Senior Software Engineer.pdf"
                 download
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-primary-hover hover:shadow-[0_0_20px_var(--color-primary-glow)]"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-primary px-5 py-4 md:py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-primary-hover hover:shadow-[0_0_20px_var(--color-primary-glow)]"
               >
                 <Download size={16} />
                 Download my CV
@@ -68,7 +68,7 @@ export function GreetingSection() {
                   href="https://www.linkedin.com/in/avivasyuta"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-10 max-sm:flex-1 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
+                  className="flex h-12 md:h-10 max-sm:flex-1 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
                   title="Aleksei's Linkedin profile"
                 >
                   <Linkedin size={18} />
@@ -78,7 +78,7 @@ export function GreetingSection() {
                   href="https://github.com/avivasyuta"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-10 max-sm:flex-1 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
+                  className="flex h-12 md:h-10 max-sm:flex-1 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
                   title="Aleksei's Github profile"
                 >
                   <Github size={18} />
@@ -88,7 +88,7 @@ export function GreetingSection() {
                   href="https://www.instagram.com/avivasyuta/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-10 max-sm:flex-1 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
+                  className="flex h-12 md:h-10 max-sm:flex-1 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
                   title="Aleksei's Instagram profile"
                 >
                   <Instagram size={18} />
