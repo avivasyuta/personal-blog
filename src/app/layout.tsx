@@ -6,6 +6,7 @@ import { Footer } from '@/src/components/footer';
 import { currentLocation } from '@/src/lib/constant';
 import { MobileNavigation } from '@/src/components/navigation';
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import './globals.css';
 
 const geistSans = Geist({
@@ -38,13 +39,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-dot-pattern`}>
         <Header />
-
         <main className="flex-1">{children}</main>
-
         <Footer />
-
         <MobileNavigation />
+
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

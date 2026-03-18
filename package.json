@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "daisyui": "^5.5.14",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.562.0",
