@@ -35,8 +35,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             position: 'absolute',
             inset: 0,
             display: 'flex',
-            backgroundImage:
-              'radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px)',
+            backgroundImage: 'radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px)',
             backgroundSize: '24px 24px',
           }}
         />
@@ -47,8 +46,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             width: '500px',
             height: '500px',
             borderRadius: '50%',
-            background:
-              'radial-gradient(circle, rgba(249,115,22,0.1) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(249,115,22,0.1) 0%, transparent 70%)',
             top: '-100px',
             right: '-100px',
             display: 'flex',
@@ -81,7 +79,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             />
             <span
               style={{
-                fontSize: '16px',
+                fontSize: '20px',
                 fontWeight: 600,
                 color: '#f97316',
                 textTransform: 'uppercase',
@@ -95,7 +93,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           <div
             style={{
               display: 'flex',
-              fontSize: title.length > 60 ? '42px' : '52px',
+              fontSize: title.length > 60 ? '46px' : '60px',
               fontWeight: 700,
               color: '#fafafa',
               letterSpacing: '-1px',
@@ -127,8 +125,8 @@ export default async function Image({ params }: { params: Promise<{ slug: string
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                width: '48px',
-                height: '48px',
+                width: '56px',
+                height: '56px',
                 borderRadius: '14px',
                 backgroundColor: '#18181b',
                 border: '1px solid rgba(255,255,255,0.1)',
@@ -137,7 +135,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             >
               <span
                 style={{
-                  fontSize: '22px',
+                  fontSize: '26px',
                   fontWeight: 700,
                   color: '#f97316',
                   fontFamily: 'monospace',
@@ -157,7 +155,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             >
               <span
                 style={{
-                  fontSize: '18px',
+                  fontSize: '22px',
                   fontWeight: 600,
                   color: '#fafafa',
                 }}
@@ -166,7 +164,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
               </span>
               <span
                 style={{
-                  fontSize: '14px',
+                  fontSize: '18px',
                   color: '#71717a',
                 }}
               >
@@ -177,7 +175,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
 
           <span
             style={{
-              fontSize: '16px',
+              fontSize: '20px',
               color: '#71717a',
               fontFamily: 'monospace',
             }}
