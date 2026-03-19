@@ -164,6 +164,7 @@ export function ExperienceSection() {
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 md:gap-16 md:px-8">
         <div className="flex flex-col items-center gap-3">
           <p className="section-label">Career</p>
+
           <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-center">Work Experience</h2>
         </div>
 

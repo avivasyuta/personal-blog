@@ -39,11 +39,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-dot-pattern`}>
         <Header />
+
         <main className="flex-1">{children}</main>
+
         <Footer />
+
         <MobileNavigation />
 
         <Analytics />
+
         <SpeedInsights />
       </body>
     </html>

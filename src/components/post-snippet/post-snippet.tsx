@@ -29,6 +29,7 @@ export function PostSnippet({ post }: PostSnippetProps) {
                     {post.complexity && (
                         <>
                             <ComplexityBadge complexity={post.complexity} />
+
                             <span className="w-px h-3.5 bg-border" aria-hidden="true" />
                         </>
                     )}
@@ -49,6 +50,7 @@ export function PostSnippet({ post }: PostSnippetProps) {
                 {post.tags && post.tags.length > 0 && (
                     <div className="flex items-center gap-1.5">
                         <Hash size={12} className="text-text-tertiary shrink-0" />
+
                         <div className="flex flex-wrap gap-1.5">
                             {post.tags.map((tag) => (
                                 <span

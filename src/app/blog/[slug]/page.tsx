@@ -87,6 +87,7 @@ export default async function BlogPostPage({ params }: Props) {
               {post.complexity && (
                 <>
                   <span className="hidden sm:block w-px h-4 bg-border" aria-hidden="true" />
+
                   <ComplexityBadge complexity={post.complexity} />
                 </>
               )}
@@ -94,8 +95,10 @@ export default async function BlogPostPage({ params }: Props) {
               {post.tags && post.tags.length > 0 && (
                 <>
                   <span className="hidden sm:block w-px h-4 bg-border" aria-hidden="true" />
+
                   <div className="flex items-center gap-2 text-sm">
                     <Hash size={14} className="text-text-tertiary shrink-0" />
+
                     <div className="flex flex-wrap gap-1.5">
                       {post.tags.map((tag) => (
                         <span
@@ -113,6 +116,7 @@ export default async function BlogPostPage({ params }: Props) {
               {post.original_url && (
                 <>
                   <span className="hidden sm:block w-px h-4 bg-border" aria-hidden="true" />
+
                   <a
                     href={post.original_url}
                     target="_blank"
