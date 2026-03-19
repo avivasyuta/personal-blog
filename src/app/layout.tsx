@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://aleksei.dev'),
+  metadataBase: new URL('https://ivasiuta.dev'),
   title: 'Aleksei Ivasiuta | Senior Software Engineer',
   description: `Aleksei Ivasiuta, Senior Software Engineer from ${currentLocation.city}, ${currentLocation.country}`,
   icons: {
