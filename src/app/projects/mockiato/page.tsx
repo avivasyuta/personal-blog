@@ -8,17 +8,17 @@ import { Modal } from '../../../components/modal';
 
 const galleryImages = [
     {
-        src: '/mockiato/gallery/request-rules.svg',
+        src: '/mockiato/gallery/request-rules.png',
         alt: 'Mockiato request rule editor interface',
         title: 'Request Rule Editor',
     },
     {
-        src: '/mockiato/gallery/mocks-list.svg',
+        src: '/mockiato/gallery/mocks-list.png',
         alt: 'Mockiato active mocks management interface',
         title: 'Active Mocks Dashboard',
     },
     {
-        src: '/mockiato/gallery/headers-panel.svg',
+        src: '/mockiato/gallery/headers-panel.png',
         alt: 'Mockiato headers injection interface',
         title: 'Header Injection Panel',
     },
@@ -143,7 +143,7 @@ export default function MockiatoProjectPage() {
                             type="button"
                             onClick={() => setSelectedImage(image)}
                             aria-label={`Open image in modal: ${image.title}`}
-                            className="group overflow-hidden rounded-xl border border-border bg-surface/60 shadow-sm transition-all hover:border-primary/50 hover:shadow-md hover:shadow-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+                            className="cursor-pointer group overflow-hidden rounded-xl border border-border bg-surface/60 shadow-sm transition-all hover:border-primary/50 hover:shadow-md hover:shadow-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
                         >
                             <Image
                                 src={image.src}
