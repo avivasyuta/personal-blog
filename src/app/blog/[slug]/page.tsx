@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props) {
       publishedTime: post.date,
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
     },

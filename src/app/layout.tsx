@@ -21,6 +21,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://aleksei.dev'),
   title: 'Aleksei Ivasiuta | Senior Software Engineer',
   description: `Aleksei Ivasiuta, Senior Software Engineer from ${currentLocation.city}, ${currentLocation.country}`,
   icons: {
@@ -31,6 +32,16 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
   manifest: '/manifest.webmanifest',
+  openGraph: {
+    title: 'Aleksei Ivasiuta | Senior Software Engineer',
+    description: `Senior Software Engineer from ${currentLocation.city}, ${currentLocation.country}`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Aleksei Ivasiuta | Senior Software Engineer',
+    description: `Senior Software Engineer from ${currentLocation.city}, ${currentLocation.country}`,
+  },
 };
 
 type RootLayoutProps = PropsWithChildren;
