@@ -9,7 +9,7 @@ export function Footer() {
         <p className="text-text-secondary text-sm flex items-center">
           <Copyright size={14} />
           &nbsp;
-          {year} | Designed&nbsp;and&nbsp;coded&nbsp;️ by Aleksei Ivasiuta
+          {year} | Designed&nbsp;and&nbsp;coded&nbsp;by Aleksei Ivasiuta
         </p>
       </div>
     </footer>
