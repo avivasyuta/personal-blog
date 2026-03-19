@@ -1,36 +1,36 @@
-<svg width="864" height="472" viewBox="0 0 864 472" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 864 472" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_1_2)">
 <g filter="url(#filter0_d_1_2)">
-<circle cx="75" cy="75" r="45" fill="#F97316" fill-opacity="0.1" shape-rendering="crispEdges"/>
-<circle cx="75" cy="75" r="44.5" stroke="#F97316" shape-rendering="crispEdges"/>
+<circle cx="75" cy="75" r="45" fill="#F97316" fill-opacity="0.1"/>
+<circle cx="75" cy="75" r="44.5" stroke="#F97316"/>
 </g>
 <g filter="url(#filter1_d_1_2)">
-<circle cx="75" cy="290" r="45" fill="#F97316" fill-opacity="0.1" shape-rendering="crispEdges"/>
-<circle cx="75" cy="290" r="44.5" stroke="#F97316" shape-rendering="crispEdges"/>
+<circle cx="75" cy="290" r="45" fill="#F97316" fill-opacity="0.1"/>
+<circle cx="75" cy="290" r="44.5" stroke="#F97316"/>
 </g>
 <g filter="url(#filter2_d_1_2)">
-<circle cx="262" cy="397" r="45" fill="#F97316" fill-opacity="0.1" shape-rendering="crispEdges"/>
-<circle cx="262" cy="397" r="44.5" stroke="#F97316" shape-rendering="crispEdges"/>
+<circle cx="262" cy="397" r="45" fill="#F97316" fill-opacity="0.1"/>
+<circle cx="262" cy="397" r="44.5" stroke="#F97316"/>
 </g>
 <g filter="url(#filter3_d_1_2)">
-<circle cx="262" cy="183" r="45" fill="#F97316" fill-opacity="0.1" shape-rendering="crispEdges"/>
-<circle cx="262" cy="183" r="44.5" stroke="#F97316" shape-rendering="crispEdges"/>
+<circle cx="262" cy="183" r="45" fill="#F97316" fill-opacity="0.1"/>
+<circle cx="262" cy="183" r="44.5" stroke="#F97316"/>
 </g>
 <g filter="url(#filter4_d_1_2)">
-<circle cx="575" cy="75" r="45" fill="#F97316" fill-opacity="0.1" shape-rendering="crispEdges"/>
-<circle cx="575" cy="75" r="44.5" stroke="#F97316" shape-rendering="crispEdges"/>
+<circle cx="575" cy="75" r="45" fill="#F97316" fill-opacity="0.1"/>
+<circle cx="575" cy="75" r="44.5" stroke="#F97316"/>
 </g>
 <g filter="url(#filter5_d_1_2)">
-<circle cx="575" cy="265" r="45" fill="#F97316" fill-opacity="0.1" shape-rendering="crispEdges"/>
-<circle cx="575" cy="265" r="44.5" stroke="#F97316" shape-rendering="crispEdges"/>
+<circle cx="575" cy="265" r="45" fill="#F97316" fill-opacity="0.1"/>
+<circle cx="575" cy="265" r="44.5" stroke="#F97316"/>
 </g>
 <g filter="url(#filter6_d_1_2)">
-<circle cx="789" cy="397" r="45" fill="#F97316" fill-opacity="0.1" shape-rendering="crispEdges"/>
-<circle cx="789" cy="397" r="44.5" stroke="#F97316" shape-rendering="crispEdges"/>
+<circle cx="789" cy="397" r="45" fill="#F97316" fill-opacity="0.1"/>
+<circle cx="789" cy="397" r="44.5" stroke="#F97316"/>
 </g>
 <g filter="url(#filter7_d_1_2)">
-<circle cx="789" cy="75" r="45" fill="#F97316" fill-opacity="0.1" shape-rendering="crispEdges"/>
-<circle cx="789" cy="75" r="44.5" stroke="#F97316" shape-rendering="crispEdges"/>
+<circle cx="789" cy="75" r="45" fill="#F97316" fill-opacity="0.1"/>
+<circle cx="789" cy="75" r="44.5" stroke="#F97316"/>
 </g>
 <path d="M75 92.4773C72.4318 92.4773 70.2443 91.7784 68.4375 90.3807C66.6307 88.9716 65.25 86.9318 64.2955 84.2614C63.3409 81.5795 62.8636 78.3409 62.8636 74.5455C62.8636 70.7727 63.3409 67.5511 64.2955 64.8807C65.2614 62.1989 66.6477 60.1534 68.4545 58.7443C70.2727 57.3239 72.4545 56.6136 75 56.6136C77.5455 56.6136 79.7216 57.3239 81.5284 58.7443C83.3466 60.1534 84.733 62.1989 85.6875 64.8807C86.6534 67.5511 87.1364 70.7727 87.1364 74.5455C87.1364 78.3409 86.6591 81.5795 85.7045 84.2614C84.75 86.9318 83.3693 88.9716 81.5625 90.3807C79.7557 91.7784 77.5682 92.4773 75 92.4773ZM75 88.7273C77.5455 88.7273 79.5227 87.5 80.9318 85.0455C82.3409 82.5909 83.0455 79.0909 83.0455 74.5455C83.0455 71.5227 82.7216 68.9489 82.0739 66.8239C81.4375 64.6989 80.517 63.0795 79.3125 61.9659C78.1193 60.8523 76.6818 60.2955 75 60.2955C72.4773 60.2955 70.5057 61.5398 69.0852 64.0284C67.6648 66.5057 66.9545 70.0114 66.9545 74.5455C66.9545 77.5682 67.2727 80.1364 67.9091 82.25C68.5455 84.3636 69.4602 85.9716 70.6534 87.0739C71.858 88.1761 73.3068 88.7273 75 88.7273Z" fill="#F97316"/>
 <path d="M63.6136 307V303.932L75.1364 291.318C76.4886 289.841 77.6023 288.557 78.4773 287.466C79.3523 286.364 80 285.33 80.4205 284.364C80.8523 283.386 81.0682 282.364 81.0682 281.295C81.0682 280.068 80.7727 279.006 80.1818 278.108C79.6023 277.21 78.8068 276.517 77.7955 276.028C76.7841 275.54 75.6477 275.295 74.3864 275.295C73.0455 275.295 71.875 275.574 70.875 276.131C69.8864 276.676 69.1193 277.443 68.5739 278.432C68.0398 279.42 67.7727 280.58 67.7727 281.909H63.75C63.75 279.864 64.2216 278.068 65.1648 276.523C66.108 274.977 67.392 273.773 69.017 272.909C70.6534 272.045 72.4886 271.614 74.5227 271.614C76.5682 271.614 78.3807 272.045 79.9602 272.909C81.5398 273.773 82.7784 274.937 83.6761 276.403C84.5739 277.869 85.0227 279.5 85.0227 281.295C85.0227 282.58 84.7898 283.835 84.3239 285.062C83.8693 286.278 83.0739 287.636 81.9375 289.136C80.8125 290.625 79.25 292.443 77.25 294.591L69.4091 302.977V303.25H85.6364V307H63.6136Z" fill="#F97316"/>
