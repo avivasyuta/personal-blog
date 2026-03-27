@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ExternalLink, Github, Zap, Globe, FileJson, Shield } from 'lucide-react';
+import { ExternalLink, Github, Zap, Globe, FileJson, Shield, Heart } from 'lucide-react';
 import { Modal } from '../../../components/modal';
 
 const galleryImages = [
@@ -186,6 +186,45 @@ export default function MockiatoProjectPage() {
               </div>
             </button>
           ))}
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden rounded-2xl border border-pink-500/20 bg-linear-to-br from-pink-500/5 via-surface/80 to-purple-500/5 p-8 md:p-10">
+        <div className="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-pink-500/10 blur-3xl" />
+        <div className="absolute -bottom-12 -left-12 w-40 h-40 rounded-full bg-purple-500/10 blur-3xl" />
+
+        <div className="relative flex flex-col md:flex-row items-center gap-6 md:gap-10">
+          <div className="flex shrink-0 items-center justify-center w-16 h-16 rounded-2xl bg-linear-to-br from-pink-500 to-rose-600 shadow-lg shadow-pink-500/20">
+            <Heart
+              size={28}
+              className="text-white"
+            />
+          </div>
+
+          <div className="flex flex-col gap-2 text-center md:text-left flex-1">
+            <h2 className="text-xl md:text-2xl font-bold tracking-tight">Enjoying Mockiato?</h2>
+
+            <p className="text-sm md:text-base text-text-secondary leading-relaxed max-w-xl">
+              This project is free and open source. If it saves you time, consider sponsoring to help keep it maintained
+              and growing.
+            </p>
+          </div>
+
+          <Link
+            href="https://github.com/sponsors/avivasyuta"
+            className="group relative inline-flex shrink-0 items-center gap-2 px-6 py-3 rounded-xl bg-linear-to-r from-pink-500 to-rose-600 text-white text-sm font-semibold shadow-lg shadow-pink-500/25 hover:shadow-xl hover:shadow-pink-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all"
+            target="_blank"
+          >
+            <Heart
+              size={16}
+              className="transition-transform group-hover:scale-110"
+            />
+            Sponsor on GitHub
+            <ExternalLink
+              size={13}
+              className="opacity-60"
+            />
+          </Link>
         </div>
       </section>
 
