@@ -54,7 +54,6 @@ export default async function BlogPostPage({ params }: Props) {
     day: 'numeric',
   });
 
-
   return (
     <main className="mx-auto max-w-4xl px-4 py-8 md:py-20">
       <Link
@@ -77,16 +76,20 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="relative card-surface rounded-xl p-4">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:flex-wrap sm:gap-x-6 sm:gap-y-3">
               <div className="flex items-center gap-2 text-sm text-text-secondary">
-                <Calendar size={14} className="text-text-tertiary shrink-0" />
+                <Calendar
+                  size={14}
+                  className="text-text-tertiary shrink-0"
+                />
 
-                <time className="font-mono text-text-secondary">
-                  {postDate}
-                </time>
+                <time className="font-mono text-text-secondary">{postDate}</time>
               </div>
 
               {post.complexity && (
                 <>
-                  <span className="hidden sm:block w-px h-4 bg-border" aria-hidden="true" />
+                  <span
+                    className="hidden sm:block w-px h-4 bg-border"
+                    aria-hidden="true"
+                  />
 
                   <ComplexityBadge complexity={post.complexity} />
                 </>
@@ -94,10 +97,16 @@ export default async function BlogPostPage({ params }: Props) {
 
               {post.tags && post.tags.length > 0 && (
                 <>
-                  <span className="hidden sm:block w-px h-4 bg-border" aria-hidden="true" />
+                  <span
+                    className="hidden sm:block w-px h-4 bg-border"
+                    aria-hidden="true"
+                  />
 
                   <div className="flex items-center gap-2 text-sm">
-                    <Hash size={14} className="text-text-tertiary shrink-0" />
+                    <Hash
+                      size={14}
+                      className="text-text-tertiary shrink-0"
+                    />
 
                     <div className="flex flex-wrap gap-1.5">
                       {post.tags.map((tag) => (
@@ -115,7 +124,10 @@ export default async function BlogPostPage({ params }: Props) {
 
               {post.original_url && (
                 <>
-                  <span className="hidden sm:block w-px h-4 bg-border" aria-hidden="true" />
+                  <span
+                    className="hidden sm:block w-px h-4 bg-border"
+                    aria-hidden="true"
+                  />
 
                   <a
                     href={post.original_url}

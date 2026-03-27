@@ -3,7 +3,10 @@ import { Github, Instagram, Linkedin, Mail } from 'lucide-react';
 
 export function ContactsSection() {
   return (
-    <section id="contacts" className="w-full py-20 md:py-28 2xl:py-36 border-t border-border">
+    <section
+      id="contacts"
+      className="w-full py-20 md:py-28 2xl:py-36 border-t border-border"
+    >
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 md:gap-12 md:px-8">
         <div className="flex flex-col items-center gap-3">
           <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-center">Get in Touch</h2>
@@ -14,8 +17,14 @@ export function ContactsSection() {
             Looking for a developer or want to connect? Reach out!
           </p>
 
-          <a href="mailto:avivasyuta@gmail.com" className="group flex items-center gap-3 card-surface px-6 py-4">
-            <Mail size={20} className="text-primary" />
+          <a
+            href="mailto:avivasyuta@gmail.com"
+            className="group flex items-center gap-3 card-surface px-6 py-4"
+          >
+            <Mail
+              size={20}
+              className="text-primary"
+            />
 
             <span className="text-lg md:text-xl font-mono font-medium text-foreground transition-colors group-hover:text-primary">
               avivasyuta@gmail.com

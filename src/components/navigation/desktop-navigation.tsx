@@ -10,19 +10,14 @@ export function DesktopNavigation() {
   return (
     <ul className="flex gap-6">
       {menuItems.map((item) => {
-        const isActive =
-          item.link === '/'
-            ? pathname === '/'
-            : pathname.startsWith(item.link);
+        const isActive = item.link === '/' ? pathname === '/' : pathname.startsWith(item.link);
 
         return (
           <li key={item.link}>
             <Link
               href={item.link}
               className={`nav-link text-sm font-medium transition-colors ${
-                isActive
-                  ? 'text-foreground active'
-                  : 'text-text-secondary hover:text-foreground'
+                isActive ? 'text-foreground active' : 'text-text-secondary hover:text-foreground'
               }`}
             >
               {item.name}

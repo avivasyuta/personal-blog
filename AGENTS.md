@@ -1,4 +1,5 @@
 Project-level guidance for coding agents working in this repository.
+
 - Framework: Next.js (App Router)
 - Language: TypeScript
 - Package manager: Bun

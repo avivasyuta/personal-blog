@@ -5,14 +5,11 @@ describe('scopeSvgIds', () => {
   it('prefixes id definitions with the given id', () => {
     const svg = '<filter id="blur1"><feGaussianBlur/></filter>';
     const result = scopeSvgIds(svg, 'graph');
-    expect(result).toBe(
-      '<filter id="graph_blur1"><feGaussianBlur/></filter>',
-    );
+    expect(result).toBe('<filter id="graph_blur1"><feGaussianBlur/></filter>');
   });
 
   it('updates url(#...) references to match prefixed ids', () => {
-    const svg =
-      '<g filter="url(#filter0)"><circle/></g><defs><filter id="filter0"/></defs>';
+    const svg = '<g filter="url(#filter0)"><circle/></g><defs><filter id="filter0"/></defs>';
     const result = scopeSvgIds(svg, 'mysvg');
     expect(result).toContain('id="mysvg_filter0"');
     expect(result).toContain('url(#mysvg_filter0)');
@@ -20,16 +17,14 @@ describe('scopeSvgIds', () => {
   });
 
   it('updates clip-path url references', () => {
-    const svg =
-      '<g clip-path="url(#clip0)"><rect/></g><defs><clipPath id="clip0"/></defs>';
+    const svg = '<g clip-path="url(#clip0)"><rect/></g><defs><clipPath id="clip0"/></defs>';
     const result = scopeSvgIds(svg, 'a');
     expect(result).toContain('url(#a_clip0)');
     expect(result).toContain('id="a_clip0"');
   });
 
   it('handles multiple ids independently', () => {
-    const svg =
-      '<g filter="url(#f1)"/><g filter="url(#f2)"/><defs><filter id="f1"/><filter id="f2"/></defs>';
+    const svg = '<g filter="url(#f1)"/><g filter="url(#f2)"/><defs><filter id="f1"/><filter id="f2"/></defs>';
     const result = scopeSvgIds(svg, 'x');
     expect(result).toContain('id="x_f1"');
     expect(result).toContain('id="x_f2"');

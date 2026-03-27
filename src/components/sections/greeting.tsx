@@ -5,11 +5,20 @@ import Image from 'next/image';
 
 export function GreetingSection() {
   return (
-    <section id="greeting" className="relative w-full py-10 md:py-28 2xl:py-36">
+    <section
+      id="greeting"
+      className="relative w-full py-10 md:py-28 2xl:py-36"
+    >
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 md:gap-12 md:px-8">
         <div className="flex flex-col gap-12 md:flex-row">
           <div className="flex items-center justify-center md:order-last md:grow md:justify-end">
-            <Image src="/photos/portrait.png" width={280} height={320} alt="Aleksei Ivasiuta" className="shadow-[0_0_40px_var(--color-primary-glow)] rounded-2xl" />
+            <Image
+              src="/photos/portrait.png"
+              width={280}
+              height={320}
+              alt="Aleksei Ivasiuta"
+              className="shadow-[0_0_40px_var(--color-primary-glow)] rounded-2xl"
+            />
           </div>
 
           <div className="flex max-w-3xl grow flex-col justify-center gap-8 md:order-first md:items-start md:justify-center 2xl:gap-12">
@@ -18,13 +27,12 @@ export function GreetingSection() {
 
               <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl tracking-tight">
                 Hi, I&apos;m <span className="text-gradient-accent">Aleksei</span>{' '}
-
                 <span className="inline-block animate-waving">👋</span>
               </h1>
 
               <p className="text-text-secondary text-base leading-relaxed md:text-lg">
-                I&apos;m a software engineer (React.js, Node.js & Go) with a focus on creating and designing
-                exceptional digital experiences that are fast, accessible, visually appealing, and responsive.
+                I&apos;m a software engineer (React.js, Node.js & Go) with a focus on creating and designing exceptional
+                digital experiences that are fast, accessible, visually appealing, and responsive.
               </p>
 
               <p className="text-text-secondary text-base leading-relaxed md:text-lg">
@@ -35,7 +43,10 @@ export function GreetingSection() {
 
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-2 text-text-secondary">
-                <MapPin size={18} className="text-primary" />
+                <MapPin
+                  size={18}
+                  className="text-primary"
+                />
 
                 <p className="text-sm">{`${currentLocation.city}, ${currentLocation.country}`}</p>
               </div>

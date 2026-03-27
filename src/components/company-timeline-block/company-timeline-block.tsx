@@ -37,20 +37,21 @@ export function CompanyTimelineBlock({
             rel="noopener noreferrer"
             className="relative w-6 h-6 overflow-hidden"
           >
-            <Image src={companyLogoPath} alt={company} fill className="object-contain" />
+            <Image
+              src={companyLogoPath}
+              alt={company}
+              fill
+              className="object-contain"
+            />
           </Link>
         </div>
 
-        {!isLast && (
-          <div className="w-px flex-1 bg-linear-to-b from-primary/30 via-border to-border" />
-        )}
+        {!isLast && <div className="w-px flex-1 bg-linear-to-b from-primary/30 via-border to-border" />}
       </div>
 
       <div className="flex flex-col flex-1 pb-0 md:pb-14 gap-4">
         <div className="flex flex-col items-center shrink-0 md:hidden">
-          {!isFirst && (
-            <div className="w-px h-15 bg-linear-to-b form-border to-primary/30 via-border" />
-          )}
+          {!isFirst && <div className="w-px h-15 bg-linear-to-b form-border to-primary/30 via-border" />}
 
           <div className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-primary/30 bg-primary/10 shadow-[0_0_12px_var(--primary-glow)]">
             <Link
@@ -59,7 +60,12 @@ export function CompanyTimelineBlock({
               rel="noopener noreferrer"
               className="relative w-6 h-6 overflow-hidden"
             >
-              <Image src={companyLogoPath} alt={company} fill className="object-contain" />
+              <Image
+                src={companyLogoPath}
+                alt={company}
+                fill
+                className="object-contain"
+              />
             </Link>
           </div>
         </div>
@@ -76,14 +82,12 @@ export function CompanyTimelineBlock({
             </Link>
 
             <span className="text-xs text-text-tertiary uppercase">
-              {formatDate(overallStart)} — {formatDate(overallEnd)}
+              {`${formatDate(overallStart)} — ${formatDate(overallEnd)}`}
             </span>
           </div>
 
           {companyDescription && (
-            <p className="text-sm text-text-secondary leading-relaxed text-center md:text-left">
-              {companyDescription}
-            </p>
+            <p className="text-sm text-text-secondary leading-relaxed text-center md:text-left">{companyDescription}</p>
           )}
         </div>
 
@@ -92,7 +96,10 @@ export function CompanyTimelineBlock({
             <Fragment key={`${position.position}_${position.startDate}`}>
               {i > 0 && <hr className="border-border" />}
 
-              <PositionEntry position={position} isDateVisible={positions.length > 1} />
+              <PositionEntry
+                position={position}
+                isDateVisible={positions.length > 1}
+              />
             </Fragment>
           ))}
         </div>

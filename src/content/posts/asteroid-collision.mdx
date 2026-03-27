@@ -1,7 +1,7 @@
 ---
 title: Asteroid Collision
 date: 2026-03-18
-excerpt: "LeetCode 735: Predict the outcome when asteroids of different sizes and directions collide in a row."
+excerpt: 'LeetCode 735: Predict the outcome when asteroids of different sizes and directions collide in a row.'
 complexity: medium
 original_url: https://leetcode.com/problems/asteroid-collision/
 tags:
@@ -25,13 +25,11 @@ All asteroids move at the same speed. Therefore, asteroids moving in the same di
 
 Unlike real life, the mass and direction of an asteroid do not change after a collision. The smaller of the two is completely destroyed, and the larger one continues moving in the same direction without changing mass.
 
-
 ## Constraints
 
 - The number of asteroids (length of the input array) is in the range from `2` to `10000`
 - The mass of an asteroid is in the range from `1` to `1000` (the sign only affects the direction of movement)
 - Asteroids with zero mass do not exist
-
 
 ## Examples
 
@@ -42,6 +40,7 @@ Unlike real life, the mass and direction of an asteroid do not change after a co
     **Answer**: `[5,10]`
 
     **Explanation**: The first two asteroids move to the right, the last one moves to the left. As a result, the second and third asteroids collide. The second asteroid has a greater mass, so it completely destroys the third.
+
   </Tab>
   <Tab label="Example #2">
     **Input**: `[8,-8]`
@@ -49,6 +48,7 @@ Unlike real life, the mass and direction of an asteroid do not change after a co
     **Answer**: `[]`
 
     **Explanation**: The asteroids move towards each other and have equal mass. As a result, both asteroids are destroyed.
+
   </Tab>
   <Tab label="Example #3">
     **Input**: `[10,2,-5]`
@@ -56,13 +56,14 @@ Unlike real life, the mass and direction of an asteroid do not change after a co
     **Answer**: `[10]`
 
     **Explanation**: The first two asteroids move to the right, the last one moves to the left. As a result, the third asteroid destroys the second and continues moving to the left. Then the first and third asteroids collide, and since the first has a greater mass, it destroys the third.
+
   </Tab>
 </Tabs>
-
 
 ## Two Pointers approach
 
 One possible solution is to use two pointers. We choose the first two asteroids as the initial points. We follow these rules:
+
 - If the left asteroid has a negative sign (i.e., it moves to the left), we move both pointers one position forward.
 - If both asteroids have a positive sign (i.e., both move to the right), we move both pointers one position forward, since they move in the same direction and will never collide.
 - If the left asteroid has a positive sign and the right one has a negative sign:
@@ -99,8 +100,8 @@ export const asteroidCollisionTwoIdx = (asteroids: number[]): number[] => {
       i--;
 
       if (i < 0) {
-          i = 0;
-          j = 1;
+        i = 0;
+        j = 1;
       }
 
       continue;
@@ -112,14 +113,14 @@ export const asteroidCollisionTwoIdx = (asteroids: number[]): number[] => {
       i--;
 
       if (i < 0) {
-          i = 0;
-          j = 1;
+        i = 0;
+        j = 1;
       }
     }
   }
 
-  return asteroids
-}
+  return asteroids;
+};
 ```
 
 ### Complexity Analysis
@@ -134,10 +135,10 @@ Even though we used two pointers and did not run any inner loops, it is worth re
 
 The complexity is `O(1)`, since all modifications were done in-place, without allocating additional memory.
 
-
 ## Stack approach
 
 To solve the problem, we need to create a stack (which can be implemented using an array) and iterate through the elements of the input array:
+
 - If the stack is empty, push the element onto the stack.
 - If the stack is not empty, peek at the top element. If it has a negative sign (i.e., the asteroid moves to the left), keep it in the stack and also push the current element onto the stack.
 - If the stack is not empty, peek at the top element. If it is positive and the current element is negative, then:
@@ -152,18 +153,18 @@ For simplicity, we implemented this approach using a recursive function `appendA
 
 ```typescript
 export function asteroidCollision(asteroids: number[]): number[] {
-  let stack: number[] = []
+  let stack: number[] = [];
 
   const appendAsteroidToStack = (asteroid: number): void => {
     if (stack.length == 0) {
-      stack.push(asteroid)
+      stack.push(asteroid);
       return;
     }
 
-    const current = stack[stack.length - 1]
+    const current = stack[stack.length - 1];
 
     if (current * asteroid > 0 || current < 0) {
-      stack.push(asteroid)
+      stack.push(asteroid);
       return;
     }
 
@@ -172,19 +173,19 @@ export function asteroidCollision(asteroids: number[]): number[] {
     }
 
     if (current < -1 * asteroid) {
-      stack.pop()
-      appendAsteroidToStack(asteroid)
+      stack.pop();
+      appendAsteroidToStack(asteroid);
       return;
     }
 
-    stack.pop()
-  }
+    stack.pop();
+  };
 
   asteroids.forEach((asteroid) => {
-    appendAsteroidToStack(asteroid)
-  })
+    appendAsteroidToStack(asteroid);
+  });
 
-  return stack
+  return stack;
 }
 ```
 

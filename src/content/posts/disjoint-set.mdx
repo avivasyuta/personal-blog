@@ -1,5 +1,5 @@
 ---
-title: "Disjoint Set: The one trick that makes Union-Find faster"
+title: 'Disjoint Set: The one trick that makes Union-Find faster'
 date: 2025-02-19
 excerpt: Learn how the Disjoint Set (Union-Find) data structure efficiently solves graph connectivity problems with find, union, and connected operations.
 complexity: medium
@@ -44,10 +44,12 @@ A Disjoint Set should support three key operations:
 - `connected(x int, y int)` — checks whether `x` and `y` belong to the same set.
 
 <div className="rounded-2xl border border-primary/30 bg-primary/10 shadow-[0_0_12px_var(--primary-glow)] text-primary px-6 my-10">
-  I will demonstrate the implementation of the algorithm in the TypeScript programming language, however, it can easily be adapted to any other language.
+  I will demonstrate the implementation of the algorithm in the TypeScript programming language, however, it can easily
+  be adapted to any other language.
 </div>
- 
- First, let’s implement the skeleton of our data structure. Internally, it will store connections between graph vertices as an array, where the array index represents the city number, and the value at that index corresponds to the root node index in the graph.
+First, let’s implement the skeleton of our data structure. Internally, it will store connections between graph vertices
+as an array, where the array index represents the city number, and the value at that index corresponds to the root node
+index in the graph.
 
 ```typescript
 class DisjointSet {
@@ -65,7 +67,7 @@ class DisjointSet {
   constructor(n: number) {
     // Create an array of a given size based on the number of elements
     this.nodes = new Array(n);
-    
+
     for (let i = 0; i < n; i++) {
       // When initializing, we assume that each element is isolated and not connected to others.
       // In this case, each element is root for itself.
@@ -124,7 +126,7 @@ union(x: number, y: number): void {
   // and do not have the same root node.
   if (rootY != rootX) {
     for (let i = 0; i < this.nodes.length; i++) {
-      // Update the value of the root element to a new one 
+      // Update the value of the root element to a new one
       // for all elements of the second set
       if (this.nodes[i] === rootY) {
           this.nodes[i] = rootX
@@ -145,7 +147,7 @@ class DisjointSet {
   constructor(n: number) {
     // Create an array of a given size based on the number of elements
     this.nodes = new Array(n);
-    
+
     for (let i = 0; i < n; i++) {
       // When initializing, we assume that each element is isolated and not connected to others.
       // In this case, each element is root for itself.
@@ -169,10 +171,10 @@ class DisjointSet {
     // and do not have the same root node.
     if (rootY != rootX) {
       for (let i = 0; i < this.nodes.length; i++) {
-        // Update the value of the root element to a new one 
+        // Update the value of the root element to a new one
         // for all elements of the second set
         if (this.nodes[i] === rootY) {
-            this.nodes[i] = rootX
+          this.nodes[i] = rootX;
         }
       }
     }

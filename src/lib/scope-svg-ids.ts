@@ -9,10 +9,7 @@ export function scopeSvgIds(svg: string, id: string): string {
 
   let scoped = svg;
   for (const originalId of ids) {
-    scoped = scoped.replaceAll(
-      `id="${originalId}"`,
-      `id="${prefix}${originalId}"`,
-    );
+    scoped = scoped.replaceAll(`id="${originalId}"`, `id="${prefix}${originalId}"`);
     scoped = scoped.replaceAll(`#${originalId}`, `#${prefix}${originalId}`);
   }
 

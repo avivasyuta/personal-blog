@@ -6,10 +6,7 @@ interface PositionEntryProps {
   isDateVisible?: boolean;
 }
 
-export function PositionEntry({
-  position,
-  isDateVisible = false,
-}: PositionEntryProps) {
+export function PositionEntry({ position, isDateVisible = false }: PositionEntryProps) {
   return (
     <div className="flex flex-col gap-3">
       <div className="flex flex-col gap-0.5">
@@ -17,14 +14,12 @@ export function PositionEntry({
 
         {isDateVisible && (
           <p className="text-xs text-text-tertiary font-medium tracking-wide uppercase">
-            {formatDate(position.startDate)} — {formatDate(position.endDate)}
+            {`${formatDate(position.startDate)} — ${formatDate(position.endDate)}`}
           </p>
         )}
       </div>
 
-      {position.description && (
-        <p className="text-text-secondary text-sm leading-relaxed">{position.description}</p>
-      )}
+      {position.description && <p className="text-text-secondary text-sm leading-relaxed">{position.description}</p>}
 
       {position.bullets && (
         <ul className="list-inside list-disc text-text-secondary text-sm leading-relaxed space-y-1 marker:text-primary/40">

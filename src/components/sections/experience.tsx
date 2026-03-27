@@ -32,12 +32,12 @@ const workPlaces: CompanyGroup[] = [
           'Microservices',
           'People Management',
         ],
-      }
-    ]
+      },
+    ],
   },
   {
     company: 'Avito',
-    companyDescription: 'The world\'s largest online classifieds platform with over 100+ million monthly users.',
+    companyDescription: "The world's largest online classifieds platform with over 100+ million monthly users.",
     companyLogoPath: '/logo/avito.svg',
     companyLink: 'https://avito.ru',
     positions: [
@@ -71,7 +71,7 @@ const workPlaces: CompanyGroup[] = [
         startDate: '2020/06',
         endDate: '2022/09',
         description:
-          'I developed an advanced ad submission builder for sellers that enables customization of the ad posting process based on the ad\'s category, A/B testing, and various other parameters.',
+          "I developed an advanced ad submission builder for sellers that enables customization of the ad posting process based on the ad's category, A/B testing, and various other parameters.",
         bullets: [
           'Increased the number of active listings by 20,000 and reduced customer support inquiries regarding ad formatting by 34%.',
           'Improved the application build process, cutting build times by 30%.',
@@ -90,9 +90,8 @@ const workPlaces: CompanyGroup[] = [
           'PostgreSQL',
           'Microservices',
         ],
-      }
-    ]
-
+      },
+    ],
   },
   {
     company: 'PJSC MTS Bank',
@@ -122,12 +121,12 @@ const workPlaces: CompanyGroup[] = [
           'Docker',
           'Kubernetes',
         ],
-      }
-    ]
+      },
+    ],
   },
   {
     company: 'Planeta.ru',
-    companyDescription: 'Russia\'s largest crowdfunding platform for creative and social projects.',
+    companyDescription: "Russia's largest crowdfunding platform for creative and social projects.",
     companyLogoPath: '/logo/planeta.svg',
     companyLink: 'https://planeta.ru/',
     positions: [
@@ -153,8 +152,8 @@ const workPlaces: CompanyGroup[] = [
           'PostgreSQL',
           'Sphinx',
         ],
-      }
-    ]
+      },
+    ],
   },
 ];
 

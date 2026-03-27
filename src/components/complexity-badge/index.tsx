@@ -16,11 +16,12 @@ export function ComplexityBadge({ complexity }: ComplexityBadgeProps) {
 
   return (
     <div className="flex items-center gap-2 text-sm">
-      <Gauge size={14} className="text-text-tertiary shrink-0" />
+      <Gauge
+        size={14}
+        className="text-text-tertiary shrink-0"
+      />
 
-      <span className={`flex items-center gap-1.5 font-medium ${config.color}`}>
-        {config.label}
-      </span>
+      <span className={`flex items-center gap-1.5 font-medium ${config.color}`}>{config.label}</span>
     </div>
   );
 }

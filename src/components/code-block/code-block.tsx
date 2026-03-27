@@ -1,13 +1,6 @@
 'use client';
 
-import {
-  useRef,
-  useState,
-  isValidElement,
-  Children,
-  ReactNode,
-  ComponentPropsWithoutRef,
-} from 'react';
+import { useRef, useState, isValidElement, Children, ReactNode, ComponentPropsWithoutRef } from 'react';
 import { Copy, Check } from 'lucide-react';
 
 function getLanguageFromChildren(children: ReactNode): string {
@@ -39,9 +32,7 @@ export function CodeBlock({ children, ...props }: ComponentPropsWithoutRef<'pre'
         </span>
 
         <span className="flex items-center gap-2">
-          {copied && (
-            <span className="font-mono text-[0.7rem] text-text-tertiary">Copied</span>
-          )}
+          {copied && <span className="font-mono text-[0.7rem] text-text-tertiary">Copied</span>}
 
           <button
             type="button"
@@ -54,7 +45,10 @@ export function CodeBlock({ children, ...props }: ComponentPropsWithoutRef<'pre'
         </span>
       </div>
 
-      <pre ref={preRef} {...props}>
+      <pre
+        ref={preRef}
+        {...props}
+      >
         {children}
       </pre>
     </div>

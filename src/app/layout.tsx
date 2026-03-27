@@ -6,7 +6,7 @@ import { Footer } from '@/src/components/footer';
 import { currentLocation } from '@/src/lib/constant';
 import { MobileNavigation } from '@/src/components/navigation';
 import { Analytics } from '@vercel/analytics/next';
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import Script from 'next/script';
 import './globals.css';
 
@@ -53,7 +53,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
         src="https://www.googletagmanager.com/gtag/js?id=G-4BK8GC4X6K"
         strategy="afterInteractive"
       />
-      <Script id="google-analytics" strategy="afterInteractive">
+
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+      >
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -61,8 +65,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
           gtag('config', 'G-4BK8GC4X6K');
         `}
       </Script>
-      
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-dot-pattern`}>
+
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-dot-pattern`}
+      >
         <Header />
 
         <main className="flex-1">{children}</main>

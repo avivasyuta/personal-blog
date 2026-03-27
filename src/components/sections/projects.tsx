@@ -5,7 +5,10 @@ import { projects } from '@/src/consts/projects';
 
 export function ProjectsSection() {
   return (
-    <section className="w-full py-20 md:py-28 2xl:py-36 border-t border-border" id="work">
+    <section
+      className="w-full py-20 md:py-28 2xl:py-36 border-t border-border"
+      id="work"
+    >
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 md:gap-16 md:px-8">
         <div className="flex flex-col items-center gap-3">
           <p className="section-label">Portfolio</p>
@@ -15,7 +18,10 @@ export function ProjectsSection() {
 
         <div className="flex flex-col items-center gap-8">
           {projects.map((project) => (
-            <ProjectSnippet key={project.name} project={project} />
+            <ProjectSnippet
+              key={project.name}
+              project={project}
+            />
           ))}
         </div>
 

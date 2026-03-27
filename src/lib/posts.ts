@@ -30,8 +30,7 @@ export function getPostsByFilter(filter: PostsFilter): SimplePost[] {
       };
     });
 
-  return filterPosts(posts, filter)
-    .sort((a, b) => (a.date < b.date ? 1 : -1));
+  return filterPosts(posts, filter).sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
@@ -87,7 +86,11 @@ export function getAllPostSlugs(): string[] {
 
 export function filterPosts(posts: SimplePost[], filter: PostsFilter): SimplePost[] {
   return posts.filter(({ title, excerpt, complexity, tags = [] }) => {
-    if (filter.query && (!title.toLowerCase().includes(filter.query.toLowerCase()) && !excerpt.toLowerCase().includes(filter.query.toLowerCase()))) {
+    if (
+      filter.query &&
+      !title.toLowerCase().includes(filter.query.toLowerCase()) &&
+      !excerpt.toLowerCase().includes(filter.query.toLowerCase())
+    ) {
       return false;
     }
 

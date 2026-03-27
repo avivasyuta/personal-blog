@@ -11,7 +11,8 @@ const eslintConfig = defineConfig([
       react: reactPlugin,
     },
     rules: {
-      'react/jsx-newline': ['error', { prevent: false }],
+      'react/jsx-newline': 'off',
+      'react/jsx-max-props-per-line': ['error', { maximum: { single: 2, multi: 1 } }],
     },
   },
   // Override default ignores of eslint-config-next.

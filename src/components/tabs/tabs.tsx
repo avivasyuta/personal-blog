@@ -16,7 +16,7 @@ type TabsProps = {
 
 export function Tabs({ children, defaultTab, className }: TabsProps) {
   const tabs: { label: string; key: string }[] = [];
-  
+
   Children.forEach(children, (child) => {
     if (isValidElement(child)) {
       const tabChild = child as ReactElement<TabProps>;
@@ -34,7 +34,10 @@ export function Tabs({ children, defaultTab, className }: TabsProps) {
   return (
     <TabsContext.Provider value={{ activeTab, setActiveTab }}>
       <div className={`my-6 ${className || ''}`}>
-        <div role="tablist" className="flex gap-2">
+        <div
+          role="tablist"
+          className="flex gap-2"
+        >
           {tabs.map((tab) => {
             const isActive = activeTab === tab.label;
             return (
@@ -55,9 +58,7 @@ export function Tabs({ children, defaultTab, className }: TabsProps) {
           })}
         </div>
 
-        <div className="card-surface mt-4 p-4">
-          {children}
-        </div>
+        <div className="card-surface mt-4 p-4">{children}</div>
       </div>
     </TabsContext.Provider>
   );

@@ -26,7 +26,10 @@ export function Header() {
       }`}
     >
       <div className="flex justify-center md:justify-between items-center w-full max-w-7xl px-4 md:px-8">
-        <Link href="/" className="font-mono font-bold text-2xl text-primary hover:text-primary-hover transition-colors">
+        <Link
+          href="/"
+          className="font-mono font-bold text-2xl text-primary hover:text-primary-hover transition-colors"
+        >
           {'<AI/>'}
         </Link>
 
