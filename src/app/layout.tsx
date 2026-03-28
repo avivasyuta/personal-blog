@@ -22,7 +22,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ivasiuta.dev'),
-  title: 'Aleksei Ivasiuta | Senior Software Engineer',
+  title: {
+    default: 'Aleksei Ivasiuta | Senior Software Engineer',
+    template: '%s | Aleksei Ivasiuta',
+  },
   description: `Aleksei Ivasiuta, Senior Software Engineer from ${currentLocation.city}, ${currentLocation.country}`,
   icons: {
     icon: [

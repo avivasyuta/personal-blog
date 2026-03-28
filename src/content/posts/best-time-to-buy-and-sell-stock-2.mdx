@@ -1,0 +1,138 @@
+---
+title: Best Time to Buy and Sell Stock II
+date: 2026-03-28
+excerpt: 'LeetCode 122: Find the maximum profit from multiple stock buy and sell transactions.'
+complexity: medium
+original_url: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
+tags:
+  - array
+  - dynamic programming
+---
+
+## Problem Description
+
+Given an integer array `prices`, where `prices[i]` is the price of a stock on day `i`.
+
+Every day you can decide to buy and/or sell a stock. You can hold at most one share of the stock at any time.
+
+Find and return the maximum profit you can achieve.
+
+## Constraints
+
+- The array can contain from `1` to `3 * 10⁴` elements
+- Values are integers in the range from `0` to `10⁴`
+
+## Examples
+
+<Tabs>
+  <Tab label="Example #1">
+    **Input**: `[7,1,5,3,6,4]`
+
+    **Answer**: `7`
+
+    **Explanation**: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit is `5 - 1 = 4`. Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit is `6 - 3 = 3`. Total profit is `4 + 3 = 7`.
+
+  </Tab>
+  <Tab label="Example #2">
+    **Input**: `[1,2,3,4,5]`
+
+    **Answer**: `4`
+
+    **Explanation**: Buy on day 1 (price = 1) and sell on day 5 (price = 5). Profit is `5 - 1 = 4`.
+
+  </Tab>
+  <Tab label="Example #3">
+    **Input**: `[7,6,4,3,1]`
+
+    **Answer**: `0`
+
+    **Explanation**: It is impossible to achieve a positive profit, so we never buy any stock. Profit is `0`.
+
+  </Tab>
+</Tabs>
+
+## Local minima and maxima approach
+
+To maximize profit from stock trading, we need to buy at the lowest price and sell at the highest. This means we should buy at local minima and sell at local maxima.
+
+Let's take the following array of prices in dollars `[20, 10, 15, 5, 10, 20, 10]` and represent it as a chart.
+
+![Price chart](/posts/best-time-to-buy-2/chart_1.svg)
+
+Now the chart clearly shows that we need to make two purchases and two sales:
+- buy the stock on day 2 for 10 and sell on day 3 for 15
+- buy the stock on day 4 for 5 and sell on day 6 for 20
+
+As a result, we can achieve the maximum profit and earn $20.
+
+Thus, the solution boils down to iterating through the entire array and finding local minima and local maxima. As soon as we encounter a minimum, we store the price on that day. As soon as we encounter a maximum, we calculate the difference between the last minimum and the maximum price and add it to our total profit.
+
+### Solution
+
+```typescript
+export const maxProfitMinMax = (prices: number[]): number => {
+  let res = 0
+  let min = prices[0]
+  let max = prices[0]
+
+  for (let i = 1; i < prices.length; i++) {
+    if (prices[i] > max) {
+      max = prices[i]
+    } else {
+      res += max - min
+      min = prices[i]
+      max = prices[i]
+    }
+  }
+
+  res += max - min
+
+  return res
+}
+```
+
+### Complexity Analysis
+
+`n` — the number of elements in the array.
+
+**Time Complexity**
+
+The time complexity is `O(n)`, since we iterate through all elements of the array.
+
+**Space Complexity**
+
+The space complexity is `O(1)`, since we do not allocate any additional variables.
+
+## Ascending trends approach
+
+If you look closely at the chart, you can notice that the maximum possible profit is the sum of the differences in stock prices between consecutive days on ascending trends.
+
+![Price chart](/posts/best-time-to-buy-2/chart_2.svg)
+
+This means we can greatly simplify the solution and avoid tracking local minima and maxima. We just need to find all ascending segments on the chart and sum up the price differences between consecutive days.
+
+```typescript
+export const maxProfitTrends = (prices: number[]): number => {
+  let res = 0
+
+  for (let i = 0; i < prices.length - 1; i++) {
+    if (prices[i] < prices[i + 1]) {
+      res += prices[i + 1] - prices[i]
+    }
+  }
+
+  return res
+}
+```
+
+### Complexity Analysis
+
+`n` — the number of elements in the array.
+
+**Time Complexity**
+
+The time complexity is `O(n)`, since we iterate through all elements of the array.
+
+**Space Complexity**
+
+The space complexity is `O(1)`, since we do not allocate any additional variables.
