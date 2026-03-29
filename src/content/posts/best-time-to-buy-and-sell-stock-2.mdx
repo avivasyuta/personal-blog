@@ -60,6 +60,7 @@ Let's take the following array of prices in dollars `[20, 10, 15, 5, 10, 20, 10]
 ![Price chart](/posts/best-time-to-buy-2/chart_1.svg)
 
 Now the chart clearly shows that we need to make two purchases and two sales:
+
 - buy the stock on day 2 for 10 and sell on day 3 for 15
 - buy the stock on day 4 for 5 and sell on day 6 for 20
 
@@ -71,24 +72,24 @@ Thus, the solution boils down to iterating through the entire array and finding 
 
 ```typescript
 export const maxProfitMinMax = (prices: number[]): number => {
-  let res = 0
-  let min = prices[0]
-  let max = prices[0]
+  let res = 0;
+  let min = prices[0];
+  let max = prices[0];
 
   for (let i = 1; i < prices.length; i++) {
     if (prices[i] > max) {
-      max = prices[i]
+      max = prices[i];
     } else {
-      res += max - min
-      min = prices[i]
-      max = prices[i]
+      res += max - min;
+      min = prices[i];
+      max = prices[i];
     }
   }
 
-  res += max - min
+  res += max - min;
 
-  return res
-}
+  return res;
+};
 ```
 
 ### Complexity Analysis
@@ -113,16 +114,16 @@ This means we can greatly simplify the solution and avoid tracking local minima 
 
 ```typescript
 export const maxProfitTrends = (prices: number[]): number => {
-  let res = 0
+  let res = 0;
 
   for (let i = 0; i < prices.length - 1; i++) {
     if (prices[i] < prices[i + 1]) {
-      res += prices[i + 1] - prices[i]
+      res += prices[i + 1] - prices[i];
     }
   }
 
-  return res
-}
+  return res;
+};
 ```
 
 ### Complexity Analysis

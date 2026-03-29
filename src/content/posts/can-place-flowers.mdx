@@ -1,0 +1,121 @@
+---
+title: Can place flowers
+date: 2026-03-29
+excerpt: 'LeetCode 605: Determine whether n new flowers can be planted in a flowerbed without violating the no-adjacent-flowers rule.'
+complexity: easy
+original_url: https://leetcode.com/problems/can-place-flowers/description/
+preview_image: /images/previews/can_place_flowers.webp
+tags:
+  - array
+---
+
+## Problem Description
+
+You are given an integer array `flowerbed` and a number `n`.
+
+The array describes a flower bed, where each element can be `1` (a flower is planted at this spot) or `0` (an empty spot).
+There is a constraint — flowers cannot be planted in adjacent spots.
+
+Write a function that determines whether we can plant `n` new flowers in the flower bed.
+
+## Constraints
+
+- The length of the flower bed is in the range from 1 to 20000
+- Each element can only be `0` or `1`
+- The input array has no two flowers in adjacent spots (i.e., the input is already valid)
+- `n` is in the range from 0 to the length of `flowerbed` (i.e., it does not exceed the size of the flower bed)
+
+## Examples
+
+<Tabs>
+  <Tab label="Example #1">
+    **Input**: `flowerbed = [1,0,0,0,1]`, `n = 1`
+
+    **Answer**: `true`
+
+    We need to plant one flower. Without violating the constraints, we can place it at index `2` (`[1,0,0,0,1]`).
+  </Tab>
+
+  <Tab label="Example #2">
+    **Input**: `[1,0,0,0,1]`, `n = 2`
+
+    **Answer**: `false`
+
+    Without violating the constraints, we cannot plant 2 flowers in the flower bed.
+  </Tab>
+</Tabs>
+
+## Solution
+
+The problem is fairly straightforward and can be solved in a single pass through the array:
+
+- If the current element is `1` — we cannot plant a flower here. Move to the next element (we can skip one ahead, since the next slot is also unavailable)
+- If the current element is `0`, we need to check its neighbors:
+  - If we're checking the `0`th element, we can plant a flower if the `1`st element is also `0`
+  - If we're checking the last element, we can plant a flower if the second-to-last element is also `0`
+  - In all other cases, we can plant a flower if both the previous and next elements are `0`
+- If the check passes, we set the current element to `1`, decrement `n` by one, and move to the next element (we can skip one ahead, since the next slot is also unavailable)
+- If after traversing the entire array `n` is still greater than zero, we cannot plant the required number of flowers.
+
+Don't forget to handle edge cases separately (e.g., when the flower bed has only one element).
+
+```typescript
+const canBePlaced = (flowerbed: number[], i: number): boolean => {
+  if (i == 0) {
+    return flowerbed[i + 1] == 0;
+  }
+
+  if (i == flowerbed.length - 1) {
+    return flowerbed[i - 1] == 0;
+  }
+
+  return flowerbed[i - 1] == 0 && flowerbed[i + 1] == 0;
+};
+
+export const canPlaceFlowers = (flowerbed: number[], n: number): boolean => {
+  if (n == 0) {
+    return true;
+  }
+
+  if (flowerbed.length == 0) {
+    return false;
+  }
+
+  if (flowerbed.length == 1) {
+    if (n > 1) {
+      return false;
+    }
+
+    return flowerbed[0] == 0;
+  }
+
+  for (let i = 0; i < flowerbed.length; i++) {
+    if (flowerbed[i] == 1) {
+      i++;
+      continue;
+    }
+
+    if (canBePlaced(flowerbed, i)) {
+      flowerbed[i] = 1;
+      n--;
+      i++;
+    }
+
+    if (n == 0) {
+      return true;
+    }
+  }
+
+  return n == 0;
+};
+```
+
+### Complexity Analysis
+
+**Time Complexity**
+
+To find the answer, we only need to traverse the array once. So the time complexity is `O(n)`.
+
+**Space Complexity**
+
+Since we don't need any additional data structures that depend on the input size, the space complexity is constant — `O(1)`.
