@@ -30,21 +30,21 @@ export function CompanyTimelineBlock({
   return (
     <div className="relative flex gap-6 md:gap-10">
       <div className="hidden relative flex-col items-center shrink-0 md:flex">
-        <div className="relative z-10 flex items-center justify-center w-12 h-12 rounded-full border-2 border-primary/30 bg-primary/10 shadow-[0_0_12px_var(--primary-glow)]">
-          <Link
-            href={companyLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative w-6 h-6 overflow-hidden"
-          >
+        <Link
+          href={companyLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative z-10 flex items-center justify-center w-12 h-12 rounded-full border-2 border-primary/30 bg-primary/10 shadow-[0_0_12px_var(--primary-glow)]"
+        >
+          <div className="relative w-6 h-6 overflow-hidden">
             <Image
               src={companyLogoPath}
               alt={company}
               fill
               className="object-contain"
             />
-          </Link>
-        </div>
+          </div>
+        </Link>
 
         {!isLast && <div className="w-px flex-1 bg-linear-to-b from-primary/30 via-border to-border" />}
       </div>
@@ -53,21 +53,21 @@ export function CompanyTimelineBlock({
         <div className="flex flex-col items-center shrink-0 md:hidden">
           {!isFirst && <div className="w-px h-15 bg-linear-to-b form-border to-primary/30 via-border" />}
 
-          <div className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-primary/30 bg-primary/10 shadow-[0_0_12px_var(--primary-glow)]">
-            <Link
-              href={companyLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative w-6 h-6 overflow-hidden"
-            >
+          <Link
+            href={companyLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-primary/30 bg-primary/10 shadow-[0_0_12px_var(--primary-glow)]"
+          >
+            <div className="relative w-6 h-6 overflow-hidden">
               <Image
                 src={companyLogoPath}
                 alt={company}
                 fill
                 className="object-contain"
               />
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
 
         <div className="flex flex-col gap-2 md:gap-0">
