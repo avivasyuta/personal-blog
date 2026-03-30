@@ -1,0 +1,110 @@
+---
+title: Container with most water
+date: 2023-10-03
+excerpt: 'LeetCode 11: Find two lines that form a container holding the most water using the two-pointer sliding window technique.'
+complexity: medium
+original_url: https://leetcode.com/problems/container-with-most-water/
+tags:
+  - array
+  - two pointers
+---
+
+## Problem Description
+
+You are given an integer array `height` of length `n`.
+
+Find two lines that together with the x-axis form a container that holds the most water.
+Return the maximum amount of water the container can store.
+
+The problem reduces to finding the rectangle with the maximum area.
+
+![Container with water](/posts/container-with-most-water/chart_1.svg)
+
+## Constraints
+
+- The array always has at least 2 elements
+- Element values are in the range from 0 to 10<sup>4</sup>
+
+## Examples
+
+<Tabs>
+  <Tab label="Example #1">
+    **Input**: `[1,8,6,2,5,4,8,3,7]`
+
+    **Answer**: `49`
+
+    The maximum area is achieved by choosing the second and the last heights (8, 7).
+    The height of the rectangle is 7 and its width is 7 (the indices of heights 8 and 7 differ by 7).
+
+  </Tab>
+  <Tab label="Example #2">
+    **Input**: `[1,1]`
+
+    **Answer**: `1`
+
+    With an array of 2 elements there is only one possible rectangle: `min(a[0], a[1]) * (1 - 0)`
+
+  </Tab>
+</Tabs>
+
+## Solution
+
+A classic approach for problems like this is the **sliding window** (two-pointer) technique.
+The idea is to maintain a window and, depending on some condition, shift one or both of its boundaries.
+
+Here we start with the window spanning the entire array — the rectangle with the maximum width.
+We then shrink the window until its width reaches one. Since we start at maximum width, the only way to get a larger area as we narrow the window is to increase the height.
+
+Therefore, we should shrink from the side with the smaller height, giving us a chance to raise the minimum height of the container.
+On each iteration we compute the area of the new rectangle and compare it to the running maximum.
+If both walls are equal, we shrink from both sides.
+
+```typescript
+export const maxArea = (height: number[]): number => {
+  let res = 0;
+  let i = 0;
+  let j = height.length - 1;
+
+  while (i < j) {
+    const length = j - i;
+    let minHeight = height[i];
+
+    if (height[j] < minHeight) {
+      minHeight = height[j];
+    }
+
+    const square = length * minHeight;
+
+    if (square > res) {
+      res = square;
+    }
+
+    if (height[i] < height[j]) {
+      i++;
+      continue;
+    }
+
+    if (height[j] < height[i]) {
+      j--;
+      continue;
+    }
+
+    i++;
+    j--;
+  }
+
+  return res;
+};
+```
+
+### Complexity Analysis
+
+**Time Complexity**
+
+On each iteration we move either the right or the left boundary. In total we move the boundaries `O(n - 1)` times.
+That is the only variable factor, so the algorithm has linear time complexity — `O(n)`.
+
+**Space Complexity**
+
+We neither transform the input nor store any intermediate results.
+The space complexity is constant — `O(1)`.
