@@ -1,19 +1,42 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { PostSearch } from '@/src/components/shared/posts-search';
-import { PostsFilter } from '@/src/types';
+import { Complexity, PostsFilter } from '@/src/types';
 import { PostSnippet } from '@/src/components/shared/post-snippet';
 import { Loader } from '@/src/components/ui/loader';
 import { usePosts } from './usePosts';
 
 export function Posts() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
   const [filter, setFilter] = useState<PostsFilter>({
-    query: '',
-    complexity: undefined,
-    tags: [],
+    query: searchParams.get('query') ?? '',
+    complexity: (searchParams.get('complexity') as Complexity) ?? undefined,
+    tags: searchParams.get('tags') ? searchParams.get('tags')!.split(',') : [],
   });
   const [availableTags, setAvailableTags] = useState<string[]>([]);
+
+  const handleFilterChange = (newFilter: PostsFilter) => {
+    setFilter(newFilter);
+
+    const params = new URLSearchParams();
+    if (newFilter.query) {
+      params.set('query', newFilter.query);
+    }
+
+    if (newFilter.complexity) {
+      params.set('complexity', newFilter.complexity);
+    }
+
+    if (newFilter.tags && newFilter.tags.length > 0) {
+      params.set('tags', newFilter.tags.join(','));
+    }
+
+    router.replace(`?${params.toString()}`, { scroll: false });
+  };
 
   useEffect(() => {
     fetch('/api/tags')
@@ -28,7 +51,7 @@ export function Posts() {
     <div className="flex flex-col gap-8">
       <PostSearch
         value={filter}
-        onChange={setFilter}
+        onChange={handleFilterChange}
         availableTags={availableTags}
       />
 
