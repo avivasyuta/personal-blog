@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { SimplePost } from '@/src/types';
 import { FiArrowRight, FiHash } from 'react-icons/fi';
-import { ComplexityBadge } from '@/src/components/complexity-badge';
+import { ComplexityBadge } from '@/src/components/shared/complexity-badge';
 
 type PostSnippetProps = {
   post: SimplePost;

@@ -1,10 +1,10 @@
 import { PropsWithChildren } from 'react';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import { Header } from '@/src/components/header';
-import { Footer } from '@/src/components/footer';
+import { Header } from '@/src/components/layout/header';
+import { Footer } from '@/src/components/layout/footer';
 import { currentLocation } from '@/src/lib/constant';
-import { MobileNavigation } from '@/src/components/navigation';
+import { MobileNavigation } from '@/src/components/layout/navigation';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Script from 'next/script';

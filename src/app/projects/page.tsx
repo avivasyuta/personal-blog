@@ -1,4 +1,4 @@
-import { ProjectSnippet } from '@/src/components/project-snippet';
+import { ProjectSnippet } from '@/src/components/shared/project-snippet';
 import { projects } from '@/src/consts/projects';
 
 export default function ProjectsPage() {

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FiExternalLink, FiZap, FiGlobe, FiFileText, FiShield, FiHeart, FiGithub } from 'react-icons/fi';
-import { Modal } from '../../../components/modal';
+import { Modal } from '@/src/components/ui/modal';
 
 const galleryImages = [
   {

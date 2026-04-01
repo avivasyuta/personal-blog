@@ -1,5 +1,5 @@
 import type { CompanyGroup } from '@/src/types';
-import { CompanyTimelineBlock } from '@/src/components/company-timeline-block';
+import { CompanyTimelineBlock } from '@/src/components/layout/company-timeline-block';
 
 const workPlaces: CompanyGroup[] = [
   {

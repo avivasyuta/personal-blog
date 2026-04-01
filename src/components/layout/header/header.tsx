@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { FiDownload } from 'react-icons/fi';
-import { DesktopNavigation } from '@/src/components/navigation';
+import { DesktopNavigation } from '@/src/components/layout/navigation';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);

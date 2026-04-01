@@ -1,7 +1,7 @@
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypePrettyCode from 'rehype-pretty-code';
-import { Tabs, Tab } from '@/src/components/tabs';
-import { CodeBlock } from '@/src/components/code-block';
+import { Tabs, Tab } from '@/src/components/ui/tabs';
+import { CodeBlock } from '@/src/components/shared/code-block';
 import { MDXImage } from './mdx-image';
 
 const components = {

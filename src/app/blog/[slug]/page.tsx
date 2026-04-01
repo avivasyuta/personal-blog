@@ -2,9 +2,9 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { FiArrowLeft, FiExternalLink, FiCalendar, FiHash } from 'react-icons/fi';
 import { getPostBySlug, getAllPostSlugs } from '@/src/lib/posts';
-import { MDXContent } from '@/src/components/mdx-content';
-import { ComplexityBadge } from '@/src/components/complexity-badge';
-import { Divider } from '@/src/components/divider';
+import { MDXContent } from '@/src/components/shared/mdx-content';
+import { ComplexityBadge } from '@/src/components/shared/complexity-badge';
+import { Divider } from '@/src/components/ui/divider';
 
 type Props = {
   params: Promise<{ slug: string }>;

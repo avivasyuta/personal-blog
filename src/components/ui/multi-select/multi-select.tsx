@@ -3,7 +3,11 @@
 import { Select as SelectPrimitive } from '@base-ui/react/select';
 import { FiCheck, FiChevronDown, FiX } from 'react-icons/fi';
 import { cn } from '@/src/lib/utils';
-import type { SelectOption } from './select';
+
+type SelectOption = {
+  value: string;
+  label: string;
+};
 
 type MultiSelectProps = {
   value?: string[];

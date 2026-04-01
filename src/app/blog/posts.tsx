@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { PostSearch } from '@/src/components/posts-search';
+import { PostSearch } from '@/src/components/shared/posts-search';
 import { PostsFilter } from '@/src/types';
-import { PostSnippet } from '@/src/components/post-snippet';
-import { Loader } from '@/src/components/loader';
+import { PostSnippet } from '@/src/components/shared/post-snippet';
+import { Loader } from '@/src/components/ui/loader';
 import { usePosts } from './usePosts';
 
 export function Posts() {
