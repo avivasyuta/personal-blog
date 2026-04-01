@@ -1,5 +1,6 @@
 import { currentLocation } from '@/src/lib/constant';
-import { Download, Github, Instagram, Linkedin, MapPin } from 'lucide-react';
+import { FiDownload, FiMapPin } from 'react-icons/fi';
+import { FiGithub, FiInstagram, FiLinkedin } from 'react-icons/fi';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -43,7 +44,7 @@ export function GreetingSection() {
 
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-2 text-text-secondary">
-                <MapPin
+                <FiMapPin
                   size={18}
                   className="text-primary"
                 />
@@ -70,7 +71,7 @@ export function GreetingSection() {
                 download
                 className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-primary px-5 py-4 md:py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-primary-hover hover:shadow-[0_0_20px_var(--color-primary-glow)]"
               >
-                <Download size={16} />
+                <FiDownload size={16} />
                 Download my CV
               </Link>
 
@@ -82,7 +83,7 @@ export function GreetingSection() {
                   className="flex h-12 md:h-10 max-sm:flex-1 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
                   title="Aleksei's Linkedin profile"
                 >
-                  <Linkedin size={18} />
+                  <FiLinkedin size={18} />
                 </Link>
 
                 <Link
@@ -92,7 +93,7 @@ export function GreetingSection() {
                   className="flex h-12 md:h-10 max-sm:flex-1 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
                   title="Aleksei's Github profile"
                 >
-                  <Github size={18} />
+                  <FiGithub size={18} />
                 </Link>
 
                 <Link
@@ -102,7 +103,7 @@ export function GreetingSection() {
                   className="flex h-12 md:h-10 max-sm:flex-1 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
                   title="Aleksei's Instagram profile"
                 >
-                  <Instagram size={18} />
+                  <FiInstagram size={18} />
                 </Link>
               </div>
             </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { PostSearch } from '@/src/components/posts-search';
 import { PostsFilter } from '@/src/types';
 import { PostSnippet } from '@/src/components/post-snippet';
@@ -13,6 +13,14 @@ export function Posts() {
     complexity: undefined,
     tags: [],
   });
+  const [availableTags, setAvailableTags] = useState<string[]>([]);
+
+  useEffect(() => {
+    fetch('/api/tags')
+      .then((r) => r.json())
+      .then(setAvailableTags)
+      .catch(() => {});
+  }, []);
 
   const { posts, isLoading, error } = usePosts(filter);
 
@@ -21,6 +29,7 @@ export function Posts() {
       <PostSearch
         value={filter}
         onChange={setFilter}
+        availableTags={availableTags}
       />
 
       {isLoading && <Loader />}

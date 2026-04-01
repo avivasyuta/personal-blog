@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ExternalLink, Github, Zap, Globe, FileJson, Shield, Heart } from 'lucide-react';
+import { FiExternalLink, FiZap, FiGlobe, FiFileText, FiShield, FiHeart, FiGithub } from 'react-icons/fi';
 import { Modal } from '../../../components/modal';
 
 const galleryImages = [
@@ -58,7 +58,7 @@ export default function MockiatoProjectPage() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary-hover transition-colors"
               target="_blank"
             >
-              <ExternalLink size={14} />
+              <FiExternalLink size={14} />
               Install extension
             </Link>
 
@@ -67,7 +67,7 @@ export default function MockiatoProjectPage() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-surface text-text-secondary text-sm font-medium hover:border-border-hover hover:text-foreground transition-all"
               target="_blank"
             >
-              <Github size={14} />
+              <FiGithub size={14} />
               Source code
             </Link>
           </div>
@@ -86,7 +86,7 @@ export default function MockiatoProjectPage() {
         <div className="flex flex-col gap-3 p-5 rounded-xl border border-border bg-surface/50">
           <div className="flex items-center gap-3">
             <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10">
-              <FileJson
+              <FiFileText
                 size={18}
                 className="text-primary"
               />
@@ -104,7 +104,7 @@ export default function MockiatoProjectPage() {
         <div className="flex flex-col gap-3 p-5 rounded-xl border border-border bg-surface/50">
           <div className="flex items-center gap-3">
             <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10">
-              <Shield
+              <FiShield
                 size={18}
                 className="text-primary"
               />
@@ -122,7 +122,7 @@ export default function MockiatoProjectPage() {
         <div className="flex flex-col gap-3 p-5 rounded-xl border border-border bg-surface/50">
           <div className="flex items-center gap-3">
             <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10">
-              <Zap
+              <FiZap
                 size={18}
                 className="text-primary"
               />
@@ -140,7 +140,7 @@ export default function MockiatoProjectPage() {
         <div className="flex flex-col gap-3 p-5 rounded-xl border border-border bg-surface/50">
           <div className="flex items-center gap-3">
             <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10">
-              <Globe
+              <FiGlobe
                 size={18}
                 className="text-primary"
               />
@@ -195,7 +195,7 @@ export default function MockiatoProjectPage() {
 
         <div className="relative flex flex-col md:flex-row items-center gap-6 md:gap-10">
           <div className="flex shrink-0 items-center justify-center w-16 h-16 rounded-2xl bg-linear-to-br from-pink-500 to-rose-600 shadow-lg shadow-pink-500/20">
-            <Heart
+            <FiHeart
               size={28}
               className="text-white"
             />
@@ -215,12 +215,12 @@ export default function MockiatoProjectPage() {
             className="group relative inline-flex shrink-0 items-center gap-2 px-6 py-3 rounded-xl bg-linear-to-r from-pink-500 to-rose-600 text-white text-sm font-semibold shadow-lg shadow-pink-500/25 hover:shadow-xl hover:shadow-pink-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all"
             target="_blank"
           >
-            <Heart
+            <FiHeart
               size={16}
               className="transition-transform group-hover:scale-110"
             />
             Sponsor on GitHub
-            <ExternalLink
+            <FiExternalLink
               size={13}
               className="opacity-60"
             />

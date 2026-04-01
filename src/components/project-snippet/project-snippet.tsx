@@ -1,7 +1,7 @@
 import type { Project } from '@/src/types';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
+import { FiArrowRight } from 'react-icons/fi';
 
 type ProjectSnippetProps = {
   project: Project;
@@ -30,7 +30,7 @@ export function ProjectSnippet({ project }: ProjectSnippetProps) {
             className="inline-flex items-center justify-between gap-2 text-sm font-medium text-white bg-primary hover:bg-primary-hover px-5 py-2.5 rounded-lg transition-colors mt-2 group w-full md:w-fit"
           >
             Learn more
-            <ArrowRight
+            <FiArrowRight
               size={16}
               className="transition-transform group-hover:translate-x-1"
             />

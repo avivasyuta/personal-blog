@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Github, Instagram, Linkedin, Mail } from 'lucide-react';
+import { FiMail } from 'react-icons/fi';
+import { FiGithub, FiInstagram, FiLinkedin } from 'react-icons/fi';
 
 export function ContactsSection() {
   return (
@@ -21,7 +22,7 @@ export function ContactsSection() {
             href="mailto:avivasyuta@gmail.com"
             className="group flex items-center gap-3 card-surface px-6 py-4"
           >
-            <Mail
+            <FiMail
               size={20}
               className="text-primary"
             />
@@ -42,7 +43,7 @@ export function ContactsSection() {
                 className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
                 title="Aleksei's Linkedin profile"
               >
-                <Linkedin size={18} />
+                <FiLinkedin size={18} />
               </Link>
 
               <Link
@@ -52,7 +53,7 @@ export function ContactsSection() {
                 className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
                 title="Aleksei's Github profile"
               >
-                <Github size={18} />
+                <FiGithub size={18} />
               </Link>
 
               <Link
@@ -62,7 +63,7 @@ export function ContactsSection() {
                 className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
                 title="Aleksei's Instagram profile"
               >
-                <Instagram size={18} />
+                <FiInstagram size={18} />
               </Link>
             </div>
           </div>

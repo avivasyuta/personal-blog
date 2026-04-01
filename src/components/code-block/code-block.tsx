@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState, isValidElement, Children, ReactNode, ComponentPropsWithoutRef } from 'react';
-import { Copy, Check } from 'lucide-react';
+import { FiCopy, FiCheck } from 'react-icons/fi';
 
 function getLanguageFromChildren(children: ReactNode): string {
   const child = Children.toArray(children)[0];
@@ -40,7 +40,7 @@ export function CodeBlock({ children, ...props }: ComponentPropsWithoutRef<'pre'
             onClick={handleCopy}
             aria-label="Copy code"
           >
-            {copied ? <Check size={16} /> : <Copy size={16} />}
+            {copied ? <FiCheck size={16} /> : <FiCopy size={16} />}
           </button>
         </span>
       </div>

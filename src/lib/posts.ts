@@ -77,6 +77,21 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   };
 }
 
+export function getAllTags(): string[] {
+  const fileNames = fs.readdirSync(postsDirectory);
+
+  const tags = fileNames
+    .filter((fileName) => fileName.endsWith('.md') || fileName.endsWith('.mdx'))
+    .flatMap((fileName) => {
+      const fullPath = path.join(postsDirectory, fileName);
+      const fileContents = fs.readFileSync(fullPath, 'utf8');
+      const { data } = matter(fileContents);
+      return (data.tags as string[]) ?? [];
+    });
+
+  return [...new Set(tags)].sort();
+}
+
 export function getAllPostSlugs(): string[] {
   const fileNames = fs.readdirSync(postsDirectory);
   return fileNames

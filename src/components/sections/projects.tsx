@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { FiArrowRight } from 'react-icons/fi';
 import { ProjectSnippet } from '@/src/components/project-snippet';
 import { projects } from '@/src/consts/projects';
 
@@ -31,7 +31,7 @@ export function ProjectsSection() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-surface text-text-secondary text-sm font-medium hover:border-border-hover hover:text-foreground transition-all"
           >
             See all projects
-            <ArrowRight size={16} />
+            <FiArrowRight size={16} />
           </Link>
         </div>
       </div>

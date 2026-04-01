@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, ExternalLink, Calendar, Hash } from 'lucide-react';
+import { FiArrowLeft, FiExternalLink, FiCalendar, FiHash } from 'react-icons/fi';
 import { getPostBySlug, getAllPostSlugs } from '@/src/lib/posts';
 import { MDXContent } from '@/src/components/mdx-content';
 import { ComplexityBadge } from '@/src/components/complexity-badge';
@@ -60,7 +60,7 @@ export default async function BlogPostPage({ params }: Props) {
         href="/blog"
         className="mb-8 inline-flex items-center gap-2 text-sm text-text-tertiary hover:text-primary transition-colors duration-300 group"
       >
-        <ArrowLeft
+        <FiArrowLeft
           size={14}
           className="transition-transform duration-300 group-hover:-translate-x-1"
         />
@@ -76,7 +76,7 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="relative card-surface rounded-xl p-4">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:flex-wrap sm:gap-x-6 sm:gap-y-3">
               <div className="flex items-center gap-2 text-sm text-text-secondary">
-                <Calendar
+                <FiCalendar
                   size={14}
                   className="text-text-tertiary shrink-0"
                 />
@@ -103,7 +103,7 @@ export default async function BlogPostPage({ params }: Props) {
                   />
 
                   <div className="flex items-center gap-2 text-sm">
-                    <Hash
+                    <FiHash
                       size={14}
                       className="text-text-tertiary shrink-0"
                     />
@@ -135,7 +135,7 @@ export default async function BlogPostPage({ params }: Props) {
                     rel="noopener noreferrer"
                     className="sm:ml-auto inline-flex items-center gap-1.5 text-sm text-text-tertiary hover:text-primary transition-colors duration-300 group/link"
                   >
-                    <ExternalLink
+                    <FiExternalLink
                       size={13}
                       className="transition-transform duration-300"
                     />

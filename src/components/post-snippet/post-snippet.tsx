@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { SimplePost } from '@/src/types';
-import { ArrowRight, Hash } from 'lucide-react';
+import { FiArrowRight, FiHash } from 'react-icons/fi';
 import { ComplexityBadge } from '@/src/components/complexity-badge';
 
 type PostSnippetProps = {
@@ -20,7 +20,7 @@ export function PostSnippet({ post }: PostSnippetProps) {
         <div className="flex items-baseline justify-between">
           <h2 className="text-xl font-semibold group-hover:text-primary transition-colors">{post.title}</h2>
 
-          <ArrowRight
+          <FiArrowRight
             size={16}
             className="hidden md:block text-text-tertiary group-hover:text-primary transition-all group-hover:translate-x-1 shrink-0"
           />
@@ -51,7 +51,7 @@ export function PostSnippet({ post }: PostSnippetProps) {
 
         {post.tags && post.tags.length > 0 && (
           <div className="flex items-center gap-1.5">
-            <Hash
+            <FiHash
               size={12}
               className="text-text-tertiary shrink-0"
             />

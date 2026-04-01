@@ -1,4 +1,4 @@
-import { Gauge } from 'lucide-react';
+import { FiActivity } from 'react-icons/fi';
 import { Complexity } from '@/src/types';
 
 const complexityConfig: Record<Complexity, { label: string; color: string }> = {
@@ -16,7 +16,7 @@ export function ComplexityBadge({ complexity }: ComplexityBadgeProps) {
 
   return (
     <div className="flex items-center gap-2 text-sm">
-      <Gauge
+      <FiActivity
         size={14}
         className="text-text-tertiary shrink-0"
       />

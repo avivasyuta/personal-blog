@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Download } from 'lucide-react';
+import { FiDownload } from 'react-icons/fi';
 import { DesktopNavigation } from '@/src/components/navigation';
 
 export function Header() {
@@ -43,7 +43,7 @@ export function Header() {
             download
             className="btn btn-sm border border-primary/30 bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300"
           >
-            <Download size={14} />
+            <FiDownload size={14} />
             Download CV
           </Link>
         </div>
