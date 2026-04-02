@@ -4,6 +4,7 @@ import * as React from 'react';
 import { Select as SelectPrimitive } from '@base-ui/react/select';
 import { FiChevronDown, FiX } from 'react-icons/fi';
 import { cn } from '@/src/lib/utils';
+import { Button } from '@/src/components/ui/button';
 
 export type SelectOption = {
   value: string;
@@ -45,17 +46,18 @@ export function Select({ value, onChange, onClear, placeholder = 'Select...', op
         </SelectPrimitive.Trigger>
 
         {hasValue && onClear && (
-          <button
+          <Button
             type="button"
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
               onClear();
             }}
-            className="absolute right-7 top-1/2 -translate-y-1/2 text-text-tertiary hover:text-foreground transition-colors cursor-pointer"
+            variant="ghost"
+            className="absolute right-7 top-1/2 -translate-y-1/2 p-0"
           >
             <FiX size={12} />
-          </button>
+          </Button>
         )}
 
         <FiChevronDown

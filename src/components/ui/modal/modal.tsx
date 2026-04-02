@@ -1,6 +1,7 @@
 'use client';
 
 import type { ReactNode } from 'react';
+import { Button } from '@/src/components/ui/button';
 
 type ModalProps = {
   isOpen: boolean;
@@ -24,14 +25,15 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
         <div className="flex items-center justify-between mb-4">
           {title && <h3 className="font-semibold text-lg text-foreground">{title}</h3>}
 
-          <button
+          <Button
             type="button"
             onClick={onClose}
-            className="btn btn-sm btn-ghost"
+            variant="ghost"
+            size="sm"
             aria-label="Close modal"
           >
             ✕
-          </button>
+          </Button>
         </div>
 
         {children}

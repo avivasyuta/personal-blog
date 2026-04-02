@@ -2,6 +2,7 @@
 
 import { useState, Children, isValidElement, ReactNode, ReactElement } from 'react';
 import { TabsContext } from './tabs-context';
+import { Button } from '@/src/components/ui/button';
 
 type TabProps = {
   label: string;
@@ -41,19 +42,15 @@ export function Tabs({ children, defaultTab, className }: TabsProps) {
           {tabs.map((tab) => {
             const isActive = activeTab === tab.label;
             return (
-              <button
+              <Button
                 key={tab.key}
                 role="tab"
-                className={`cursor-pointer rounded-lg px-4 py-2 text-sm font-medium transition-all duration-300 ${
-                  isActive
-                    ? 'bg-primary text-white shadow-[0_0_20px_var(--color-primary-glow)]'
-                    : 'border border-border bg-surface text-text-secondary hover:border-border-hover hover:text-foreground'
-                }`}
+                variant={isActive ? 'primary' : 'secondary'}
                 onClick={() => setActiveTab(tab.label)}
                 type="button"
               >
                 {tab.label}
-              </button>
+              </Button>
             );
           })}
         </div>

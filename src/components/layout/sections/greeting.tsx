@@ -1,8 +1,8 @@
 import { currentLocation } from '@/src/lib/constant';
 import { FiDownload, FiMapPin } from 'react-icons/fi';
 import { FiGithub, FiInstagram, FiLinkedin } from 'react-icons/fi';
-import Link from 'next/link';
 import Image from 'next/image';
+import { Button } from '@/src/components/ui/button';
 
 export function GreetingSection() {
   return (
@@ -66,45 +66,48 @@ export function GreetingSection() {
             </div>
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-              <Link
+              <Button
                 href="/Ivasiuta Aleksei CV. Senior Software Engineer.pdf"
                 download
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-primary px-5 py-4 md:py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-primary-hover hover:shadow-[0_0_20px_var(--color-primary-glow)]"
+                variant="primary"
+                className="w-full sm:w-auto px-5 py-4 md:py-2.5"
               >
                 <FiDownload size={16} />
                 Download my CV
-              </Link>
+              </Button>
 
               <div className="flex items-center gap-3">
-                <Link
+                <Button
                   href="https://www.linkedin.com/in/avivasyuta"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-12 md:h-10 max-sm:flex-1 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
+                  className="h-12 md:h-10 max-sm:flex-1"
                   title="Aleksei's Linkedin profile"
+                  square
                 >
                   <FiLinkedin size={18} />
-                </Link>
+                </Button>
 
-                <Link
+                <Button
                   href="https://github.com/avivasyuta"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-12 md:h-10 max-sm:flex-1 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
+                  className="h-12 md:h-10 max-sm:flex-1"
                   title="Aleksei's Github profile"
+                  square
                 >
                   <FiGithub size={18} />
-                </Link>
+                </Button>
 
-                <Link
+                <Button
                   href="https://www.instagram.com/avivasyuta/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-12 md:h-10 max-sm:flex-1 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
+                  className="h-12 md:h-10 max-sm:flex-1"
                   title="Aleksei's Instagram profile"
                 >
                   <FiInstagram size={18} />
-                </Link>
+                </Button>
               </div>
             </div>
           </div>

@@ -9,21 +9,23 @@ type ProjectSnippetProps = {
 
 export function ProjectSnippet({ project }: ProjectSnippetProps) {
   return (
-    <div className="card-surface w-full max-w-4xl p-6 md:p-8">
+    <div className="card-surface w-full max-w-4xl p-6 md:py-4 md:pl-3 md:pr-8">
       <div
         className={`flex flex-col-reverse md:flex-row justify-between items-center gap-6 ${project.logoPlacement === 'left' ? 'md:flex-row-reverse' : ''}`}
       >
         <div className="flex flex-col gap-4 flex-1">
-          <h3 className="text-xl md:text-2xl font-semibold text-foreground">{project.name}</h3>
+          <div className="flex gap-4 items-center">
+            <h3 className="text-xl md:text-2xl font-semibold text-foreground">{project.name}</h3>
+
+            {project.openSource && (
+              <span className="inline-flex items-center h-6 gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-medium w-fit">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                Open source
+              </span>
+            )}
+          </div>
 
           <p className="text-text-secondary text-sm leading-relaxed whitespace-pre-line">{project.description}</p>
-
-          {project.openSource && (
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-medium w-fit">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-              Open source
-            </span>
-          )}
 
           <Link
             href={project.link}

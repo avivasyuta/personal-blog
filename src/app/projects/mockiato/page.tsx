@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { FiExternalLink, FiZap, FiGlobe, FiFileText, FiShield, FiHeart, FiGithub } from 'react-icons/fi';
 import { Modal } from '@/src/components/ui/modal';
+import { Button } from '@/src/components/ui/button';
 
 const galleryImages = [
   {
@@ -53,23 +53,22 @@ export default function MockiatoProjectPage() {
           </span>
 
           <div className="flex justify-center md:justify-start gap-3 mt-2">
-            <Link
+            <Button
               href="https://chromewebstore.google.com/detail/mockiato-%E2%80%94-free-api-testi/ilbkkhmnmnehcicempfpekgcpneeekao"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary-hover transition-colors"
+              variant="primary"
               target="_blank"
             >
               <FiExternalLink size={14} />
               Install extension
-            </Link>
+            </Button>
 
-            <Link
+            <Button
               href="https://github.com/avivasyuta/mockiato"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-surface text-text-secondary text-sm font-medium hover:border-border-hover hover:text-foreground transition-all"
               target="_blank"
             >
               <FiGithub size={14} />
               Source code
-            </Link>
+            </Button>
           </div>
         </div>
 
@@ -166,12 +165,12 @@ export default function MockiatoProjectPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {galleryImages.map((image) => (
-            <button
+            <Button
               key={image.src}
               type="button"
               onClick={() => setSelectedImage(image)}
               aria-label={`Open image in modal: ${image.title}`}
-              className="cursor-pointer group overflow-hidden rounded-xl border border-border bg-surface/60 shadow-sm transition-all hover:border-primary/50 hover:shadow-md hover:shadow-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+              className="group overflow-hidden rounded-xl bg-surface/60 shadow-sm p-0 hover:border-primary/50 hover:shadow-md hover:shadow-primary/10 focus-visible:ring-primary/60 flex-col items-stretch h-auto"
             >
               <Image
                 src={image.src}
@@ -184,7 +183,7 @@ export default function MockiatoProjectPage() {
               <div className="px-4 py-3 border-t border-border transition-colors group-hover:bg-primary/5">
                 <h3 className="text-left text-sm font-medium text-foreground">{image.title}</h3>
               </div>
-            </button>
+            </Button>
           ))}
         </div>
       </section>
@@ -210,21 +209,19 @@ export default function MockiatoProjectPage() {
             </p>
           </div>
 
-          <Link
+          <Button
             href="https://github.com/sponsors/avivasyuta"
-            className="group relative inline-flex shrink-0 items-center gap-2 px-6 py-3 rounded-xl bg-linear-to-r from-pink-500 to-rose-600 text-white text-sm font-semibold shadow-lg shadow-pink-500/25 hover:shadow-xl hover:shadow-pink-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all"
+            variant="accent"
+            size="lg"
             target="_blank"
+            className="group shrink-0"
           >
             <FiHeart
               size={16}
               className="transition-transform group-hover:scale-110"
             />
             Sponsor on GitHub
-            <FiExternalLink
-              size={13}
-              className="opacity-60"
-            />
-          </Link>
+          </Button>
         </div>
       </section>
 

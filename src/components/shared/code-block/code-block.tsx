@@ -2,6 +2,7 @@
 
 import { useRef, useState, isValidElement, Children, ReactNode, ComponentPropsWithoutRef } from 'react';
 import { FiCopy, FiCheck } from 'react-icons/fi';
+import { Button } from '@/src/components/ui/button';
 
 function getLanguageFromChildren(children: ReactNode): string {
   const child = Children.toArray(children)[0];
@@ -34,14 +35,16 @@ export function CodeBlock({ children, ...props }: ComponentPropsWithoutRef<'pre'
         <span className="flex items-center gap-2">
           {copied && <span className="font-mono text-[0.7rem] text-text-tertiary">Copied</span>}
 
-          <button
+          <Button
             type="button"
-            className="flex cursor-pointer items-center justify-center rounded-md p-1 text-text-tertiary transition-colors duration-200 hover:bg-surface-hover hover:text-foreground"
+            variant="ghost"
+            size="sm"
             onClick={handleCopy}
             aria-label="Copy code"
+            className="p-1"
           >
             {copied ? <FiCheck size={16} /> : <FiCopy size={16} />}
-          </button>
+          </Button>
         </span>
       </div>
 

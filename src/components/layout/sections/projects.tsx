@@ -1,7 +1,7 @@
-import Link from 'next/link';
 import { FiArrowRight } from 'react-icons/fi';
 import { ProjectSnippet } from '@/src/components/shared/project-snippet';
 import { projects } from '@/src/consts/projects';
+import { Button } from '@/src/components/ui/button';
 
 export function ProjectsSection() {
   return (
@@ -26,13 +26,10 @@ export function ProjectsSection() {
         </div>
 
         <div className="flex justify-center">
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-surface text-text-secondary text-sm font-medium hover:border-border-hover hover:text-foreground transition-all"
-          >
+          <Button href="/projects">
             See all projects
             <FiArrowRight size={16} />
-          </Link>
+          </Button>
         </div>
       </div>
     </section>

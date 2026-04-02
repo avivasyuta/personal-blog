@@ -6,6 +6,7 @@ import { Complexity, PostsFilter } from '@/src/types';
 import { Input } from '@/src/components/ui/input';
 import { Select } from '@/src/components/ui/select';
 import { MultiSelect } from '@/src/components/ui/multi-select';
+import { Button } from '@/src/components/ui/button';
 
 type PostSearchProps = {
   onChange: (newValue: PostsFilter) => void;
@@ -67,14 +68,16 @@ export function PostSearch({ value, onChange, availableTags = [] }: PostSearchPr
         )}
 
         {hasActiveFilters && (
-          <button
+          <Button
             type="button"
             onClick={clearAll}
-            className="ml-auto flex items-center gap-1.5 rounded-lg bg-red-500/10 border border-red-500/20 hover:bg-red-500/20 hover:border-red-500/40 px-3 py-1.5 text-sm text-red-400 hover:text-red-300 transition-colors cursor-pointer group"
+            variant="danger"
+            size="sm"
+            className="ml-auto"
           >
             <FiTrash2 size={12} />
             Clear all
-          </button>
+          </Button>
         )}
       </div>
     </div>

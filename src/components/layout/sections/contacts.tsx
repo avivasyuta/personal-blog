@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import { FiMail } from 'react-icons/fi';
 import { FiGithub, FiInstagram, FiLinkedin } from 'react-icons/fi';
+import { Button } from '@/src/components/ui/button';
 
 export function ContactsSection() {
   return (
@@ -36,35 +36,35 @@ export function ContactsSection() {
             <p className="text-text-tertiary text-sm">You may also find me on these platforms</p>
 
             <div className="flex gap-3">
-              <Link
+              <Button
                 href="https://www.linkedin.com/in/avivasyuta"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
                 title="Aleksei's Linkedin profile"
+                square
               >
                 <FiLinkedin size={18} />
-              </Link>
+              </Button>
 
-              <Link
+              <Button
                 href="https://github.com/avivasyuta"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
                 title="Aleksei's Github profile"
+                square
               >
                 <FiGithub size={18} />
-              </Link>
+              </Button>
 
-              <Link
+              <Button
                 href="https://www.instagram.com/avivasyuta/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-all duration-300 hover:border-primary/30 hover:text-primary hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]"
                 title="Aleksei's Instagram profile"
+                square
               >
                 <FiInstagram size={18} />
-              </Link>
+              </Button>
             </div>
           </div>
         </div>
