@@ -82,7 +82,7 @@ export function CompanyTimelineBlock({
             </Link>
 
             <span className="text-xs text-text-tertiary uppercase">
-              {`${formatDate(overallStart)} — ${formatDate(overallEnd)}`}
+              {`${formatDate(overallStart)} — ${overallEnd ? formatDate(overallEnd) : 'Present'}`}
             </span>
           </div>
 

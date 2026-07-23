@@ -3,6 +3,32 @@ import { CompanyTimelineBlock } from '@/src/components/layout/company-timeline-b
 
 const workPlaces: CompanyGroup[] = [
   {
+    company: 'Workato',
+    companyDescription: 'Leading iPaaS platform, used by 21,000+ organizations',
+    companyLogoPath: '/logo/workato.svg',
+    companyLink: 'https://www.workato.com',
+    positions: [
+      {
+        position: 'Senior Software Engineer',
+        startDate: '2026/04',
+        description: 'I develop a Low Code platform for building workflow apps, portals, and automation solutions.',
+        skills: [
+          'Angular',
+          'Typescript',
+          'RxJS',
+          'MobX',
+          'Vite',
+          'Vitest',
+          'Ruby on Rails',
+          'PostgreSQL',
+          'AWS Cloud',
+          'Docker',
+          'Kubernetes',
+        ],
+      },
+    ],
+  },
+  {
     company: 'Tabby',
     companyDescription: 'Leading buy-now-pay-later platform in the Middle East and North Africa.',
     companyLogoPath: '/logo/tabby.svg',
