@@ -14,7 +14,7 @@ export function PositionEntry({ position, isDateVisible = false }: PositionEntry
 
         {isDateVisible && (
           <p className="text-xs text-text-tertiary font-medium tracking-wide uppercase">
-            {`${formatDate(position.startDate)} — ${formatDate(position.endDate)}`}
+            {`${formatDate(position.startDate)} — ${position.endDate ? formatDate(position.endDate) : 'Present'}`}
           </p>
         )}
       </div>
