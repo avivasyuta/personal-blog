@@ -22,7 +22,7 @@ export type SimplePost = Omit<Post, 'content'>;
 export type Position = {
   position: string;
   startDate: string;
-  endDate: string;
+  endDate?: string;
   description?: string;
   bullets?: Array<string>;
   skills?: Array<string>;
