@@ -29,7 +29,7 @@ export function AboutSection() {
                 src="/photos/avatar.jpg"
                 alt="Fullpose of Aleksei Ivasiuta"
                 fill
-                className="shadow-[0_0_40px_var(--color-primary-glow)] rounded-2xl object-cover"
+                className="shadow-[0_0_40px_var(--color-primary-glow)] rounded-2xl object-cover -scale-x-100"
               />
             </div>
           </div>

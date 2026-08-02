@@ -8,21 +8,21 @@ export function GreetingSection() {
   return (
     <section
       id="greeting"
-      className="relative w-full py-10 md:py-28 2xl:py-36"
+      className="relative w-full bg-[#020202] py-10 md:py-28 2xl:py-36"
     >
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 md:gap-12 md:px-8">
         <div className="flex flex-col gap-12 md:flex-row">
-          <div className="flex items-center justify-center md:order-last md:grow md:justify-end">
+          <div className="flex items-center justify-center md:order-last md:w-125 md:shrink-0 md:justify-end">
             <Image
               src="/photos/portrait.png"
-              width={280}
-              height={320}
+              width={500}
+              height={500}
               alt="Aleksei Ivasiuta"
-              className="shadow-[0_0_40px_var(--color-primary-glow)] rounded-2xl"
+              className="w-full max-w-125 rounded-2xl mask-b-from-70% mask-b-to-100%"
             />
           </div>
 
-          <div className="flex max-w-3xl grow flex-col justify-center gap-8 md:order-first md:items-start md:justify-center 2xl:gap-12">
+          <div className="flex max-w-3xl grow flex-col justify-center gap-10 md:order-first md:items-start md:justify-center 2xl:gap-12">
             <div className="flex flex-col gap-4">
               <p className="section-label">Software Engineer</p>
 
@@ -32,13 +32,14 @@ export function GreetingSection() {
               </h1>
 
               <p className="text-text-secondary text-base leading-relaxed md:text-lg">
-                I&apos;m a software engineer (React.js, Node.js & Go) with a focus on creating and designing exceptional
-                digital experiences that are fast, accessible, visually appealing, and responsive.
+                I&amp;apos;m a&nbsp;software engineer (React.js, Node.js &amp;&nbsp;Go) with a&nbsp;focus
+                on&nbsp;creating and designing exceptional digital experiences that are fast, accessible, visually
+                appealing, and responsive.
               </p>
 
               <p className="text-text-secondary text-base leading-relaxed md:text-lg">
-                Even though I have been creating web applications for over 10 years, I still love it as if it was
-                something new.
+                Even though&nbsp;I have been creating web applications for over 10&nbsp;years, I&nbsp;still love
+                it&nbsp;as&nbsp;if&nbsp;it&nbsp;was something new.
               </p>
             </div>
 

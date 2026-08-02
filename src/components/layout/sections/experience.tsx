@@ -185,7 +185,7 @@ const workPlaces: CompanyGroup[] = [
 
 export function ExperienceSection() {
   return (
-    <section className="w-full py-20 md:py-28 2xl:py-36 border-t border-border">
+    <section className="w-full py-20 md:py-28 2xl:py-36 border-t border-border bg-[#020202]">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 md:gap-16 md:px-8">
         <div className="flex flex-col items-center gap-3">
           <p className="section-label">Career</p>
