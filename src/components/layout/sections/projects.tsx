@@ -6,7 +6,7 @@ import { Button } from '@/src/components/ui/button';
 export function ProjectsSection() {
   return (
     <section
-      className="w-full py-20 md:py-28 2xl:py-36 border-t border-border"
+      className="w-full py-20 md:py-28 2xl:py-36 border-t border-border bg-[#020202]"
       id="work"
     >
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 md:gap-16 md:px-8">
