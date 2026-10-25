@@ -10,4 +10,12 @@ export const projects: Project[] = [
     logoPlacement: 'left',
     openSource: true,
   },
+  {
+    name: 'Meetbell',
+    description:
+      'A macOS menu bar app that keeps your upcoming meetings in sight and shows a full-screen reminder when it is time to join, so you never miss a call again.',
+    link: '/projects/meetbell',
+    logoPath: '/meetbell/meetbell.svg',
+    logoPlacement: 'right',
+  },
 ];
