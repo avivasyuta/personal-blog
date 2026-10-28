@@ -9,7 +9,8 @@ import { MockiatoMockForm, MockiatoMocksList, MockiatoRequestHeaders } from '@/s
 
 const accent = '#2f8cf0';
 
-const chromeStoreUrl = 'https://chromewebstore.google.com/detail/mockiato-%E2%80%94-free-api-testi/ilbkkhmnmnehcicempfpekgcpneeekao';
+const chromeStoreUrl =
+  'https://chromewebstore.google.com/detail/mockiato-%E2%80%94-free-api-testi/ilbkkhmnmnehcicempfpekgcpneeekao';
 const githubRepoUrl = 'https://github.com/avivasyuta/mockiato';
 
 const facts = ['Chrome extension', 'Free and open source', 'No proxy or config files'];

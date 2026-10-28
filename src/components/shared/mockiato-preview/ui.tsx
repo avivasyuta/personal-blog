@@ -37,7 +37,9 @@ export function UiToggle({ hasLabel = false }: { hasLabel?: boolean }) {
     >
       {hasLabel && <span className="flex-1 pl-0.5 text-[7px] font-bold text-white">ON</span>}
 
-      <span className={cn('flex size-3 items-center justify-center bg-white', hasLabel ? 'rounded-[3px]' : 'rounded-full')}>
+      <span
+        className={cn('flex size-3 items-center justify-center bg-white', hasLabel ? 'rounded-[3px]' : 'rounded-full')}
+      >
         <span
           className="size-1.5 rounded-full"
           style={{ backgroundColor: ui.success }}

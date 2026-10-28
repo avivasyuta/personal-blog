@@ -61,7 +61,9 @@ export function ProjectSnippet({ project }: ProjectSnippetProps) {
               'absolute top-4 md:top-8',
               project.previewBleed === 'bottom' && 'isolate overflow-hidden border border-white/10',
               project.previewBleed === 'bottom' &&
-                (isPreviewLeft ? 'right-6 left-0 rounded-tr-xl md:right-10' : 'right-0 left-6 rounded-tl-xl md:left-10'),
+                (isPreviewLeft
+                  ? 'right-6 left-0 rounded-tr-xl md:right-10'
+                  : 'right-0 left-6 rounded-tl-xl md:left-10'),
               project.previewBleed === 'side' && 'w-[150%] sm:w-[120%] md:w-[140%] lg:w-[125%]',
               project.previewBleed === 'side' && (isPreviewLeft ? 'right-6 md:right-4' : 'left-6 md:left-4')
             )}

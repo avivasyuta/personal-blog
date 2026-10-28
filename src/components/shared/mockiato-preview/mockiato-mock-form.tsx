@@ -32,7 +32,10 @@ const mockFields = [
 const responseBodyLines = [
   { tokens: [{ text: '{' }], isFoldable: true },
   { tokens: [{ text: '  "error": {' }], isFoldable: true },
-  { tokens: [{ text: '    "message": ' }, { text: '"Unexpected error happened!"', isString: true }], isFoldable: false },
+  {
+    tokens: [{ text: '    "message": ' }, { text: '"Unexpected error happened!"', isString: true }],
+    isFoldable: false,
+  },
   { tokens: [{ text: '  }' }], isFoldable: false },
   { tokens: [{ text: '}' }], isFoldable: false },
 ];
