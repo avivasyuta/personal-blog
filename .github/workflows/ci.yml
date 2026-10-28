@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: ${{ matrix.script }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        script: [lint, format:check, test, typecheck]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.6
+
+      - run: bun install --frozen-lockfile
+
+      - run: bun run ${{ matrix.script }}
+
+      # `lint` runs `eslint --fix`, so fail if it auto-fixed anything
+      - name: Ensure no files were modified
+        run: git diff --exit-code
