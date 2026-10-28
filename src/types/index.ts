@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 export type Location = {
   city: string;
   country: string;
@@ -39,10 +41,14 @@ export type CompanyGroup = {
 export type Project = {
   name: string;
   description: string;
+  tagline: string;
+  platform: string;
   link: string;
   logoPath: string;
   logoPlacement: 'left' | 'right';
-  openSource?: boolean;
+  accent: string;
+  preview: ReactNode;
+  previewBleed: 'side' | 'bottom';
 };
 
 export type PostsFilter = {

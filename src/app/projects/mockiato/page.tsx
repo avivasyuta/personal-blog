@@ -1,26 +1,70 @@
 'use client';
 
-import { useState } from 'react';
+import { type CSSProperties, type ReactNode, useState } from 'react';
 import Image from 'next/image';
-import { FiExternalLink, FiZap, FiGlobe, FiFileText, FiShield, FiHeart, FiGithub } from 'react-icons/fi';
+import { FiCheck, FiExternalLink, FiGithub, FiHeart, FiStar } from 'react-icons/fi';
 import { Modal } from '@/src/components/ui/modal';
 import { Button } from '@/src/components/ui/button';
+import { MockiatoMockForm, MockiatoMocksList, MockiatoRequestHeaders } from '@/src/components/shared/mockiato-preview';
+
+const accent = '#2f8cf0';
+
+const chromeStoreUrl = 'https://chromewebstore.google.com/detail/mockiato-%E2%80%94-free-api-testi/ilbkkhmnmnehcicempfpekgcpneeekao';
+const githubRepoUrl = 'https://github.com/avivasyuta/mockiato';
+
+const facts = ['Chrome extension', 'Free and open source', 'No proxy or config files'];
 
 const galleryImages = [
   {
-    src: '/mockiato/gallery/request-rules.png',
-    alt: 'Mockiato request rule editor interface',
-    title: 'Request Rule Editor',
-  },
-  {
     src: '/mockiato/gallery/mocks-list.png',
-    alt: 'Mockiato active mocks management interface',
-    title: 'Active Mocks Dashboard',
+    alt: 'Mockiato response mocks grouped into collections',
+    title: 'Response Mocks',
   },
   {
-    src: '/mockiato/gallery/headers-panel.png',
-    alt: 'Mockiato headers injection interface',
-    title: 'Header Injection Panel',
+    src: '/mockiato/gallery/mocks-form-general.png',
+    alt: 'Mockiato mock editor with URL, method, status code and delay',
+    title: 'Mock Settings',
+  },
+  {
+    src: '/mockiato/gallery/mock-form-response.png',
+    alt: 'Mockiato mock editor with a JSON response body',
+    title: 'Response Body',
+  },
+  {
+    src: '/mockiato/gallery/mocks-form-headers.png',
+    alt: 'Mockiato mock editor with response headers',
+    title: 'Response Headers',
+  },
+  {
+    src: '/mockiato/gallery/headers-list.png',
+    alt: 'Mockiato request headers list',
+    title: 'Request Headers',
+  },
+  {
+    src: '/mockiato/gallery/headers-form.png',
+    alt: 'Mockiato form for adding a request header to a specific URL',
+    title: 'Request Header Settings',
+  },
+];
+
+const features: Array<{ title: string; description: string; fragment: ReactNode }> = [
+  {
+    title: 'Replace any response with your own',
+    description:
+      'Match requests by URL (regular expressions supported) and HTTP method, then return the body, status code, headers and delay you need. Test error states and slow networks without touching the backend.',
+    fragment: <MockiatoMockForm />,
+  },
+  {
+    title: 'Add headers to outgoing requests',
+    description:
+      'Attach or override headers on the fly to test authentication, feature flags, localization or CORS behavior.',
+    fragment: <MockiatoRequestHeaders />,
+  },
+  {
+    title: 'Works right in the browser',
+    description:
+      'No proxy servers, config files or CLI tools. Install the extension and see which requests are mocked straight away.',
+    fragment: <MockiatoMocksList />,
   },
 ];
 
@@ -28,42 +72,65 @@ export default function MockiatoProjectPage() {
   const [selectedImage, setSelectedImage] = useState<(typeof galleryImages)[number] | null>(null);
 
   return (
-    <div className="mx-auto flex flex-col gap-16 md:gap-16 w-full max-w-7xl px-4 md:px-8 py-8 md:py-24">
-      <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-12 items-center">
-        <div className="flex flex-col gap-6 flex-1 items-center md:items-start">
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Mockiato</h1>
+    <div
+      className="relative isolate mx-auto flex w-full max-w-7xl flex-col gap-24 px-4 py-8 md:gap-32 md:px-8 md:py-24"
+      style={{ '--accent': accent } as CSSProperties}
+    >
+      <div
+        aria-hidden
+        className="page-light"
+      />
 
+      <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+        <div className="flex flex-col gap-6">
           <Image
-            src="/logo/mockiato.png"
-            width={250}
-            height={250}
+            src="/mockiato/mockiato.svg"
+            width={72}
+            height={72}
             alt="Mockiato extension logo"
-            className="rounded-2xl md:hidden"
+            className="rounded-2xl"
           />
 
-          <p className="text-center md:text-start text-text-secondary leading-relaxed">
-            An open source Chrome extension built for frontend developers who need full control over network requests.
-            It lets you intercept outgoing API calls in real time and replace them with custom mock responses, no
-            backend required.
-          </p>
+          <div className="flex flex-col gap-4">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Mockiato</h1>
 
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-medium w-fit">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-            Open source
-          </span>
+            <p className="text-xl md:text-2xl leading-snug text-foreground">
+              Mock any API response right in your browser.
+            </p>
 
-          <div className="flex justify-center md:justify-start gap-3 mt-2">
+            <p className="text-text-secondary leading-relaxed max-w-prose">
+              An open source Chrome extension for frontend developers. Intercept outgoing requests in real time and
+              replace them with your own responses, no backend required.
+            </p>
+          </div>
+
+          <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-text-secondary">
+            {facts.map((fact) => (
+              <li
+                key={fact}
+                className="flex items-center gap-1.5"
+              >
+                <FiCheck
+                  size={14}
+                  style={{ color: accent }}
+                />
+                {fact}
+              </li>
+            ))}
+          </ul>
+
+          <div className="flex flex-wrap gap-3 mt-2">
             <Button
-              href="https://chromewebstore.google.com/detail/mockiato-%E2%80%94-free-api-testi/ilbkkhmnmnehcicempfpekgcpneeekao"
-              variant="primary"
+              href={chromeStoreUrl}
               target="_blank"
+              className="border-transparent bg-foreground text-background hover:border-transparent hover:bg-white/85 hover:text-background"
             >
               <FiExternalLink size={14} />
               Install extension
             </Button>
 
             <Button
-              href="https://github.com/avivasyuta/mockiato"
+              href={githubRepoUrl}
               target="_blank"
             >
               <FiGithub size={14} />
@@ -72,156 +139,125 @@ export default function MockiatoProjectPage() {
           </div>
         </div>
 
-        <Image
-          src="/logo/mockiato.png"
-          width={400}
-          height={400}
-          alt="Mockiato extension logo"
-          className="rounded-2xl hidden md:block"
-        />
-      </div>
+        <div className="relative hidden md:block">
+          <div
+            aria-hidden
+            className="absolute inset-[10%] -z-10 rounded-full blur-3xl"
+            style={{ backgroundColor: `${accent}40` }}
+          />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="flex flex-col gap-3 p-5 rounded-xl border border-border bg-surface/50">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10">
-              <FiFileText
-                size={18}
-                className="text-primary"
-              />
-            </div>
-
-            <h3 className="font-semibold text-foreground">Response Mocking</h3>
-          </div>
-
-          <p className="text-sm text-text-secondary leading-relaxed">
-            Create mocks by specifying URL patterns (regex supported), HTTP method, response body, status code, delay,
-            and headers. Simulate any server behavior without touching the backend.
-          </p>
-        </div>
-
-        <div className="flex flex-col gap-3 p-5 rounded-xl border border-border bg-surface/50">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10">
-              <FiShield
-                size={18}
-                className="text-primary"
-              />
-            </div>
-
-            <h3 className="font-semibold text-foreground">Header Injection</h3>
-          </div>
-
-          <p className="text-sm text-text-secondary leading-relaxed">
-            Add or modify headers on outgoing requests on the fly. Perfect for testing authentication flows, CORS
-            policies, and other header-dependent scenarios.
-          </p>
-        </div>
-
-        <div className="flex flex-col gap-3 p-5 rounded-xl border border-border bg-surface/50">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10">
-              <FiZap
-                size={18}
-                className="text-primary"
-              />
-            </div>
-
-            <h3 className="font-semibold text-foreground">Zero Setup</h3>
-          </div>
-
-          <p className="text-sm text-text-secondary leading-relaxed">
-            Works instantly in the browser: no proxy servers, no config files, no CLI tools. Install and start mocking
-            in seconds.
-          </p>
-        </div>
-
-        <div className="flex flex-col gap-3 p-5 rounded-xl border border-border bg-surface/50">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10">
-              <FiGlobe
-                size={18}
-                className="text-primary"
-              />
-            </div>
-
-            <h3 className="font-semibold text-foreground">Open Source</h3>
-          </div>
-
-          <p className="text-sm text-text-secondary leading-relaxed">
-            Fully open source and free to use. Inspect the code, contribute features, or fork it to fit your workflow.
-          </p>
+          <Image
+            src="/mockiato/gallery/mocks-list.png"
+            width={1071}
+            height={694}
+            alt="Mockiato mocks list"
+            className="w-full h-auto"
+            priority
+          />
         </div>
       </div>
 
-      <section className="flex flex-col gap-5">
-        <div className="flex flex-col gap-2">
-          <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Gallery</h2>
+      <section className="flex flex-col gap-4">
+        <h2 className="text-2xl md:text-3xl font-bold tracking-tight">What you can do</h2>
 
-          <p className="text-sm md:text-base text-text-secondary">
-            A quick look at Mockiato in action: create rules, manage mocks, and test headers directly in the browser.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {galleryImages.map((image) => (
-            <Button
-              key={image.src}
-              type="button"
-              onClick={() => setSelectedImage(image)}
-              aria-label={`Open image in modal: ${image.title}`}
-              className="group overflow-hidden rounded-xl bg-surface/60 shadow-sm p-0 hover:border-primary/50 hover:shadow-md hover:shadow-primary/10 focus-visible:ring-primary/60 flex-col items-stretch h-auto"
+        <div className="flex flex-col">
+          {features.map((feature) => (
+            <div
+              key={feature.title}
+              className="grid grid-cols-1 items-center gap-8 border-t border-white/10 py-10 md:grid-cols-2 md:gap-16"
             >
-              <Image
-                src={image.src}
-                width={1280}
-                height={900}
-                alt={image.alt}
-                className="w-full h-auto transition-transform duration-300 group-hover:scale-[1.02]"
-              />
+              <div className="flex flex-col gap-3 max-w-md">
+                <h3 className="text-lg md:text-xl font-semibold text-foreground">{feature.title}</h3>
 
-              <div className="px-4 py-3 border-t border-border transition-colors group-hover:bg-primary/5">
-                <h3 className="text-left text-sm font-medium text-foreground">{image.title}</h3>
+                <p className="text-text-secondary leading-relaxed">{feature.description}</p>
               </div>
-            </Button>
+
+              <div
+                aria-hidden
+                className="flex justify-center md:justify-start"
+              >
+                {feature.fragment}
+              </div>
+            </div>
           ))}
         </div>
       </section>
 
-      <section className="relative overflow-hidden rounded-2xl border border-pink-500/20 bg-linear-to-br from-pink-500/5 via-surface/80 to-purple-500/5 p-8 md:p-10">
-        <div className="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-pink-500/10 blur-3xl" />
-        <div className="absolute -bottom-12 -left-12 w-40 h-40 rounded-full bg-purple-500/10 blur-3xl" />
+      <section className="flex flex-col gap-8">
+        <div className="flex flex-col gap-2">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Gallery</h2>
 
-        <div className="relative flex flex-col md:flex-row items-center gap-6 md:gap-10">
-          <div className="flex shrink-0 items-center justify-center w-16 h-16 rounded-2xl bg-linear-to-br from-pink-500 to-rose-600 shadow-lg shadow-pink-500/20">
-            <FiHeart
-              size={28}
-              className="text-white"
-            />
-          </div>
+          <p className="text-sm md:text-base text-text-secondary">
+            Create rules, manage mocks, and test headers directly in the browser. Click a screenshot to enlarge it.
+          </p>
+        </div>
 
-          <div className="flex flex-col gap-2 text-center md:text-left flex-1">
+        {/* The strip bleeds into the page padding, so the next screenshot peeks in from the edge */}
+        <div className="-mx-4 flex snap-x snap-mandatory scroll-px-4 gap-6 overflow-x-auto px-4 pt-2 pb-4 [scrollbar-color:rgba(255,255,255,0.15)_transparent] [scrollbar-width:thin] md:-mx-8 md:scroll-px-8 md:px-8">
+          {galleryImages.map((image) => (
+            <button
+              key={image.src}
+              type="button"
+              onClick={() => setSelectedImage(image)}
+              aria-label={`Open image in modal: ${image.title}`}
+              className="group flex w-[85%] shrink-0 snap-start cursor-pointer flex-col gap-3 rounded-xl text-left sm:w-[45%] lg:w-[38%] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2f8cf0]"
+            >
+              <Image
+                src={image.src}
+                width={1071}
+                height={694}
+                alt={image.alt}
+                className="w-full h-auto transition-transform duration-300 group-hover:-translate-y-1"
+              />
+
+              <span className="px-1 text-sm font-medium text-text-secondary transition-colors group-hover:text-foreground">
+                {image.title}
+              </span>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className="card-surface relative overflow-hidden rounded-3xl p-8 md:p-12">
+        <div
+          aria-hidden
+          className="showcase-glow pointer-events-none absolute inset-0"
+        />
+
+        <div className="relative flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-col gap-2">
             <h2 className="text-xl md:text-2xl font-bold tracking-tight">Enjoying Mockiato?</h2>
 
-            <p className="text-sm md:text-base text-text-secondary leading-relaxed max-w-xl">
-              This project is free and open source. If it saves you time, consider sponsoring to help keep it maintained
-              and growing.
+            <p className="text-sm md:text-base text-text-secondary leading-relaxed text-pretty">
+              A quick review helps other developers find it, and sponsorship keeps it growing.
             </p>
           </div>
 
-          <Button
-            href="https://github.com/sponsors/avivasyuta"
-            variant="accent"
-            size="lg"
-            target="_blank"
-            className="group shrink-0"
-          >
-            <FiHeart
-              size={16}
-              className="transition-transform group-hover:scale-110"
-            />
-            Sponsor on GitHub
-          </Button>
+          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center lg:shrink-0">
+            <Button
+              href={`${chromeStoreUrl}/reviews`}
+              size="lg"
+              target="_blank"
+              className="rounded-xl"
+            >
+              <FiStar size={16} />
+              Rate extension
+            </Button>
+
+            <Button
+              href="https://github.com/sponsors/avivasyuta"
+              variant="accent"
+              size="lg"
+              target="_blank"
+              className="group"
+            >
+              <FiHeart
+                size={16}
+                className="transition-transform group-hover:scale-110"
+              />
+              Sponsor on GitHub
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -233,10 +269,10 @@ export default function MockiatoProjectPage() {
         {selectedImage ? (
           <Image
             src={selectedImage.src}
-            width={1280}
-            height={900}
+            width={1071}
+            height={694}
             alt={selectedImage.alt}
-            className="w-full h-auto rounded-lg border border-border bg-white"
+            className="w-full h-auto"
           />
         ) : null}
       </Modal>

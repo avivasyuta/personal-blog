@@ -1,49 +1,27 @@
+import type { CSSProperties } from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { FiArrowLeft } from 'react-icons/fi';
+import { supportEmail } from '@/src/consts/contacts';
 
 export const metadata: Metadata = {
   title: 'Meetbell Privacy Policy',
-  description: 'Meetbell does not collect, store, or share any personal data.',
+  description:
+    'Meetbell does not collect, store on any server, share, or sell your data. Everything stays on your Mac.',
 };
-
-const supportEmail = 'avivasyuta@gmail.com';
-
-const sections = [
-  {
-    title: 'Data collection',
-    content:
-      'Meetbell does not collect, store, or transmit any personal data. The app has no user accounts, analytics, crash reporting, advertising, or tracking of any kind.',
-  },
-  {
-    title: 'Calendar access',
-    content:
-      'Meetbell asks for permission to read your calendars so it can show upcoming events in the menu bar and remind you when a meeting starts. Calendar data is read through the system Calendar framework and processed only on your Mac. It is never sent to the developer or any third party.',
-  },
-  {
-    title: 'Settings',
-    content:
-      'Your preferences, such as the selected calendars, reminder sound, and reminder timing, are stored locally on your Mac and are removed when you delete the app.',
-  },
-  {
-    title: 'Video call links',
-    content:
-      'When you choose to join a meeting, Meetbell opens the video call link from the event in your default browser or the corresponding app. Meetbell does not send any data to video call services itself.',
-  },
-  {
-    title: 'Third-party services',
-    content: 'Meetbell does not use any third-party SDKs or services and does not share data with anyone.',
-  },
-  {
-    title: 'Changes to this policy',
-    content:
-      'If this policy changes, the updated version will be published on this page together with a new effective date.',
-  },
-];
 
 export default function MeetbellPrivacyPage() {
   return (
-    <div className="mx-auto flex flex-col gap-10 w-full max-w-3xl px-4 md:px-8 py-8 md:py-24">
+    <div
+      className="relative isolate mx-auto flex flex-col gap-10 w-full max-w-3xl px-4 md:px-8 py-8 md:py-24"
+      style={{ '--accent': '#1fc27a' } as CSSProperties}
+    >
+      <div
+        aria-hidden
+        className="page-light"
+        style={{ left: '50%', right: 'auto', width: 'min(80rem, 100vw)', transform: 'translateX(-50%)' }}
+      />
+
       <Link
         href="/projects/meetbell"
         className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-foreground transition-colors w-fit"
@@ -55,35 +33,151 @@ export default function MeetbellPrivacyPage() {
       <div className="flex flex-col gap-3">
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Meetbell Privacy Policy</h1>
 
-        <p className="text-sm text-text-tertiary">Effective date: October 25, 2026</p>
+        <p className="text-sm text-text-tertiary">Effective date: October 27, 2026</p>
       </div>
 
-      <div className="flex flex-col gap-8">
-        {sections.map((section) => (
-          <section
-            key={section.title}
-            className="flex flex-col gap-2"
+      <div className="prose prose-invert max-w-none prose-headings:tracking-tight prose-a:text-primary prose-a:no-underline hover:prose-a:text-primary-hover">
+        <p>
+          Meetbell is a macOS menu bar app that shows a full-screen reminder when your meetings are about to start. This
+          policy explains what information Meetbell uses, how it uses it, and what it does not do.
+        </p>
+
+        <p>
+          <strong>The short version:</strong> Meetbell does not collect, store on any server, share, or sell your data.
+          Everything stays on your Mac.
+        </p>
+
+        <h2>Information Meetbell accesses</h2>
+
+        <h3>Calendar data</h3>
+
+        <p>
+          To show your upcoming events and remind you about meetings, Meetbell asks for access to your calendars through
+          the standard macOS permission dialog. With your permission, it reads on your Mac:
+        </p>
+
+        <ul>
+          <li>the list of your calendars (name, color, account they belong to);</li>
+          <li>
+            events from today until the end of tomorrow: title, start and end time, location, notes, URL, organizer, and
+            number of attendees.
+          </li>
+        </ul>
+
+        <p>
+          Meetbell uses this data <strong>only on your Mac</strong> to:
+        </p>
+
+        <ul>
+          <li>show your events in the menu bar dropdown;</li>
+          <li>show the full-screen reminder;</li>
+          <li>
+            find an online meeting link (for example Zoom, Google Meet, Microsoft Teams, or Webex) so you can join with
+            one click.
+          </li>
+        </ul>
+
+        <p>
+          Meetbell <strong>does not change, create, or delete</strong> your calendar events. It does not copy your
+          calendar data to any server, and it does not keep it after the app quits.
+        </p>
+
+        <p>
+          You can turn calendar access on or off at any time in{' '}
+          <strong>System Settings → Privacy &amp; Security → Calendars</strong>.
+        </p>
+
+        <h3>Settings</h3>
+
+        <p>
+          Meetbell saves your preferences on your Mac using standard macOS storage (UserDefaults). These include the
+          calendars you selected, the notification sound, how early to notify you, menu bar display options, and whether
+          notifications are paused. These settings never leave your Mac.
+        </p>
+
+        <h2>What Meetbell does not do</h2>
+
+        <ul>
+          <li>
+            It does <strong>not</strong> collect personal data or usage data.
+          </li>
+          <li>
+            It does <strong>not</strong> use analytics, advertising, or tracking of any kind.
+          </li>
+          <li>
+            It does <strong>not</strong> include third-party SDKs.
+          </li>
+          <li>
+            It does <strong>not</strong> connect to the internet on its own. The app runs in Apple&apos;s App Sandbox
+            without network access.
+          </li>
+          <li>
+            It does <strong>not</strong> share or sell any information to anyone.
+          </li>
+        </ul>
+
+        <h2>Actions you start yourself</h2>
+
+        <p>
+          Some actions open other apps on your Mac. What those apps do with your data is covered by their own privacy
+          policies:
+        </p>
+
+        <ul>
+          <li>
+            <strong>Join</strong> opens the meeting link in your default browser or in the meeting app (for example Zoom
+            or Microsoft Teams).
+          </li>
+          <li>
+            <strong>Opening an event</strong> opens it in the Calendar app.
+          </li>
+          <li>
+            <strong>Send Feedback</strong> opens a new email in your default email app. The draft includes the Meetbell
+            version and the macOS version to help with troubleshooting. You can review or delete this information before
+            sending. Nothing is sent unless you send the email yourself. If you do, I will use your email address and
+            message only to reply and to improve the app.
+          </li>
+        </ul>
+
+        <h2>Diagnostics</h2>
+
+        <p>
+          Meetbell writes technical log messages (for example, errors) to the standard macOS system log on your Mac.
+          These logs do not include the contents of your calendar, such as event titles or attendees, and Meetbell does
+          not send them anywhere.
+        </p>
+
+        <p>
+          If you have chosen to share analytics with app developers in{' '}
+          <strong>System Settings → Privacy &amp; Security → Analytics &amp; Improvements</strong>, Apple may give me
+          anonymous crash and performance reports. Apple handles these reports under its own{' '}
+          <a
+            href="https://www.apple.com/legal/privacy/"
+            target="_blank"
+            rel="noreferrer"
           >
-            <h2 className="text-xl font-semibold text-foreground">{section.title}</h2>
+            privacy policy
+          </a>
+          .
+        </p>
 
-            <p className="text-text-secondary leading-relaxed">{section.content}</p>
-          </section>
-        ))}
+        <h2>Children&apos;s privacy</h2>
 
-        <section className="flex flex-col gap-2">
-          <h2 className="text-xl font-semibold text-foreground">Contact</h2>
+        <p>Meetbell does not knowingly collect any information from anyone, including children under 13.</p>
 
-          <p className="text-text-secondary leading-relaxed">
-            If you have any questions about this policy, contact me at{' '}
-            <a
-              href={`mailto:${supportEmail}?subject=Meetbell%20Privacy`}
-              className="text-primary hover:text-primary-hover transition-colors"
-            >
-              {supportEmail}
-            </a>
-            .
-          </p>
-        </section>
+        <h2>Changes to this policy</h2>
+
+        <p>If this policy changes, the updated version will be posted on this page with a new effective date.</p>
+
+        <h2>Contact</h2>
+
+        <p>
+          If you have questions about this policy or about Meetbell, please email{' '}
+          <a href={`mailto:${supportEmail}?subject=Meetbell%20Privacy`}>
+            <strong>{supportEmail}</strong>
+          </a>
+          .
+        </p>
       </div>
     </div>
   );
