@@ -33,10 +33,15 @@ export default function MeetbellPrivacyPage() {
       <div className="flex flex-col gap-3">
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Meetbell Privacy Policy</h1>
 
-        <p className="text-sm text-text-tertiary">Effective date: October 27, 2026</p>
+        <p className="text-sm text-text-tertiary">Effective date: October 28, 2026</p>
       </div>
 
       <div className="prose prose-invert max-w-none prose-headings:tracking-tight prose-a:text-primary prose-a:no-underline hover:prose-a:text-primary-hover">
+        <p>
+          Meetbell is developed and maintained by Aleksei Ivasiuta, an independent developer (&quot;I&quot;,
+          &quot;me&quot;). I am responsible for how information related to Meetbell is handled.
+        </p>
+
         <p>
           Meetbell is a macOS menu bar app that shows a full-screen reminder when your meetings are about to start. This
           policy explains what information Meetbell uses, how it uses it, and what it does not do.
@@ -138,6 +143,65 @@ export default function MeetbellPrivacyPage() {
             message only to reply and to improve the app.
           </li>
         </ul>
+
+        <h2>Data retention and deletion</h2>
+
+        <p>
+          <strong>Calendar data.</strong> Meetbell reads your calendar data only while it is running and keeps it in
+          memory. Nothing is written to disk or sent anywhere, so there is nothing to delete. To stop Meetbell from
+          reading your calendars, turn off its access in{' '}
+          <strong>System Settings → Privacy &amp; Security → Calendars</strong>.
+        </p>
+
+        <p>
+          <strong>Settings.</strong> Your preferences are stored only on your Mac, inside the app&apos;s sandbox
+          container. To remove them completely:
+        </p>
+
+        <ol>
+          <li>Quit Meetbell and move it from the Applications folder to the Trash.</li>
+          <li>
+            In Finder, choose <strong>Go → Go to Folder…</strong>, enter{' '}
+            <code>~/Library/Containers/dev.ivasiuta.meetbell</code> and move that folder to the Trash.
+          </li>
+        </ol>
+
+        <p>If you turned on Launch at Login, macOS removes Meetbell from your login items when the app is deleted.</p>
+
+        <p>
+          <strong>Feedback emails.</strong> If you email me, your message and email address are stored in my email
+          account (Gmail, provided by Google, which handles them under its own{' '}
+          <a
+            href="https://policies.google.com/privacy"
+            target="_blank"
+            rel="noreferrer"
+          >
+            privacy policy
+          </a>
+          ). I keep this correspondence only as long as needed to answer you and follow up on your request, and no
+          longer than 2 years. You can ask me to delete it at any time by writing to{' '}
+          <a href={`mailto:${supportEmail}?subject=Meetbell%20Privacy`}>{supportEmail}</a>.
+        </p>
+
+        <h2>Your rights</h2>
+
+        <p>
+          The only personal data I may receive is what you send me by email. Depending on where you live (for example,
+          in the European Union, the United Kingdom, or California), you may have the right to:
+        </p>
+
+        <ul>
+          <li>ask what information I hold about you;</li>
+          <li>ask me to correct or delete it;</li>
+          <li>object to or restrict how I use it.</li>
+        </ul>
+
+        <p>
+          To make a request, email <a href={`mailto:${supportEmail}?subject=Meetbell%20Privacy`}>{supportEmail}</a>. I
+          will reply within 30 days. I process your email only to respond to your request (legitimate interest), and I
+          never use it for marketing. If you are in the EU or the UK, you also have the right to lodge a complaint with
+          your local data protection authority.
+        </p>
 
         <h2>Diagnostics</h2>
 
