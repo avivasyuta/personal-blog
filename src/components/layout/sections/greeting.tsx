@@ -8,8 +8,12 @@ export function GreetingSection() {
   return (
     <section
       id="greeting"
-      className="relative w-full bg-[#020202] py-10 md:py-28 2xl:py-36"
+      className="relative isolate w-full bg-[#020202] py-10 md:py-28 2xl:py-36"
     >
+      <div
+        aria-hidden
+        className="page-light"
+      />
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 md:gap-12 md:px-8">
         <div className="flex flex-col gap-12 md:flex-row">
           <div className="flex items-center justify-center md:order-last md:w-125 md:shrink-0 md:justify-end">

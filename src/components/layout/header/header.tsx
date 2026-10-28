@@ -19,9 +19,9 @@ export function Header() {
 
   return (
     <header
-      className={`relative md:sticky md:top-0 md:z-30 flex h-17 items-center justify-center backdrop-blur-xl transition-all duration-300 border-b ${
+      className={`relative md:sticky md:top-0 md:z-30 flex h-17 items-center justify-center transition-all duration-300 border-b ${
         isScrolled
-          ? 'border-border bg-background/80 shadow-[0_1px_20px_rgba(0,0,0,0.4)]'
+          ? 'backdrop-blur-xl border-border bg-background/80 shadow-[0_1px_20px_rgba(0,0,0,0.4)]'
           : 'border-transparent bg-transparent'
       }`}
     >

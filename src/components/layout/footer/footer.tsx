@@ -5,8 +5,7 @@ export function Footer() {
     <footer className="pb-26 pt-6 w-full md:py-6 border-t border-border">
       <div className="flex items-center justify-center gap-1">
         <p className="text-text-secondary text-sm flex items-center">
-          ©
-          &nbsp;
+          © &nbsp;
           {year} | Designed&nbsp;and&nbsp;coded&nbsp;by Aleksei Ivasiuta
         </p>
       </div>
