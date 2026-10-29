@@ -4,3 +4,5 @@ export const currentLocation: Location = {
   city: 'Belgrade',
   country: 'Serbia',
 };
+
+export const siteUrl = 'https://ivasiuta.dev';

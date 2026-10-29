@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { Header } from '@/src/components/layout/header';
 import { Footer } from '@/src/components/layout/footer';
-import { currentLocation } from '@/src/lib/constant';
+import { currentLocation, siteUrl } from '@/src/lib/constant';
 import { MobileNavigation } from '@/src/components/layout/navigation';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -21,12 +21,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://ivasiuta.dev'),
+  metadataBase: new URL(siteUrl),
   title: {
     default: 'Aleksei Ivasiuta | Senior Software Engineer',
     template: '%s | Aleksei Ivasiuta',
   },
   description: `Aleksei Ivasiuta, Senior Software Engineer from ${currentLocation.city}, ${currentLocation.country}`,
+  // './' resolves to the current page path, so every page gets its own canonical URL
+  alternates: {
+    canonical: './',
+  },
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: '32x32' },
