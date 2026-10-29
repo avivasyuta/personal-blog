@@ -31,13 +31,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: './',
   },
-  icons: {
-    icon: [
-      { url: '/favicon.ico', sizes: '32x32' },
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-    ],
-    apple: '/apple-touch-icon.png',
-  },
   manifest: '/manifest.webmanifest',
   openGraph: {
     title: 'Aleksei Ivasiuta | Senior Software Engineer',
