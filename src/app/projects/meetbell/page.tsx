@@ -21,6 +21,8 @@ export const metadata: Metadata = {
 
 const accent = '#1fc27a';
 
+const appStoreUrl = 'https://apps.apple.com/app/meetbell-meeting-reminder/id6828103784?mt=12';
+
 const facts = ['macOS 14 Sonoma or later', 'Free', 'No data collected'];
 
 const privacyPoints = [
@@ -122,18 +124,19 @@ export default function MeetbellProjectPage() {
           </ul>
 
           <div className="flex gap-3 mt-2">
-            {/* TODO: replace with an App Store link once the app is published */}
-            <span
-              aria-disabled
-              className="inline-flex cursor-default items-center gap-2 rounded-xl border border-white/30 bg-black py-1.5 pr-5 pl-3.5 text-white"
+            <a
+              href={appStoreUrl}
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-black py-1.5 pr-5 pl-3.5 text-white transition-all duration-300 hover:border-white/60 hover:bg-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
             >
               <FaApple size={30} />
 
               <span className="flex flex-col items-start text-left leading-none">
-                <span className="text-[11px] font-medium">Coming soon on the</span>
-                <span className="text-[22px] font-semibold tracking-tight">App Store</span>
+                <span className="text-[11px] font-medium">Download on the</span>
+                <span className="text-[22px] font-semibold tracking-tight">Mac App Store</span>
               </span>
-            </span>
+            </a>
           </div>
         </div>
 
