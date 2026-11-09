@@ -1,5 +1,12 @@
 import { Suspense } from 'react';
+import type { Metadata } from 'next';
 import { Posts } from './posts';
+
+export const metadata: Metadata = {
+  title: 'Blog',
+  description:
+    'Step-by-step LeetCode problem solutions and data structure deep dives, with TypeScript code and time and space complexity analysis.',
+};
 
 export default function BlogPage() {
   return (
