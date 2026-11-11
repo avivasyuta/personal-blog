@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 const accent = '#1fc27a';
 
-const appStoreUrl = 'https://apps.apple.com/app/meetbell-meeting-reminder/id6828103784?mt=12';
+const appStoreUrl = 'https://apps.apple.com/app/apple-store/id6828103784?pt=129636210&ct=Landing&mt=8';
 
 const facts = ['macOS 14 Sonoma or later', 'Free', 'No data collected'];
 
