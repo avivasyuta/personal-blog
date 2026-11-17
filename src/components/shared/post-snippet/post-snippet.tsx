@@ -1,72 +1,60 @@
+import type { CSSProperties } from 'react';
 import Link from 'next/link';
+import { FiArrowUpRight } from 'react-icons/fi';
 import { SimplePost } from '@/src/types';
-import { FiArrowRight, FiHash } from 'react-icons/fi';
-import { ComplexityBadge } from '@/src/components/shared/complexity-badge';
+import { ComplexityBadge, complexityAccent } from '@/src/components/shared/complexity-badge';
 
 type PostSnippetProps = {
   post: SimplePost;
 };
 
+// A card tinted with the color of the post's difficulty
 export function PostSnippet({ post }: PostSnippetProps) {
   return (
     <article
-      key={post.slug}
-      className="card-surface group"
+      className="accent-surface group relative h-full overflow-hidden rounded-3xl transition-colors hover:border-[color-mix(in_srgb,var(--accent)_40%,transparent)]"
+      style={{ '--accent': complexityAccent(post.complexity) } as CSSProperties}
     >
       <Link
         href={`/blog/${post.slug}`}
-        className="flex flex-col gap-2 p-6"
+        className="flex h-full flex-col gap-4 p-6 md:p-8"
       >
-        <div className="flex items-baseline justify-between">
-          <h2 className="text-xl font-semibold group-hover:text-primary transition-colors">{post.title}</h2>
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            {post.complexity && <ComplexityBadge complexity={post.complexity} />}
 
-          <FiArrowRight
-            size={16}
-            className="hidden md:block text-text-tertiary group-hover:text-primary transition-all group-hover:translate-x-1 shrink-0"
-          />
+            <time className="text-xs text-text-tertiary">
+              {new Date(post.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+              })}
+            </time>
+          </div>
+
+          <span
+            aria-hidden
+            className="flex size-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition-colors group-hover:bg-white group-hover:text-black"
+          >
+            <FiArrowUpRight size={18} />
+          </span>
         </div>
 
-        <div className="flex items-center gap-4">
-          {post.complexity && (
-            <>
-              <ComplexityBadge complexity={post.complexity} />
+        <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">{post.title}</h2>
 
-              <span
-                className="w-px h-3.5 bg-border"
-                aria-hidden="true"
-              />
-            </>
-          )}
-
-          <time className="text-xs text-text-tertiary font-mono">
-            {new Date(post.date).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
-          </time>
-        </div>
-
-        <p className="text-text-secondary text-sm leading-relaxed">{post.excerpt}</p>
+        <p className="text-text-secondary leading-relaxed">{post.excerpt}</p>
 
         {post.tags && post.tags.length > 0 && (
-          <div className="flex items-center gap-1.5">
-            <FiHash
-              size={12}
-              className="text-text-tertiary shrink-0"
-            />
-
-            <div className="flex flex-wrap gap-1.5">
-              {post.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-md bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary border border-primary/15"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
+          <ul className="mt-auto flex flex-wrap gap-1.5 pt-2">
+            {post.tags.map((tag) => (
+              <li
+                key={tag}
+                className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-xs text-text-secondary"
+              >
+                #{tag}
+              </li>
+            ))}
+          </ul>
         )}
       </Link>
     </article>

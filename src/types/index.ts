@@ -45,10 +45,11 @@ export type Project = {
   platform: string;
   link: string;
   logoPath: string;
-  logoPlacement: 'left' | 'right';
   accent: string;
   preview: ReactNode;
-  previewBleed: 'side' | 'bottom';
+  // Classes for the preview's wrapper in a home card on a phone, where a wide preview shrinks too small to read:
+  // they enlarge it and pick the part of it that stays in the card
+  cardPreviewClassName?: string;
 };
 
 export type PostsFilter = {

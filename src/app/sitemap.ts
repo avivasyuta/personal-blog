@@ -3,7 +3,16 @@ import { siteUrl } from '@/src/lib/constant';
 import { getPostsByFilter } from '@/src/lib/posts';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ['', '/projects', '/projects/meetbell', '/projects/meetbell/privacy', '/projects/mockiato', '/blog'];
+  const pages = [
+    '',
+    '/projects',
+    '/projects/booply',
+    '/projects/booply/privacy',
+    '/projects/meetbell',
+    '/projects/meetbell/privacy',
+    '/projects/mockiato',
+    '/blog',
+  ];
 
   const posts = getPostsByFilter({}).map((post) => ({
     url: `${siteUrl}/blog/${post.slug}`,

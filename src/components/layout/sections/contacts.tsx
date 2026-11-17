@@ -1,72 +1,34 @@
-import { FiMail } from 'react-icons/fi';
-import { FiGithub, FiInstagram, FiLinkedin } from 'react-icons/fi';
-import { Button } from '@/src/components/ui/button';
+import type { CSSProperties } from 'react';
+import { ShowcaseBackdrop } from '@/src/components/shared/project-showcase';
+import { EmailButton } from '@/src/components/shared/email-button';
+import { SocialLinks } from './social-links';
 
+const email = 'avivasyuta@gmail.com';
+
+// Closes the page with the same orange banner it opens with
 export function ContactsSection() {
   return (
     <section
       id="contacts"
-      className="w-full py-20 md:py-28 2xl:py-36 border-t border-border"
+      className="w-full px-4 pt-10 pb-24 md:px-8 md:pb-32"
     >
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 md:gap-12 md:px-8">
-        <div className="flex flex-col items-center gap-3">
-          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-center">Get in Touch</h2>
+      <div
+        className="showcase showcase-card relative isolate mx-auto flex w-full max-w-7xl flex-col items-center gap-8 overflow-hidden rounded-[2rem] border border-white/10 px-6 py-16 text-center md:py-24"
+        style={{ '--accent': '#f97316' } as CSSProperties}
+      >
+        <ShowcaseBackdrop fadesOut={false} />
+
+        <div className="flex flex-col items-center gap-4">
+          <p className="text-xs font-medium tracking-[0.14em] text-white/70 uppercase">Get in touch</p>
+          <h2 className="max-w-3xl text-4xl font-bold tracking-tight text-white text-balance md:text-6xl">
+            Looking for a developer or want to connect?
+          </h2>
         </div>
 
-        <div className="flex flex-col items-center gap-8">
-          <p className="text-text-secondary text-base max-w-lg text-center leading-relaxed">
-            Looking for a developer or want to connect? Reach out!
-          </p>
+        <div className="flex flex-col items-center gap-4 sm:flex-row">
+          <EmailButton email={email} />
 
-          <a
-            href="mailto:avivasyuta@gmail.com"
-            className="group flex items-center gap-3 card-surface px-6 py-4"
-          >
-            <FiMail
-              size={20}
-              className="text-primary"
-            />
-
-            <span className="text-lg md:text-xl font-mono font-medium text-foreground transition-colors group-hover:text-primary">
-              avivasyuta@gmail.com
-            </span>
-          </a>
-
-          <div className="flex flex-col items-center gap-4">
-            <p className="text-text-tertiary text-sm">You may also find me on these platforms</p>
-
-            <div className="flex gap-3">
-              <Button
-                href="https://www.linkedin.com/in/avivasyuta"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Aleksei's Linkedin profile"
-                square
-              >
-                <FiLinkedin size={18} />
-              </Button>
-
-              <Button
-                href="https://github.com/avivasyuta"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Aleksei's Github profile"
-                square
-              >
-                <FiGithub size={18} />
-              </Button>
-
-              <Button
-                href="https://www.instagram.com/avivasyuta/"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Aleksei's Instagram profile"
-                square
-              >
-                <FiInstagram size={18} />
-              </Button>
-            </div>
-          </div>
+          <SocialLinks />
         </div>
       </div>
     </section>

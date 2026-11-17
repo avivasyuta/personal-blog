@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { SectionHeading } from './section-heading';
 
 type Skill = {
   name: string;
@@ -20,6 +21,10 @@ const skills: Skill[] = [
     imagePath: '/logo/react.svg',
   },
   {
+    name: 'Angular',
+    imagePath: '/logo/angular.svg',
+  },
+  {
     name: 'Next.js',
     imagePath: '/logo/next-js.svg',
   },
@@ -28,12 +33,17 @@ const skills: Skill[] = [
     imagePath: '/logo/node-js.svg',
   },
   {
+    name: 'Go',
+    imagePath: '/logo/go.svg',
+  },
+  {
     name: 'PostgreSQL',
     imagePath: '/logo/postgres.svg',
   },
   {
-    name: 'Sass',
-    imagePath: '/logo/sass.svg',
+    name: 'SCSS',
+    // The "seal" version of the Sass logo, from sass-lang.com/styleguide/brand
+    imagePath: '/logo/scss.png',
   },
   {
     name: 'Tailwind Css',
@@ -50,37 +60,35 @@ const skills: Skill[] = [
   },
 ];
 
+// A loose row of chips rather than a grid of big cards: the stack is context, not the main story
 export function SkillsSection() {
   return (
-    <section className="w-full py-20 md:py-28 2xl:py-36 border-t border-border">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 md:gap-16 md:px-8">
-        <div className="flex flex-col items-center gap-3">
-          <p className="section-label">Tech Stack</p>
+    <section className="w-full py-14 md:py-28">
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-10 px-4 md:gap-14 md:px-8">
+        <SectionHeading
+          label="Tech stack"
+          title="Skills & technologies"
+          align="center"
+        />
 
-          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-center">Skills & Technologies</h2>
-        </div>
-
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
+        <ul className="flex max-w-4xl flex-wrap justify-center gap-3">
           {skills.map((skill) => (
-            <div
+            <li
               key={skill.name}
-              className="card-surface flex flex-col items-center gap-3 p-6 group cursor-default"
+              className="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 py-2.5 pr-5 pl-3 transition-colors hover:border-white/25 hover:bg-white/10"
             >
               <Image
-                alt={skill.name}
-                loading="lazy"
+                alt=""
                 width={0}
-                height={48}
-                decoding="async"
+                height={28}
                 src={skill.imagePath}
                 style={{ width: 'auto' }}
-                className="transition-transform duration-300 group-hover:scale-110"
+                className="h-7"
               />
-
-              <p className="text-text-secondary text-sm font-medium">{skill.name}</p>
-            </div>
+              <span className="text-sm font-medium text-foreground md:text-base">{skill.name}</span>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

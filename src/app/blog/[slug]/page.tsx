@@ -1,10 +1,12 @@
+import type { CSSProperties } from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { FiArrowLeft, FiExternalLink, FiCalendar, FiHash } from 'react-icons/fi';
+import { FiArrowLeft, FiExternalLink } from 'react-icons/fi';
 import { getPostBySlug, getAllPostSlugs } from '@/src/lib/posts';
 import { MDXContent } from '@/src/components/shared/mdx-content';
-import { ComplexityBadge } from '@/src/components/shared/complexity-badge';
-import { Divider } from '@/src/components/ui/divider';
+import { ComplexityBadge, complexityAccent } from '@/src/components/shared/complexity-badge';
+import { PageBanner } from '@/src/components/shared/page-banner';
+import { headingsOf } from '@/src/lib/headings';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -54,113 +56,135 @@ export default async function BlogPostPage({ params }: Props) {
     day: 'numeric',
   });
 
+  const headings = post.isMdx ? headingsOf(post.content) : [];
+  const accent = complexityAccent(post.complexity);
+
   return (
-    <main className="mx-auto max-w-4xl px-4 py-8 md:py-20">
-      <Link
-        href="/blog"
-        className="mb-8 inline-flex items-center gap-2 text-sm text-text-tertiary hover:text-primary transition-colors duration-300 group"
-      >
-        <FiArrowLeft
-          size={14}
-          className="transition-transform duration-300 group-hover:-translate-x-1"
-        />
-        Back to Blog
-      </Link>
+    <>
+      <PageBanner accent={accent}>
+        <div className="flex flex-col gap-6">
+          <Link
+            href="/blog"
+            className="showcase-reveal group inline-flex w-fit items-center gap-2 text-sm text-white/70 transition-colors hover:text-white"
+            style={{ '--i': 0 } as CSSProperties}
+          >
+            <FiArrowLeft
+              size={14}
+              className="transition-transform duration-300 group-hover:-translate-x-1"
+            />
+            All posts
+          </Link>
 
-      <article>
-        <header className="relative mb-12 md:mb-16">
-          <h1 className="relative text-3xl md:text-5xl font-bold tracking-tight leading-[1.15] text-gradient mb-6">
-            {post.title}
-          </h1>
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start lg:gap-16">
+            <div className="flex flex-col gap-6">
+              <h1
+                className="showcase-reveal text-4xl leading-[1.05] font-bold tracking-tight text-white text-balance md:text-6xl xl:text-7xl"
+                style={{ '--i': 1 } as CSSProperties}
+              >
+                {post.title}
+              </h1>
 
-          <div className="relative card-surface rounded-xl p-4">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:flex-wrap sm:gap-x-6 sm:gap-y-3">
-              <div className="flex items-center gap-2 text-sm text-text-secondary">
-                <FiCalendar
-                  size={14}
-                  className="text-text-tertiary shrink-0"
-                />
+              {post.excerpt && (
+                <p
+                  className="showcase-reveal max-w-2xl text-lg leading-relaxed text-white/75 md:text-xl"
+                  style={{ '--i': 2 } as CSSProperties}
+                >
+                  {post.excerpt}
+                </p>
+              )}
+            </div>
 
-                <time className="font-mono text-text-secondary">{postDate}</time>
-              </div>
-
+            <dl
+              className="showcase-reveal flex flex-col gap-5 rounded-3xl border border-white/15 bg-white/10 p-6 text-sm"
+              style={{ '--i': 3 } as CSSProperties}
+            >
               {post.complexity && (
-                <>
-                  <span
-                    className="hidden sm:block w-px h-4 bg-border"
-                    aria-hidden="true"
-                  />
-
-                  <ComplexityBadge complexity={post.complexity} />
-                </>
+                <div className="flex items-center justify-between gap-4">
+                  <dt className="text-white/60">Difficulty</dt>
+                  <dd>
+                    <ComplexityBadge complexity={post.complexity} />
+                  </dd>
+                </div>
               )}
 
+              <div className="flex items-center justify-between gap-4">
+                <dt className="text-white/60">Published</dt>
+                <dd className="font-medium text-white">
+                  <time dateTime={post.date}>{postDate}</time>
+                </dd>
+              </div>
+
               {post.tags && post.tags.length > 0 && (
-                <>
-                  <span
-                    className="hidden sm:block w-px h-4 bg-border"
-                    aria-hidden="true"
-                  />
-
-                  <div className="flex items-center gap-2 text-sm">
-                    <FiHash
-                      size={14}
-                      className="text-text-tertiary shrink-0"
-                    />
-
-                    <div className="flex flex-wrap gap-1.5">
-                      {post.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-md bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary border border-primary/15"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </>
+                <div className="flex items-start justify-between gap-4">
+                  <dt className="pt-0.5 text-white/60">Topics</dt>
+                  <dd className="flex flex-wrap justify-end gap-1.5">
+                    {post.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full border border-white/15 bg-white/10 px-2.5 py-0.5 text-xs text-white"
+                      >
+                        #{tag}
+                      </span>
+                    ))}
+                  </dd>
+                </div>
               )}
 
               {post.original_url && (
-                <>
-                  <span
-                    className="hidden sm:block w-px h-4 bg-border"
-                    aria-hidden="true"
-                  />
-
-                  <a
-                    href={post.original_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="sm:ml-auto inline-flex items-center gap-1.5 text-sm text-text-tertiary hover:text-primary transition-colors duration-300 group/link"
-                  >
-                    <FiExternalLink
-                      size={13}
-                      className="transition-transform duration-300"
-                    />
-
-                    <span className="border-b border-transparent group-hover/link:border-primary/40 transition-colors duration-300">
-                      Leetcode challenge
-                    </span>
-                  </a>
-                </>
+                <a
+                  href={post.original_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-1 inline-flex h-12 items-center justify-center gap-2 rounded-full white-pill px-6 text-sm font-semibold text-black"
+                >
+                  <FiExternalLink size={16} />
+                  Open on LeetCode
+                </a>
               )}
-            </div>
+            </dl>
           </div>
-        </header>
+        </div>
+      </PageBanner>
 
-        <Divider />
+      <div
+        className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-16 px-4 pb-24 md:px-8 md:pb-32 lg:grid-cols-[minmax(0,1fr)_16rem]"
+        style={{ '--accent': accent } as CSSProperties}
+      >
+        <article className="min-w-0 max-w-3xl">
+          {post.isMdx ? (
+            <MDXContent source={post.content} />
+          ) : (
+            <div
+              className="prose prose-invert max-w-none prose-headings:tracking-tight prose-a:text-primary"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
+          )}
+        </article>
 
-        {post.isMdx ? (
-          <MDXContent source={post.content} />
-        ) : (
-          <div
-            className="prose prose-invert max-w-none prose-headings:tracking-tight prose-a:text-primary"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
+        {headings.length > 1 && (
+          <aside className="hidden lg:block">
+            <nav
+              aria-label="On this page"
+              className="sticky top-24 flex flex-col gap-3"
+            >
+              <p className="text-xs font-medium tracking-[0.14em] text-text-tertiary uppercase">On this page</p>
+
+              <ul className="flex flex-col border-l border-white/10">
+                {headings.map((heading) => (
+                  <li key={heading.id}>
+                    <a
+                      href={`#${heading.id}`}
+                      className="-ml-px block border-l border-transparent py-1.5 pl-4 text-sm text-text-secondary transition-colors hover:border-(--accent) hover:text-foreground"
+                    >
+                      {heading.text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </aside>
         )}
-      </article>
-    </main>
+      </div>
+    </>
   );
 }

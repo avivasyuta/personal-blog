@@ -1,10 +1,8 @@
 import type { CSSProperties, ReactNode } from 'react';
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { FaApple } from 'react-icons/fa';
-import { FiBarChart2, FiCheck, FiLock, FiMail, FiServer, FiUserX } from 'react-icons/fi';
-import { Button } from '@/src/components/ui/button';
+import { FiBarChart2, FiLock, FiServer, FiUserX } from 'react-icons/fi';
 import {
   MeetbellCalendars,
   MeetbellDemo,
@@ -13,6 +11,9 @@ import {
   MeetbellNotificationSettings,
 } from '@/src/components/shared/meetbell-preview';
 import { supportEmail } from '@/src/consts/contacts';
+import { EmailButton } from '@/src/components/shared/email-button';
+import { getProject } from '@/src/consts/projects';
+import { ProjectFooterMark, ProjectHero } from '@/src/components/shared/project-hero';
 
 export const metadata: Metadata = {
   title: 'Meetbell',
@@ -76,181 +77,152 @@ const features: Array<{ title: string; description: string; fragment: ReactNode 
 
 export default function MeetbellProjectPage() {
   return (
-    <div
-      className="relative isolate mx-auto flex w-full max-w-7xl flex-col gap-24 px-4 py-8 md:gap-32 md:px-8 md:py-24"
-      style={{ '--accent': accent } as CSSProperties}
-    >
-      <div
-        aria-hidden
-        className="page-light"
+    <>
+      <ProjectHero
+        name="Meetbell"
+        platform="macOS app"
+        accent={accent}
+        logoPath="/meetbell/meetbell.png"
+        logoAlt="Meetbell app icon"
+        tagline="A full-screen reminder for every meeting on your Mac."
+        description="Meetbell sits in the menu bar with your agenda and a countdown to the next meeting. When it is time, it covers the screen so the reminder cannot hide behind other windows."
+        facts={facts}
+        preview={getProject('Meetbell').preview}
+        actions={
+          <a
+            href={appStoreUrl}
+            target="_blank"
+            rel="noopener"
+            className="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-black py-1.5 pr-5 pl-3.5 text-white transition-all duration-300 hover:border-white/60 hover:bg-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+          >
+            <FaApple size={30} />
+
+            <span className="flex flex-col items-start text-left leading-none">
+              <span className="text-[11px] font-medium">Download on the</span>
+              <span className="text-[22px] font-semibold tracking-tight">Mac App Store</span>
+            </span>
+          </a>
+        }
       />
 
-      <div className="flex flex-col gap-16 md:gap-24">
-        <div className="flex flex-col items-center gap-6 text-center">
-          <Image
-            src="/meetbell/meetbell.png"
-            width={72}
-            height={72}
-            alt="Meetbell app icon"
-            className="app-icon"
-          />
+      <div
+        className="mx-auto flex w-full max-w-7xl flex-col gap-24 px-4 pt-8 pb-16 md:gap-32 md:px-8 md:pb-24"
+        style={{ '--accent': accent } as CSSProperties}
+      >
+        <section className="flex flex-col gap-4">
+          <h2 className="text-center text-3xl md:text-4xl font-bold tracking-tight">Try it</h2>
+
+          <p className="mx-auto max-w-xl text-center text-pretty text-text-secondary leading-relaxed">
+            Click the bell in the menu bar to open the agenda, then show the reminder the way it covers your screen.
+          </p>
+
+          <div className="mt-10 md:mt-14">
+            <MeetbellDemo />
+          </div>
+        </section>
+
+        <section className="flex flex-col gap-4">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Set it up the way you work</h2>
+
+          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
+            {features.map((feature) => (
+              <article
+                key={feature.title}
+                className="accent-surface flex flex-col gap-8 overflow-hidden rounded-3xl p-6 md:p-8"
+              >
+                <div
+                  aria-hidden
+                  className="flex items-center justify-center md:min-h-68"
+                >
+                  {feature.fragment}
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-lg md:text-xl font-semibold text-foreground">{feature.title}</h3>
+
+                  <p className="text-text-secondary leading-relaxed">{feature.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="flex flex-col gap-10">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">How it works</h2>
+
+          <ol className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
+            {steps.map((step, index) => (
+              <li
+                key={step.title}
+                className="relative flex flex-col gap-3 border-t border-white/10 pt-8"
+              >
+                <span
+                  className="absolute -top-4 left-0 flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold text-black"
+                  style={{ backgroundColor: accent }}
+                >
+                  {index + 1}
+                </span>
+
+                <h3 className="font-semibold text-foreground">{step.title}</h3>
+
+                <p className="text-sm text-text-secondary leading-relaxed">{step.description}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section className="relative isolate flex flex-col items-center gap-6 overflow-hidden rounded-3xl border border-[color-mix(in_srgb,var(--accent)_18%,transparent)] bg-[radial-gradient(70%_60%_at_50%_0%,color-mix(in_srgb,var(--accent)_12%,transparent),transparent_70%)] px-6 py-14 text-center md:py-20">
+          <span className="flex size-16 items-center justify-center rounded-2xl bg-[color-mix(in_srgb,var(--accent)_15%,transparent)] text-(--accent) ring-1 ring-[color-mix(in_srgb,var(--accent)_35%,transparent)]">
+            <FiLock size={28} />
+          </span>
 
           <div className="flex flex-col items-center gap-4">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Meetbell</h1>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Nothing leaves your Mac</h2>
 
-            <p className="text-xl md:text-2xl leading-snug text-foreground">
-              A full-screen reminder for every meeting on your Mac.
-            </p>
-
-            <p className="text-text-secondary leading-relaxed max-w-prose">
-              Meetbell sits in the menu bar with your agenda and a countdown to the next meeting. When it is time, it
-              covers the screen so the reminder cannot hide behind other windows.
+            <p className="max-w-xl text-lg text-text-secondary leading-relaxed">
+              Meetbell has no accounts, analytics or servers. Your calendar is read on your device and stays there.
             </p>
           </div>
 
-          <ul className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm text-text-secondary">
-            {facts.map((fact) => (
+          <ul className="flex flex-wrap justify-center gap-2">
+            {privacyPoints.map(({ label, icon }) => (
               <li
-                key={fact}
-                className="flex items-center gap-1.5"
+                key={label}
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-foreground"
               >
-                <FiCheck
-                  size={14}
-                  style={{ color: accent }}
-                />
-                {fact}
+                <span className="text-(--accent)">{icon}</span>
+                {label}
               </li>
             ))}
           </ul>
 
-          <div className="flex gap-3 mt-2">
-            <a
-              href={appStoreUrl}
-              target="_blank"
-              rel="noopener"
-              className="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-black py-1.5 pr-5 pl-3.5 text-white transition-all duration-300 hover:border-white/60 hover:bg-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
-            >
-              <FaApple size={30} />
-
-              <span className="flex flex-col items-start text-left leading-none">
-                <span className="text-[11px] font-medium">Download on the</span>
-                <span className="text-[22px] font-semibold tracking-tight">Mac App Store</span>
-              </span>
-            </a>
-          </div>
-        </div>
-
-        <MeetbellDemo />
-      </div>
-
-      <section className="flex flex-col gap-4">
-        <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Set it up the way you work</h2>
-
-        <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
-          {features.map((feature) => (
-            <article
-              key={feature.title}
-              className="card-surface flex flex-col gap-8 overflow-hidden rounded-3xl p-6 md:p-8"
-            >
-              <div
-                aria-hidden
-                className="flex items-center justify-center md:min-h-68"
-              >
-                {feature.fragment}
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <h3 className="text-lg md:text-xl font-semibold text-foreground">{feature.title}</h3>
-
-                <p className="text-text-secondary leading-relaxed">{feature.description}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="flex flex-col gap-10">
-        <h2 className="text-2xl md:text-3xl font-bold tracking-tight">How it works</h2>
-
-        <ol className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
-          {steps.map((step, index) => (
-            <li
-              key={step.title}
-              className="relative flex flex-col gap-3 border-t border-white/10 pt-8"
-            >
-              <span
-                className="absolute -top-4 left-0 flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold text-black"
-                style={{ backgroundColor: accent }}
-              >
-                {index + 1}
-              </span>
-
-              <h3 className="font-semibold text-foreground">{step.title}</h3>
-
-              <p className="text-sm text-text-secondary leading-relaxed">{step.description}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      <section className="relative isolate flex flex-col items-center gap-6 overflow-hidden rounded-3xl border border-[color-mix(in_srgb,var(--accent)_30%,transparent)] bg-[radial-gradient(70%_60%_at_50%_0%,color-mix(in_srgb,var(--accent)_22%,transparent),transparent_70%)] px-6 py-14 text-center md:py-20">
-        <span className="flex size-16 items-center justify-center rounded-2xl bg-[color-mix(in_srgb,var(--accent)_15%,transparent)] text-(--accent) ring-1 ring-[color-mix(in_srgb,var(--accent)_35%,transparent)]">
-          <FiLock size={28} />
-        </span>
-
-        <div className="flex flex-col items-center gap-4">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Nothing leaves your Mac</h2>
-
-          <p className="max-w-xl text-lg text-text-secondary leading-relaxed">
-            Meetbell has no accounts, analytics or servers. Your calendar is read on your device and stays there.
-          </p>
-        </div>
-
-        <ul className="flex flex-wrap justify-center gap-2">
-          {privacyPoints.map(({ label, icon }) => (
-            <li
-              key={label}
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-foreground"
-            >
-              <span className="text-(--accent)">{icon}</span>
-              {label}
-            </li>
-          ))}
-        </ul>
-
-        <Link
-          href="/projects/meetbell/privacy"
-          className="w-fit text-sm font-medium underline decoration-white/30 underline-offset-4 transition-colors hover:decoration-white"
-        >
-          Read the privacy policy
-        </Link>
-      </section>
-
-      <section className="card-surface relative overflow-hidden rounded-3xl p-8 md:p-12">
-        <div
-          aria-hidden
-          className="showcase-glow pointer-events-none absolute inset-0"
-        />
-
-        <div className="relative flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
-          <div className="flex flex-col gap-2">
-            <h2 className="text-xl md:text-2xl font-bold tracking-tight">Questions or feedback?</h2>
-
-            <p className="text-sm md:text-base text-text-secondary leading-relaxed max-w-xl">
-              Found a bug or have an idea for Meetbell? Write to me, I read every message.
-            </p>
-          </div>
-
-          <Button
-            href={`mailto:${supportEmail}?subject=Meetbell`}
-            size="lg"
-            className="shrink-0"
+          <Link
+            href="/projects/meetbell/privacy"
+            className="w-fit text-sm font-medium underline decoration-white/30 underline-offset-4 transition-colors hover:decoration-white"
           >
-            <FiMail size={16} />
-            {supportEmail}
-          </Button>
-        </div>
-      </section>
-    </div>
+            Read the privacy policy
+          </Link>
+        </section>
+
+        <section className="accent-surface relative overflow-hidden rounded-3xl p-8 md:p-12">
+          <div className="relative flex flex-col items-center gap-6 text-center md:flex-row md:justify-between md:text-left">
+            <div className="flex flex-col gap-2">
+              <h2 className="text-xl md:text-2xl font-bold tracking-tight">Questions or feedback?</h2>
+
+              <p className="text-sm md:text-base text-text-secondary leading-relaxed max-w-xl">
+                Found a bug or have an idea for Meetbell? Write to me, I read every message.
+              </p>
+            </div>
+
+            <EmailButton
+              email={supportEmail}
+              subject="Meetbell"
+            />
+          </div>
+        </section>
+
+        <ProjectFooterMark name="Meetbell" />
+      </div>
+    </>
   );
 }
