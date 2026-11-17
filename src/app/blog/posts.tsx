@@ -59,18 +59,17 @@ export function Posts() {
 
       {error && <p className="text-center text-sm text-text-error mt-6">{error}</p>}
 
-      <div className="flex flex-col gap-4">
-        {posts.length === 0 && !isLoading && (
-          <p className="text-text-tertiary text-sm py-8 text-center">No posts found</p>
-        )}
+      {posts.length === 0 && !isLoading && (
+        <p className="text-text-tertiary text-sm py-8 text-center">No posts found</p>
+      )}
 
+      <ul className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {posts.map((post) => (
-          <PostSnippet
-            key={post.slug}
-            post={post}
-          />
+          <li key={post.slug}>
+            <PostSnippet post={post} />
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }

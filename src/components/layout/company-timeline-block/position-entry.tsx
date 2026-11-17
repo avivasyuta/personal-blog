@@ -30,16 +30,17 @@ export function PositionEntry({ position, isDateVisible = false }: PositionEntry
       )}
 
       {position.skills && (
-        <div className="flex flex-wrap gap-1.5 mt-1">
+        // The same quiet chips as the tags on blog posts
+        <ul className="mt-1 flex flex-wrap gap-1.5">
           {position.skills.map((skill) => (
-            <span
+            <li
               key={skill}
-              className="px-2 py-0.5 text-xs font-medium rounded-md bg-primary/10 text-primary border border-primary/20"
+              className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-xs text-text-secondary"
             >
               {skill}
-            </span>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
     </div>
   );

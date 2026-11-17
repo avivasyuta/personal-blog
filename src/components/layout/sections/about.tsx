@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { SectionHeading } from './section-heading';
 
 const stats = [
   {
@@ -19,25 +20,26 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="w-full py-20 md:py-28 2xl:py-36 border-t border-border"
+      className="w-full py-14 md:py-28"
     >
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 md:gap-12 md:px-8">
         <div className="flex w-full flex-col justify-between gap-12 md:flex-row">
           <div className="flex justify-center md:order-first md:justify-end">
-            <div className="relative h-95 w-[320px] md:h-115 md:w-95 lg:h-130 lg:w-110">
+            <div className="relative aspect-[4/5] w-full md:aspect-auto md:h-auto md:min-h-115 md:w-95 lg:w-110">
               <Image
                 src="/photos/avatar.jpg"
                 alt="Fullpose of Aleksei Ivasiuta"
                 fill
-                className="shadow-[0_0_40px_color-mix(in_srgb,var(--accent)_22%,transparent)] rounded-2xl object-cover -scale-x-100"
+                className="rounded-3xl object-cover -scale-x-100"
               />
             </div>
           </div>
 
-          <div className="flex max-w-xl flex-col gap-6">
-            <h3 className="text-center md:text-left text-2xl md:text-3xl font-semibold tracking-tight">
-              A little bit about me
-            </h3>
+          <div className="flex max-w-xl flex-col justify-center gap-6">
+            <SectionHeading
+              label="About"
+              title="A little bit about me"
+            />
 
             <div className="flex flex-col gap-4 text-text-secondary text-base leading-relaxed">
               <p>
@@ -59,18 +61,17 @@ export function AboutSection() {
               </p>
             </div>
 
-            <div className="grid grid-cols-3 gap-4 pt-2">
+            <dl className="grid grid-cols-3 gap-4 border-t border-white/10 pt-6">
               {stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="card-surface flex flex-col items-center gap-2 p-4"
+                  className="flex flex-col gap-1"
                 >
-                  <p className="text-2xl font-bold tracking-tight">{stat.value}</p>
-
-                  <p className="text-text-secondary text-xs text-center">{stat.label}</p>
+                  <dt className="order-last text-sm text-text-secondary">{stat.label}</dt>
+                  <dd className="text-gradient-accent text-4xl font-bold tracking-tight md:text-5xl">{stat.value}</dd>
                 </div>
               ))}
-            </div>
+            </dl>
           </div>
         </div>
       </div>

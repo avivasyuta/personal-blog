@@ -217,6 +217,175 @@ body::after {
   );
 }
 
+/* The project carousel on the projects page. `--accent` is a registered color,
+   so switching projects fades every gradient from one color to the next instead of jumping */
+@property --accent {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #f97316;
+}
+
+.showcase {
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--accent) 50%, #0b0b0d) 0%,
+    color-mix(in srgb, var(--accent) 20%, #0b0b0d) 45%,
+    var(--background) 100%
+  );
+  transition: --accent 0.9s ease;
+}
+
+/* A showcase as a card: its light ends in a dark shade of the accent instead of the page's own color,
+   so the card has a body all the way to its border instead of dissolving inside it */
+.showcase-card {
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--accent) 50%, #0b0b0d) 0%,
+    color-mix(in srgb, var(--accent) 20%, #0b0b0d) 45%,
+    color-mix(in srgb, var(--accent) 10%, #0b0b0d) 100%
+  );
+  border-color: color-mix(in srgb, var(--accent) 22%, rgb(255 255 255 / 0.08));
+  /* The border is translucent: over the card's own gradient it was bright at the top and dark at the bottom.
+     Keeping the gradient inside the border lays it over the page instead, the same color all round */
+  background-clip: padding-box;
+}
+
+.showcase-blob {
+  border-radius: 9999px;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 70%, transparent), transparent);
+  opacity: 0.55;
+  animation: showcase-drift 18s ease-in-out infinite alternate;
+}
+
+.showcase-blob-second {
+  opacity: 0.4;
+  animation-duration: 23s;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes showcase-drift {
+  to {
+    transform: translate(12%, 10%) scale(1.15);
+  }
+}
+
+.showcase-watermark {
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--accent) 45%, transparent);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 22%, transparent), transparent 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: showcase-watermark-in 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes showcase-watermark-in {
+  from {
+    opacity: 0;
+    transform: translateX(calc(var(--dir) * 12%));
+  }
+}
+
+/* Text comes in one line after another, from below. Only opacity and transform animate:
+   a blur filter here repainted the shadows inside every frame and made them flicker */
+.showcase-reveal {
+  animation: showcase-reveal-in 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(var(--i, 0) * 70ms + 80ms);
+}
+
+@keyframes showcase-reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+}
+
+/* The app slides in from the side it's coming from, slightly turned, and settles */
+.showcase-stage {
+  animation: showcase-stage-in 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.15s both;
+}
+
+@keyframes showcase-stage-in {
+  from {
+    opacity: 0;
+    transform: translateX(calc(var(--dir) * 18%)) rotate(calc(var(--dir) * 4deg)) scale(0.92);
+  }
+}
+
+/* Leaving: everything lifts away quickly, so the switch never feels slow (see `exitDuration`) */
+.showcase[data-leaving] .showcase-reveal {
+  animation: showcase-reveal-out 0.26s ease-in both;
+  animation-delay: calc(var(--i, 0) * 15ms);
+}
+
+.showcase[data-leaving] .showcase-stage {
+  animation: showcase-stage-out 0.32s ease-in both;
+}
+
+.showcase[data-leaving] .showcase-watermark {
+  animation: showcase-reveal-out 0.32s ease-in both;
+}
+
+@keyframes showcase-reveal-out {
+  to {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+}
+
+@keyframes showcase-stage-out {
+  to {
+    opacity: 0;
+    transform: translateX(calc(var(--dir) * -14%)) scale(0.95);
+  }
+}
+
+/* Fills the active tab; when it ends the carousel moves on. Hovering or focusing the carousel holds it */
+.showcase-progress {
+  animation: showcase-progress 8s linear both;
+}
+
+.showcase:hover .showcase-progress,
+.showcase:focus-within .showcase-progress {
+  animation-play-state: paused;
+}
+
+@keyframes showcase-progress {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase,
+  .showcase-blob,
+  .showcase-watermark,
+  .showcase-reveal,
+  .showcase-stage,
+  .showcase[data-leaving] .showcase-reveal,
+  .showcase[data-leaving] .showcase-stage {
+    animation: none;
+    transition: none;
+  }
+
+  /* Without the progress animation nothing ends, so the carousel doesn't move by itself */
+  .showcase-progress {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/* Cards on a project's page. The banner above already carries the color, so a card only hints at it:
+   a faint wash in one corner, no colored glow around it */
+.accent-surface {
+  background:
+    radial-gradient(70% 60% at 0% 0%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 70%),
+    linear-gradient(180deg, #151518 0%, #111114 100%);
+  border: 1px solid var(--border);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 16px 40px -16px rgba(0, 0, 0, 0.8);
+}
+
 /* Smooth underline animation for nav links */
 .nav-link {
   position: relative;
@@ -384,4 +553,40 @@ body::after {
   html {
     @apply font-sans;
   }
+}
+
+/* A solid white pill button. On hover only its background grows: scaling the whole button
+   re-rasterizes the text, which then looks thinner and smaller while hovered */
+.white-pill {
+  position: relative;
+  isolation: isolate;
+}
+
+.white-pill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: #fff;
+  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.white-pill:hover::before,
+.group:hover .white-pill::before {
+  transform: scale(1.04, 1.08);
+}
+
+/* A full-width band of slightly warmer, lighter background behind every other home section, fading in and out
+   at its edges, so neighbouring sections read apart without lines or frames */
+.section-band {
+  background:
+    radial-gradient(70% 45% at 50% 50%, color-mix(in srgb, var(--primary) 6%, transparent), transparent 100%),
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      rgb(255 255 255 / 0.045) 7rem,
+      rgb(255 255 255 / 0.045) calc(100% - 7rem),
+      transparent 100%
+    );
 }

@@ -4,15 +4,7 @@ import type { ReactNode } from 'react';
 import { FaApple, FaVideo } from 'react-icons/fa';
 import { FiBattery, FiChevronRight, FiWifi } from 'react-icons/fi';
 import { cn } from '@/src/lib/utils';
-import {
-  type DemoEvent,
-  demoEvents,
-  formatMenuBarDate,
-  formatMinutes,
-  formatTime,
-  getEventTimes,
-  useDemoClock,
-} from './demo-clock';
+import { type DemoEvent, demoEvents } from './demo-clock';
 
 type MeetbellMenuBarProps = {
   isOpen: boolean;
@@ -81,17 +73,19 @@ function MenuSeparator() {
   return <li className="mx-2 my-1.5 h-px bg-white/10" />;
 }
 
+const demoEvent = (id: string) => demoEvents.find((event) => event.id === id) ?? demoEvents[0];
+
+// A fixed moment of a working morning: the menu is a picture of the app, so nothing in it moves or runs out
+const menuBarDate = 'Tue 17 Nov 9:36 AM';
+
+const current = [{ event: demoEvent('standup'), endsAt: '9:45 AM', left: '9 min' }];
+
+const upcoming = [
+  { event: demoEvent('review'), time: '9:50 – 10:35 AM', startsIn: '14 min' },
+  { event: demoEvent('one-on-one'), time: '12:00 – 12:30 PM', startsIn: '2 h 24 min' },
+];
+
 export function MeetbellMenuBar({ isOpen, onToggle, className }: MeetbellMenuBarProps) {
-  const clock = useDemoClock();
-
-  const events = clock
-    ? demoEvents
-        .map((event) => ({ event, ...getEventTimes(event, clock.start) }))
-        .filter(({ endsAt }) => endsAt > clock.now)
-    : [];
-  const current = events.filter(({ startsAt }) => startsAt <= (clock?.now ?? 0));
-  const upcoming = events.filter(({ startsAt }) => startsAt > (clock?.now ?? 0));
-
   const bellClasses = cn(
     'flex h-5 items-center rounded-full px-1.5 transition-colors',
     isOpen ? 'bg-white/25 text-white' : 'text-white/90'
@@ -100,7 +94,7 @@ export function MeetbellMenuBar({ isOpen, onToggle, className }: MeetbellMenuBar
   return (
     <div
       className={cn(
-        'relative h-90 w-full overflow-hidden rounded-2xl border border-white/10 bg-[#06110d] shadow-[0_40px_80px_-30px_rgba(31,194,122,0.45)]',
+        '@container relative h-90 w-full overflow-hidden rounded-2xl border border-white/10 bg-[#06110d] shadow-[0_40px_80px_-30px_rgba(31,194,122,0.45)]',
         className
       )}
     >
@@ -110,15 +104,18 @@ export function MeetbellMenuBar({ isOpen, onToggle, className }: MeetbellMenuBar
       />
 
       <div className="relative flex h-7 items-center justify-between bg-black/35 px-3 text-[12px] text-white/90">
-        <div className="flex items-center gap-4">
-          <FaApple size={13} />
+        <div className="flex min-w-0 items-center gap-4 overflow-hidden">
+          <FaApple
+            size={13}
+            className="shrink-0"
+          />
           <span className="font-semibold">Finder</span>
-          <span className="hidden sm:inline">File</span>
-          <span className="hidden sm:inline">Edit</span>
-          <span className="hidden sm:inline">View</span>
+          <span className="hidden md:@md:inline">File</span>
+          <span className="hidden md:@md:inline">Edit</span>
+          <span className="hidden md:@md:inline">View</span>
         </div>
 
-        <div className="flex items-center gap-1.25">
+        <div className="flex shrink-0 items-center gap-1.25">
           {onToggle ? (
             <button
               type="button"
@@ -135,57 +132,53 @@ export function MeetbellMenuBar({ isOpen, onToggle, className }: MeetbellMenuBar
             </span>
           )}
 
-          <span className="hidden h-5 items-center px-1.5 sm:flex">
+          <span className="hidden h-5 items-center px-1.5 @sm:flex">
             <FiWifi size={13} />
           </span>
-          <span className="hidden h-5 items-center px-1.5 sm:flex">
+          <span className="hidden h-5 items-center px-1.5 @sm:flex">
             <FiBattery size={15} />
           </span>
 
-          <span className="tabular-nums">{clock ? formatMenuBarDate(clock.now) : ''}</span>
+          <span className="whitespace-nowrap tabular-nums">{menuBarDate}</span>
         </div>
       </div>
 
       {isOpen && (
-        <div className="absolute top-8 right-2 w-80 max-w-[calc(100%-1rem)] rounded-xl border border-white/15 bg-[#26272b]/85 p-1.5 shadow-2xl shadow-black/60 backdrop-blur-xl">
-          {current.length > 0 && (
-            <>
-              <p className="px-2 pt-1 pb-0.5 text-[11px] font-semibold text-[#8fb8e0]">Now</p>
+        <div
+          data-menu
+          className="absolute top-8 right-2 w-80 max-w-[calc(100%-1rem)] rounded-xl border border-white/15 bg-[#26272b]/85 p-1.5 shadow-2xl shadow-black/60 backdrop-blur-xl"
+        >
+          <>
+            <p className="px-2 pt-1 pb-0.5 text-[11px] font-semibold text-[#8fb8e0]">Now</p>
 
-              <ul>
-                {current.map(({ event, endsAt }) => (
-                  <EventRow
-                    key={event.id}
-                    event={event}
-                    details={
-                      <>
-                        until {formatTime(endsAt)} ·{' '}
-                        <span className="font-semibold text-white">
-                          {formatMinutes(endsAt - (clock?.now ?? 0))} left
-                        </span>
-                      </>
-                    }
-                  />
-                ))}
-              </ul>
-            </>
-          )}
+            <ul>
+              {current.map(({ event, endsAt, left }) => (
+                <EventRow
+                  key={event.id}
+                  event={event}
+                  details={
+                    <>
+                      until {endsAt} · <span className="font-semibold text-white">{left} left</span>
+                    </>
+                  }
+                />
+              ))}
+            </ul>
+          </>
 
-          {upcoming.length > 0 && (
-            <>
-              <p className="px-2 pt-2 pb-0.5 text-[11px] font-semibold text-[#8fb8e0]">Upcoming</p>
+          <>
+            <p className="px-2 pt-2 pb-0.5 text-[11px] font-semibold text-[#8fb8e0]">Upcoming</p>
 
-              <ul>
-                {upcoming.map(({ event, startsAt, endsAt }) => (
-                  <EventRow
-                    key={event.id}
-                    event={event}
-                    details={`${formatTime(startsAt)} – ${formatTime(endsAt)} · in ${formatMinutes(startsAt - (clock?.now ?? 0))}`}
-                  />
-                ))}
-              </ul>
-            </>
-          )}
+            <ul>
+              {upcoming.map(({ event, time, startsIn }) => (
+                <EventRow
+                  key={event.id}
+                  event={event}
+                  details={`${time} · in ${startsIn}`}
+                />
+              ))}
+            </ul>
+          </>
 
           <ul>
             <MenuSeparator />

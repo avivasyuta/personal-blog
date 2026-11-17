@@ -19,9 +19,10 @@ export function Header() {
 
   return (
     <header
-      className={`relative md:sticky md:top-0 md:z-30 flex h-17 items-center justify-center transition-all duration-300 border-b ${
+      className={`relative z-30 md:sticky md:top-0 flex h-17 items-center justify-center transition-all duration-300 border-b ${
         isScrolled
-          ? 'backdrop-blur-xl border-border bg-background/80 shadow-[0_1px_20px_rgba(0,0,0,0.4)]'
+          ? // Only the desktop header sticks: on a phone it scrolls away with the page, so it keeps no background
+            'border-transparent md:backdrop-blur-xl md:border-border md:bg-background/80 md:shadow-[0_1px_20px_rgba(0,0,0,0.4)]'
           : 'border-transparent bg-transparent'
       }`}
     >
@@ -41,10 +42,10 @@ export function Header() {
           <Link
             href="/Ivasiuta Aleksei CV. Senior Software Engineer.pdf"
             download
-            className="btn btn-sm border border-primary/30 bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300"
+            className="nav-link inline-flex items-center gap-1.5 text-sm font-medium text-text-secondary transition-colors hover:text-foreground"
           >
             <FiDownload size={14} />
-            Download CV
+            CV
           </Link>
         </div>
       </div>

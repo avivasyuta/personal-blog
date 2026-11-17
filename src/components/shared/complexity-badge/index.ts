@@ -1,1 +1,1 @@
-export { ComplexityBadge } from './complexity-badge';
+export { ComplexityBadge, complexityAccent } from './complexity-badge';
