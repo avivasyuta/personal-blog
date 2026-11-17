@@ -74,7 +74,8 @@ export default function BooplyPrivacyPage() {
 
         <p>
           This data is about your pets, not about you, but notes and photos can contain anything you put in them. You
-          decide what to enter, and none of it is required except a pet&apos;s name.
+          decide what to enter. Only a few basics are needed to create a pet (name, species, sex and weight); everything
+          else is optional.
         </p>
 
         <h2>Where your data is kept</h2>
@@ -123,10 +124,14 @@ export default function BooplyPrivacyPage() {
             who has access, and they see whose pet it is.
           </li>
           <li>
-            You can remove a person or stop sharing at any time in the pet&apos;s profile. An access period you choose
-            for a sitter ends by itself.
+            You can remove a person or stop sharing at any time in the pet&apos;s profile. When a sitter&apos;s access
+            period ends, the pet disappears from their app, and Booply removes them from the share the next time your
+            app syncs.
           </li>
           <li>A person you shared a pet with can leave at any time. Your data stays with you.</li>
+          <li>
+            People you share a pet with can see until when your Premium is active, because sharing a pet relies on it.
+          </li>
         </ul>
 
         <p>
@@ -173,7 +178,7 @@ export default function BooplyPrivacyPage() {
           RevenueCat also stores a mark that you are a beta tester.
         </p>
 
-        <h2>Permissions Booply asks for</h2>
+        <h2>Permissions and access</h2>
 
         <ul>
           <li>
@@ -182,8 +187,8 @@ export default function BooplyPrivacyPage() {
             saved.
           </li>
           <li>
-            <strong>Photos</strong>: when you choose a picture from your library, iOS shows Booply only the photos you
-            pick. Booply doesn&apos;t read the rest of your library.
+            <strong>Photos</strong>: Booply doesn&apos;t ask for access to your photo library. When you choose a
+            picture, iOS shows its own picker and gives Booply only the photos you pick.
           </li>
           <li>
             <strong>Notifications</strong>, to remind you about doses, meals, and birthdays. These reminders are
@@ -192,7 +197,7 @@ export default function BooplyPrivacyPage() {
           </li>
         </ul>
 
-        <p>You can turn any of these on or off at any time in the Settings app.</p>
+        <p>You can turn camera and notification access on or off at any time in the Settings app.</p>
 
         <h2>Files you export</h2>
 
